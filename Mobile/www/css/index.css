@@ -1,0 +1,45 @@
+/*Use initial id #index*/
+#index {
+	background-color: rgb(52,52,52);
+	padding: 0 !important;
+}
+
+/*@media screen and (orientation:portrait) { 
+	
+}
+@media screen and (orientation:landscape) { 
+
+}*/
+
+#index input {
+	color: white !important;
+}
+
+#index .logoDiv {
+	position: fixed;
+	top: 0;
+	height: 130px;
+}
+
+#index .logoDiv > .col,
+#index .logoDiv > .col > img {
+	width: auto;
+	height: 100%;
+}
+
+#index .contentDiv {
+	height: 100%;
+	padding-top: 130px;
+	padding-bottom: 50px;
+}
+
+#index .buttonDiv {
+	position: fixed;
+	bottom: 0;
+	height: 50px;
+}
+
+#index .buttonDiv button {
+	height: 100%;
+	margin: 0;
+}

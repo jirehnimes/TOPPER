@@ -3,7 +3,28 @@
 // angular.module is a global place for creating, registering and retrieving Angular modules
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
-angular.module('starter', ['ionic'])
+angular.module('topper', [
+  
+  'ionic',
+  'ngAnimate',
+  'angular-md5',
+  'ngResource',
+  'ngSanitize',
+  'ui.router',
+  'ionic-material',
+  'ngCordova',
+
+  // route
+  'topper.routes',
+
+  // controllers
+  'topper.indexCtrl',
+
+  // services
+
+  // data
+
+])
 
 .run(function($ionicPlatform) {
   $ionicPlatform.ready(function() {
