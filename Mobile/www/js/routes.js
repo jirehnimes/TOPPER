@@ -18,6 +18,26 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu', {
+      url: '/',
+      templateUrl: 'view/menu.html',
+      controller: 'MenuCtrl'
+    })
+
+
+
+    .state('menu.home', {
+      url: 'home',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })
+
+
+    
   ;
 
   // if none of the above states are matched, use this as the fallback

@@ -19,8 +19,11 @@ angular.module('topper', [
 
   // controllers
   'topper.indexCtrl',
+  'topper.menuCtrl',
+  'topper.homeCtrl',
 
   // services
+  'starter.fbLoginSrvc'
 
   // data
 
@@ -42,4 +45,10 @@ angular.module('topper', [
       StatusBar.styleDefault();
     }
   });
+})
+
+.config(function($ionicConfigProvider) {
+
+  $ionicConfigProvider.tabs.position('bottom');
+  
 })
