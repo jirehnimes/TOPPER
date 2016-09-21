@@ -12,14 +12,42 @@ angular.module('topper.routes', ['ui.router'])
 
     .state('index', {
       url: '/',
+      abstract: true,
       templateUrl: 'view/index.html',
       controller: 'IndexCtrl'
     })
 
 
 
+    .state('index.login', {
+      url: 'login',
+      cache: false,
+      views: {
+        'homeLogin': {
+          templateUrl: 'view/index/login.html',
+          controller: 'LoginCtrl'
+        }
+      }
+    })
+
+
+
+    .state('index.register', {
+      url: 'register',
+      cache: false,
+      views: {
+        'homeRegister': {
+          templateUrl: 'view/index/register.html',
+          controller: 'RegisterCtrl'
+        }
+      }
+    })
+
+
+
     .state('menu', {
       url: '/',
+      abstract: true,
       templateUrl: 'view/menu.html',
       controller: 'MenuCtrl'
     })
@@ -28,16 +56,30 @@ angular.module('topper.routes', ['ui.router'])
 
     .state('menu.home', {
       url: 'home',
+      cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'view/home.html',
+          templateUrl: 'view/main/home.html',
           controller: 'HomeCtrl'
         }
       }
     })
 
 
-    
+
+    .state('menu.mockexam', {
+      url: 'exam',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'view/main/mockexam.html',
+          controller: 'MockExamCtrl'
+        }
+      }
+    })
+
+
+
   ;
 
   // if none of the above states are matched, use this as the fallback

@@ -1,21 +1,27 @@
 <ion-side-menus enable-menu-with-back-views="false" id="menu">
 	<ion-side-menu-content drag-content="false">
-		<ion-nav-bar class="bar-header bar-calm view-header" align-title="center"> 
+		<ion-nav-bar class="bar-header bar-calm view-header" align-title="center">
 			<ion-nav-buttons side="left">
-				<button class="button button-calm" menu-toggle="left"><i class="icon ion-navicon-round"></i></button>
+				<button class="button button-calm" menu-toggle="left" ng-click="showLeft()">
+					<i class="icon ion-navicon-round"></i>
+				</button>
 			</ion-nav-buttons>
+
 			<ion-nav-title>
 				<h2 class="title">TOPPER</h2>
 			</ion-nav-title>
+
 			<ion-nav-buttons side="right">
-				<button class="button button-calm"><i class="icon"></i></button>
+				<button class="button button-calm" menu-toggle="right" ng-click="showRight()">
+					<i class="icon ion-paper-airplane"></i>
+				</button>
 			</ion-nav-buttons>
 		</ion-nav-bar>
 
 		<ion-nav-view name="menuContent"></ion-nav-view>
 	</ion-side-menu-content>
 
-  	<ion-side-menu side="left">
+  	<ion-side-menu side="left" id="leftMenu">
 		<ion-header-bar class="bar-stable">
 			<div class="row no-padding">
 				<!-- <div class="col" id="avatarDiv"> -->
@@ -41,15 +47,39 @@
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row" ng-click="goToFind()">
-						<div class="col-10 center itemList"><i class="icon ion-search"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Find</div>
+					<div class="row" ui-sref="menu.mockexam">
+						<div class="col-10 center itemList"><i class="icon ion-clipboard"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Mock Exam</div>
+					</div>
+				</ion-item>
+				<ion-item menu-close>
+					<div class="row">
+						<div class="col-10 center itemList"><i class="icon ion-stats-bars"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Analytics</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close ng-click="doLogout()">
 					<div class="row">
-						<div class="col-10 center itemList"><i class="icon ion-arrow-return-left"></i></div>
+						<div class="col-10 center itemList"><i class="icon ion-log-out"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Logout</div>
+					</div>
+				</ion-item>
+			</ion-list>
+		</ion-content>
+	</ion-side-menu>
+
+	<ion-side-menu side="right" id="rightMenu">
+		<ion-header-bar class="bar-stable">
+			<div class="row">
+				Notifications
+			</div>
+		</ion-header-bar>
+		<ion-content>
+			<ion-list>
+				<ion-item menu-close>
+					<div class="row">
+						<div class="col-10 center itemList"><i class="icon ion-home"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;asdasd</div>
 					</div>
 				</ion-item>
 			</ion-list>

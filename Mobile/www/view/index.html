@@ -1,59 +1,12 @@
 <ion-view id="index">
     <ion-tabs class="tabs-positive tabs-icon-top">
 
-        <ion-tab title="Log In" icon-on="ion-log-in" icon-off="ion-log-in-outline">
-            <ion-content overflow-scroll="true" padding="true" scroll="true">
-                <label class="item item-input item-floating-label">
-                    <span class="input-label">Email</span>
-                    <input type="text" placeholder="Email">
-                </label>
-
-                <label class="item item-input item-floating-label">
-                    <span class="input-label">Password</span>
-                    <input type="text" placeholder="Password">
-                </label>
-
-                <button class="button button-full button-positive">
-                    Log In
-                </button>
-
-                <button class="button button-full button-positive">
-                    Facebook
-                </button>
-            </ion-content>
+        <ion-tab title="Log In" icon-on="ion-log-in" icon-off="ion-log-in-outline" ui-sref="index.login">
+            <ion-nav-view name="homeLogin"></ion-nav-view>
         </ion-tab>
 
-        <ion-tab title="Log Out" icon-on="ion-compose" icon-off="ion-compose-outline">
-            <ion-content overflow-scroll="true" padding="true" scroll="true">
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">First Name</span>
-                    <input type="text" placeholder="">
-                </label>
-
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Last Name</span>
-                    <input type="text" placeholder="">
-                </label>
-
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Email</span>
-                    <input type="email" placeholder="">
-                </label>
-
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Password</span>
-                    <input type="password" placeholder="">
-                </label>
-
-                <label class="item item-input item-stacked-label">
-                    <span class="input-label">Verify Password</span>
-                    <input type="password" placeholder="">
-                </label>
-
-                <button class="button button-full button-positive">
-                    Register
-                </button>
-            </ion-content>
+        <ion-tab title="Register" icon-on="ion-compose" icon-off="ion-compose-outline" ui-sref="index.register">
+            <ion-nav-view name="homeRegister"></ion-nav-view>
         </ion-tab>
 
     </ion-tabs>

@@ -1,0 +1,47 @@
+<ion-view id="mockexam">
+    <ion-content overflow-scroll="true" padding="true" scroll="true">
+        <!-- <h1>
+            <timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+        </h1>
+        <button ng-click="startTimer()" ng-disabled="timerRunning">Start Timer</button>
+        <button ng-click="stopTimer()" ng-disabled="!timerRunning">Stop Timer</button> -->
+        <div class="row no-padding">
+            <div class="col col-25">
+                <button class="button button-block button-calm">
+                    <i class="icon ion-chevron-left"></i>
+                </button>
+            </div>
+            <div class="col col-50">
+                <timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
+            </div>
+            <div class="col col-25">
+                <button class="button button-block button-calm">
+                    <i class="icon ion-chevron-right"></i>
+                </button>
+            </div>
+        </div>
+        <div class="list card">
+
+            <div class="item item-header">
+                <h3>Module <span></span></h3>
+                <h2>Topic: <span></span></h2>
+            </div>
+
+            <div class="item item-body">
+                <h4>Question:</h4>
+                <p>
+                    Which is the weakest oxidzing agent?
+                </p>
+                <div class="button-bar">
+                    <a class="button button-calm">First</a>
+                    <a class="button button-calm">Second</a>
+                </div>
+                <div class="button-bar">
+                    <a class="button button-calm">Third</a>
+                    <a class="button button-calm">Fourth</a>
+                </div>
+            </div>
+
+        </div>
+    </ion-content>
+</ion-view>

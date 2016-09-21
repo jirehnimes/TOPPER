@@ -4,7 +4,7 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('topper', [
-  
+
   'ionic',
   'ngAnimate',
   'angular-md5',
@@ -13,6 +13,7 @@ angular.module('topper', [
   'ui.router',
   'ionic-material',
   'ngCordova',
+  'timer',
 
   // route
   'topper.routes',
@@ -20,7 +21,10 @@ angular.module('topper', [
   // controllers
   'topper.indexCtrl',
   'topper.menuCtrl',
+  'topper.loginCtrl',
+  'topper.registerCtrl',
   'topper.homeCtrl',
+  'topper.mockExamCtrl',
 
   // services
   'starter.fbLoginSrvc'
@@ -50,5 +54,5 @@ angular.module('topper', [
 .config(function($ionicConfigProvider) {
 
   $ionicConfigProvider.tabs.position('bottom');
-  
+
 })
