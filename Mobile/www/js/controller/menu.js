@@ -15,9 +15,5 @@ angular.module('topper.menuCtrl', [])
         _oRightMenu.show();
     }
 
-    $scope.doLogout = function() {
-        $state.go('index.login');
-    }
-
 });
 

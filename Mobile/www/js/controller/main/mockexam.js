@@ -4,6 +4,26 @@ angular.module('topper.mockExamCtrl', [])
 
     $scope.timerRunning = true;
 
+    $scope.aQuestions = [
+        {
+            id: 1,
+            module: 1,
+            show: true
+        },
+        {
+            id: 2,
+            module: 1,
+            show: false
+        },
+        {
+            id: 3,
+            module: 1,
+            show: false
+        }
+    ];
+
+    console.log($scope.aQuestions);
+
     $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
         $scope.timerRunning = true;

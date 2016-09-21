@@ -1,6 +1,10 @@
 <ion-view id="index">
     <ion-tabs class="tabs-positive tabs-icon-top">
 
+        <ion-tab title="Main" icon-on="ion-home" icon-off="ion-home-outline" ui-sref="index.login">
+            <ion-nav-view name="homeMain"></ion-nav-view>
+        </ion-tab>
+
         <ion-tab title="Log In" icon-on="ion-log-in" icon-off="ion-log-in-outline" ui-sref="index.login">
             <ion-nav-view name="homeLogin"></ion-nav-view>
         </ion-tab>

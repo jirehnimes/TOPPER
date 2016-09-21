@@ -1,4 +1,4 @@
-<ion-view id="mockexam">
+<ion-view id="main.mockexam">
     <ion-content overflow-scroll="true" padding="true" scroll="true">
         <!-- <h1>
             <timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer>
@@ -20,11 +20,11 @@
                 </button>
             </div>
         </div>
-        <div class="list card">
+        <div class="list card" ng-repeat="question in aQuestions" ng-show="{{question.show}}">
 
             <div class="item item-header">
-                <h3>Module <span></span></h3>
-                <h2>Topic: <span></span></h2>
+                <h3>Module {{question.module}}</h3>
+                <h2>Topic: </h2>
             </div>
 
             <div class="item item-body">

@@ -18,6 +18,17 @@ angular.module('topper.routes', ['ui.router'])
     })
 
 
+    .state('index.main', {
+      url: 'main',
+      cache: false,
+      views: {
+        'homeMain': {
+          templateUrl: 'view/index/main.html'
+        }
+      }
+    })
+
+
 
     .state('index.login', {
       url: 'login',
@@ -83,6 +94,6 @@ angular.module('topper.routes', ['ui.router'])
   ;
 
   // if none of the above states are matched, use this as the fallback
-  $urlRouterProvider.otherwise('/');
+  $urlRouterProvider.otherwise('/main');
 
 });
