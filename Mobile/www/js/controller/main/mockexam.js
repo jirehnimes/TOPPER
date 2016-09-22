@@ -4,6 +4,8 @@ angular.module('topper.mockExamCtrl', [])
 
     $scope.timerRunning = true;
 
+    $scope.qNum = 0;
+
     $scope.aQuestions = [
         {
             id: 1,
@@ -23,6 +25,7 @@ angular.module('topper.mockExamCtrl', [])
     ];
 
     console.log($scope.aQuestions);
+    console.log($scope.aQuestions[0]);
 
     $scope.startTimer = function (){
         $scope.$broadcast('timer-start');
@@ -37,5 +40,15 @@ angular.module('topper.mockExamCtrl', [])
     $scope.$on('timer-stopped', function (event, data){
         console.log('Timer Stopped - data = ', data);
     });
+
+    $scope.goPrev = function() {
+        console.log('Previous');
+        --$scope.qNum;
+    }
+
+    $scope.goNext = function() {
+        console.log('Next');
+        ++$scope.qNum;
+    }
 
 });
