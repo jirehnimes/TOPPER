@@ -24,10 +24,17 @@ angular.module('topper', [
   'topper.loginCtrl',
   'topper.registerCtrl',
   'topper.homeCtrl',
+
+  'topper.studyModeMainCtrl',
+
+  'topper.mockExamMainCtrl',
+
   'topper.mockExamCtrl',
 
   // services
-  'starter.fbLoginSrvc'
+  'topper.httpSrvc',
+  'topper.modalSrvc',
+  'topper.fbLoginSrvc',
 
   // data
 

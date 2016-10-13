@@ -1,0 +1,12 @@
+/*Use initial id #indexLogin*/
+
+#indexLogin .item-input {
+    background-color: rgba(255, 255, 255, 0.7);
+    color: black;
+    font-weight: bold;
+}
+
+#indexLogin ::-webkit-input-placeholder {
+   color: black;
+   font-weight: bold;
+}

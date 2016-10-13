@@ -13,16 +13,14 @@ angular.module('topper.routes', ['ui.router'])
     .state('index', {
       url: '/',
       abstract: true,
-      templateUrl: 'view/index.html',
-      controller: 'IndexCtrl'
+      templateUrl: 'view/index.html'
     })
 
 
     .state('index.main', {
       url: 'main',
-      cache: false,
       views: {
-        'homeMain': {
+        'indexMain': {
           templateUrl: 'view/index/main.html'
         }
       }
@@ -34,7 +32,7 @@ angular.module('topper.routes', ['ui.router'])
       url: 'login',
       cache: false,
       views: {
-        'homeLogin': {
+        'indexLogin': {
           templateUrl: 'view/index/login.html',
           controller: 'LoginCtrl'
         }
@@ -47,7 +45,7 @@ angular.module('topper.routes', ['ui.router'])
       url: 'register',
       cache: false,
       views: {
-        'homeRegister': {
+        'indexRegister': {
           templateUrl: 'view/index/register.html',
           controller: 'RegisterCtrl'
         }
@@ -78,12 +76,51 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
-    .state('menu.mockexam', {
-      url: 'exam',
+    .state('menu.studymodeMain', {
+      url: 'exam/studymode/main',
       cache: false,
       views: {
         'menuContent': {
-          templateUrl: 'view/main/mockexam.html',
+          templateUrl: 'view/main/exam/main.html',
+          controller: 'StudyModeMainCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.studymodeContent', {
+      url: 'exam/studymode/exam',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'view/main/exam/content.html',
+          controller: 'MockExamCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.mockexamMain', {
+      url: 'exam/mockexam/main',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'view/main/exam/main.html',
+          controller: 'MockExamMainCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.mockexamContent', {
+      url: 'exam/mockexam/exam',
+      cache: false,
+      views: {
+        'menuContent': {
+          templateUrl: 'view/main/exam/content.html',
           controller: 'MockExamCtrl'
         }
       }
