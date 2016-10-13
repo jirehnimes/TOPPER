@@ -2,112 +2,66 @@
 	<ion-side-menu-content drag-content="false">
 		<ion-nav-bar class="bar-header view-header" align-title="center">
 			<ion-nav-buttons side="left">
-				<button class="button button-calm" menu-toggle="left" ng-click="showLeft()">
-					<i class="icon ion-navicon-round"></i>
+				<button class="button btnNav" menu-toggle="left" ng-click="showLeft()">
+					<i class="icon ion-navicon-round" ></i>
 				</button>
 			</ion-nav-buttons>
 
-			<ion-nav-title id="headerTitle">
-				<img src="img/topperlogo2.png" alt="Topper Logo 2" id="headerLogo" />
+			<ion-nav-title>
+				<h2 class="title">Ignite</h2>
 			</ion-nav-title>
-
-			<ion-nav-buttons side="right">
-				<button class="button button-calm" menu-toggle="right" ng-click="showRight()">
-					<i class="icon ion-paper-airplane"></i>
-				</button>
-			</ion-nav-buttons>
 		</ion-nav-bar>
 
 		<ion-nav-view name="menuContent"></ion-nav-view>
 	</ion-side-menu-content>
 
   	<ion-side-menu side="left" id="leftMenu">
-		<ion-header-bar class="bar-stable bar-calm">
+		<ion-header-bar class="bar-stable">
 			<div class="row center">
 				<div class="col">
-					<img src="img/ionic.png" alt="avatar" id="avatar" />
-					<h3>Jireh Nimes</h3>
+					<img ng-src="{{server + 'uploads/images/' + session.user_id + '/' + session.photo}}" onerror="this.onerror=null; this.src='img/ionic.png';" id="avatar" />
+					<h3>{{session.first_name + ' ' + session.last_name}}</h3>
 				</div>
 			</div>
 		</ion-header-bar>
-		<ion-content overflow-scroll="true" scroll="true">
+		<ion-content>
 			<ion-list>
-				<ion-item menu-close>
-					<div class="row" native-transitions ui-sref="menu.home">
+				<!-- <ion-item menu-close>
+					<div class="row" ui-sref="menu.home">
 						<div class="col-10 center itemList"><i class="icon ion-home"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Home</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row">
+					<div class="row" ui-sref="menu.profile">
 						<div class="col-10 center itemList"><i class="icon ion-person"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Profile</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row" native-transitions ui-sref="menu.studymodeMain">
-						<div class="col-10 center itemList"><i class="icon ion-clipboard"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Study Mode</div>
+					<div class="row" ui-sref="menu.filter">
+						<div class="col-10 center itemList"><i class="icon ion-toggle"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Filter</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row" native-transitions ui-sref="menu.mockexamMain">
-						<div class="col-10 center itemList"><i class="icon ion-clipboard"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Mock Exam</div>
+					<div class="row" ui-sref="menu.find">
+						<div class="col-10 center itemList"><i class="icon ion-search"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Find</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row">
-						<div class="col-10 center itemList"><i class="icon ion-clock"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;History</div>
+					<div class="row" ui-sref="menu.friends">
+						<div class="col-10 center itemList"><i class="icon ion-person-stalker"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Friends</div>
 					</div>
 				</ion-item>
-				<ion-item menu-close>
+				<ion-item menu-close ng-click="doLogout()">
 					<div class="row">
-						<div class="col-10 center itemList"><i class="icon ion-stats-bars"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Analytics</div>
-					</div>
-				</ion-item>
-				<ion-item menu-close native-transitions ui-sref="index.main">
-					<div class="row">
-						<div class="col-10 center itemList"><i class="icon ion-log-out"></i></div>
+						<div class="col-10 center itemList"><i class="icon ion-arrow-return-left"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Logout</div>
 					</div>
-				</ion-item>
-			</ion-list>
-		</ion-content>
-	</ion-side-menu>
-
-	<ion-side-menu side="right" id="rightMenu">
-		<ion-header-bar class="bar-stable bar-calm">
-			NOTIFICATIONS
-		</ion-header-bar>
-		<ion-content>
-			<ion-list>
-				<ion-item menu-close>
-					<div class="row no-padding">
-						<div class="col">
-							Month 00, 0000
-						</div>
-					</div>
-					<div class="row no-padding">
-						<div class="col">
-							Sample Notification.
-						</div>
-					</div>
-				</ion-item>
-				<ion-item menu-close>
-					<div class="row no-padding">
-						<div class="col">
-							Month 00, 0000
-						</div>
-					</div>
-					<div class="row no-padding">
-						<div class="col">
-							Sample Notification.
-						</div>
-					</div>
-				</ion-item>
+				</ion-item> -->
 			</ion-list>
 		</ion-content>
 	</ion-side-menu>

@@ -1,55 +1,46 @@
-/*Use initial id #index*/
+@media screen and (orientation:portrait) {
+
+}
+/*
+@media screen and (orientation:landscape) {
+
+}
+*/
 
 #index {
-	background:
-        linear-gradient(
-          rgba(0, 89, 179, 0.5),
-          rgba(0, 89, 179, 0.5)
+	background: linear-gradient(
+          rgba(52, 52, 52, 0.5),
+          rgba(52, 52, 52, 0.5)
         ),
-        url('../img/indexmainbg.jpg');
-    background-repeat: no-repeat;
-    background-position: center;
-    background-attachment: fixed;
-	/*background-color: white;*/
-	padding: 0 !important;
+	url('../img/bg.gif');
+	/*background-image: url('../img/bg.gif');*/
+	background-size: auto 100%;
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
 }
 
-#index .pane,
-#index .view {
-    background-color: transparent !important;
+#index slick {
+	background-color: red;
+	height: 100%;
+	padding: 0;
 }
 
-#index .video-container {
-    position: fixed;
-    top: 0;
-    right: 0;
-    bottom: 0;
-    left: 0;
-    overflow: hidden;
-    z-index: -100;
+#index slick .col {
+	background-color: blue;
 }
 
-#index .video-background {
-    position: absolute;
-    top: 0;
-    left: 0;
-    transform: translateX(-33%);
+#index slick .slick-list,
+#index slick .slick-list .slick-track,
+#index slick .slick-list .slick-track .slick-slide {
+	height: 100%;
 }
 
-
-@media screen and (orientation:portrait) {
-    #index .video-background {
-        width: auto;
-        height: 100%;
-        transform: translateX(-33%);
-    }
+#index slick .slick-dots {
+	bottom: 0;
 }
 
-@media screen and (orientation:landscape) {
-    #index .video-background {
-        width: 100%;
-        height: auto;
-        transform: translateX(0);
-    }
-}
-
+/*#index slick .slick-dots li button {
+	height: 100px;
+	width: 100px;
+}*/

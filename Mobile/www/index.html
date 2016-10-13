@@ -3,7 +3,8 @@
   <head>
     <meta charset="utf-8">
     <meta name="viewport" content="initial-scale=1, maximum-scale=1, user-scalable=no, width=device-width">
-    <title></title>
+
+    <title>TOPPER</title>
 
     <!-- CSS -->
 
@@ -11,16 +12,12 @@
     <link href="lib/robotodraft/robotodraft.css" rel="stylesheet">
 
     <link href="css/style.css" rel="stylesheet">
-
     <link href="css/index.css" rel="stylesheet">
-    <link href="css/indexmain.css" rel="stylesheet">
-    <link href="css/indexlogin.css" rel="stylesheet">
-    <link href="css/indexregister.css" rel="stylesheet">
-
+    <link href="css/register.css" rel="stylesheet">
     <link href="css/menu.css" rel="stylesheet">
+    <link href="css/home.css" rel="stylesheet">
 
-    <link href="css/mainhome.css" rel="stylesheet">
-    <link href="css/exammain.css" rel="stylesheet">
+    <!-- END OF CSS -->
 
     <!-- IF using Sass (run gulp sass first), then uncomment below and remove the CSS includes above
     <link href="css/ionic.app.css" rel="stylesheet">
@@ -32,23 +29,13 @@
     <!-- cordova script (this will be a 404 during development) -->
     <script src="cordova.js"></script>
 
-    <!-- plugin -->
+    <!-- PLUGINS -->
 
     <!-- angular -->
     <script src="lib/angular-animate/angular-animate.min.js"></script>
     <script src="lib/angular-resource/angular-resource.js"></script>
     <script src="lib/angular-sanitize/angular-sanitize.min.js"></script>
     <script src="lib/angular-ui-router/release/angular-ui-router.js"></script>
-
-    <!-- momentjs -->
-    <script src="lib/moment/min/moment.min.js"></script>
-    <script src="lib/moment/min/locales.min.js"></script>
-
-    <!-- humanize-duration -->
-    <script src="lib/humanize-duration/humanize-duration.js"></script>
-
-    <!-- angular-timer -->
-    <script src="lib/angular-timer/dist/angular-timer.min.js"></script>
 
     <!-- jQuery -->
     <script src="lib/jquery/dist/jquery.min.js"></script>
@@ -61,39 +48,39 @@
 
     <!-- ionic material -->
     <script src="lib/ionic-material/dist/ionic.material.min.js"></script>
-
-    <link href="lib/ionic/css/ionic.css" rel="stylesheet">
     <link href="lib/ionic-material/dist/ionic.material.min.css" rel="stylesheet">
 
-    <!-- end of plugin -->
+    <!-- slick -->
+    <link href="lib/slick-carousel/slick/slick.css" rel="stylesheet">
+    <link href="lib/slick-carousel/slick/slick-theme.css" rel="stylesheet">
+    <script src="lib/slick-carousel/slick/slick.min.js"></script>
+    <script src="lib/angular-slick/dist/slick.min.js"></script>
+
+    <!-- END OF PLUGINS -->
+
+    <!-- JAVASCRIPTS -->
 
     <!-- your app's js -->
     <script src="js/app.js"></script>
 
     <!-- route -->
-    <script src="js/routes.js"></script>
+    <script src="js/route.js"></script>
 
-    <!-- controllers -->
+    <!-- controller -->
     <script src="js/controller/index.js"></script>
+    <script src="js/controller/register.js"></script>
     <script src="js/controller/menu.js"></script>
+    <script src="js/controller/home.js"></script>
 
-    <script src="js/controller/index/login.js"></script>
-    <script src="js/controller/index/register.js"></script>
-
-    <script src="js/controller/main/home.js"></script>
-    <script src="js/controller/main/exam.js"></script>
-    <script src="js/controller/main/mockexam.js"></script>
-
-    <script src="js/controller/main/exam/studymode/main.js"></script>
-
-    <script src="js/controller/main/exam/mockexam/main.js"></script>
-
-    <!-- services -->
+    <!-- service -->
     <script src="js/service/http.js"></script>
-    <script src="js/service/modal.js"></script>
-    <script src="js/service/fblogin.js"></script>
+    <script src="js/service/localstorage.js"></script>
+
+    <!-- directive -->
 
     <!-- data -->
+
+    <!-- END OF JAVASCRIPTS -->
 
   </head>
   <body ng-app="topper">

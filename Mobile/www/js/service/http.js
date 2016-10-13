@@ -3,7 +3,11 @@ angular.module('topper.httpSrvc',[])
 .factory("Http", function($q, $http) {
 
 	// IP Address of the server
-	var _sServer = 'http://192.168.0.34:8080/';
+	// var _sServer = 'http://192.168.0.34:8080/';
+	// var _sServer = 'http://192.168.1.181:8080/';
+	// var _sServer = 'http://localhost:8080/';
+	var _sServer = 'http://172.20.10.7:8080/';
+	// var _sServer = 'http://ignite.com.local:8080/';
 
 	// Additional options for the request
 	var _oOptions = {
@@ -29,6 +33,7 @@ angular.module('topper.httpSrvc',[])
 			},
 			function error(mFail) {
 				console.log('GET Error');
+				alert('Can\'t connect to the server');
 		        _mDeferred.reject('API Error');
 			}
 		);
@@ -54,6 +59,7 @@ angular.module('topper.httpSrvc',[])
 			},
 			function error(mFail) {
 				console.log('POST Error');
+				alert('Can\'t connect to the server');
 				_mDeferred.reject('API Error');
 			}
 		);
@@ -62,13 +68,34 @@ angular.module('topper.httpSrvc',[])
 	    return _mDeferred.promise;
 	}
 
-	return {
+	return{
+		/**
+		 * Executes HTTP GET
+		 * @param  string sUrl
+		 * @return request result
+		 */
 		get: function(sUrl) {
+			sUrl = sUrl.replace(_sServer, '');
 			return get(sUrl);
 		},
 
+		/**
+		 * Executes HTTP POST
+		 * @param  string sUrl
+		 * @param  object oData [description]
+		 * @return request result
+		 */
 		post: function(sUrl, oData) {
+			sUrl = sUrl.replace(_sServer, '');
 			return post(sUrl, oData);
+		},
+
+		/**
+		 * Returns the server name
+		 * @return string
+		 */
+		session: function() {
+			return _sServer;
 		}
 	}
 })

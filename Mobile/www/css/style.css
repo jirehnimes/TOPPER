@@ -1,11 +1,30 @@
-/* Global CSS */
-a { text-decoration: none; }
+/*General CSS*/
 
-.no-padding { padding: 0 !important; }
+/*html, body, #index {
+	font-family: RobotoDraft !important;
+}*/
 
-.center { text-align: center; }
+@font-face {
+    font-family: 'Lobster-Regular';
+    src: url('../fonts/Lobster-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
 
-.mSearch button {
-	padding: 5px;
-	font-size: 10px;
-}/* Empty. Add your own CSS if you like */
+@font-face {
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+.center {
+	text-align: center !important;
+}
+
+.spinner svg {
+	width: 80px;
+	height: 80px;
+	stroke: #0080ff !important;
+	fill: #0080ff !important;
+}

@@ -4,7 +4,6 @@
 // 'starter' is the name of this angular module example (also set in a <body> attribute in index.html)
 // the 2nd parameter is an array of 'requires'
 angular.module('topper', [
-
   'ionic',
   'ngAnimate',
   'angular-md5',
@@ -13,28 +12,22 @@ angular.module('topper', [
   'ui.router',
   'ionic-material',
   'ngCordova',
-  'timer',
+  'slick',
 
   // route
   'topper.routes',
 
   // controllers
   'topper.indexCtrl',
-  'topper.menuCtrl',
-  'topper.loginCtrl',
   'topper.registerCtrl',
+  'topper.menuCtrl',
   'topper.homeCtrl',
-
-  'topper.studyModeMainCtrl',
-
-  'topper.mockExamMainCtrl',
-
-  'topper.mockExamCtrl',
 
   // services
   'topper.httpSrvc',
-  'topper.modalSrvc',
-  'topper.fbLoginSrvc',
+  'topper.localStorageSrvc',
+
+  // directives
 
   // data
 
@@ -58,8 +51,14 @@ angular.module('topper', [
   });
 })
 
-.config(function($ionicConfigProvider) {
+.filter('range', function() {
+  return function(input, total) {
+    total = parseInt(total);
 
-  $ionicConfigProvider.tabs.position('bottom');
+    for (var i=0; i<total; i++) {
+      input.push(i);
+    }
 
-})
+    return input;
+  };
+});
