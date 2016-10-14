@@ -21,13 +21,15 @@
 }
 
 #index slick {
-	background-color: red;
+	/*background-color: red;*/
 	height: 100%;
 	padding: 0;
 }
 
-#index slick .col {
-	background-color: blue;
+#index #main,
+#index #login,
+#index #register {
+	background-color: transparent;
 }
 
 #index slick .slick-list,
@@ -44,3 +46,31 @@
 	height: 100px;
 	width: 100px;
 }*/
+
+#index #main {
+	display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+#index #main .logo {
+	width: 200px;
+	height: auto;
+	border: 3px white solid;
+	padding: 10px;
+}
+
+#index #main .logo img {
+	width: 100%;
+	height: auto;
+}
+
+#index #main .spacer {
+	height: 7vh;
+}
+
+#index #main *,
+#index #login *,
+#index #register * {
+	color: white;
+}

@@ -1,14 +1,31 @@
 <ion-view id="index">
-    <ion-content overflow-scroll="true" padding="true" scroll="true">
-		
-		<slick dots="true" arrows="false" class="row">
-			<div class="col">
-				Test 1
+    <ion-content overflow-scroll="false" padding="true" scroll="false">
+
+		<slick class="row" dots="true" arrows="false" infinite="false">
+			<div class="col" id="main">
+				<center>
+					<div class="logo">
+						<img src="img/topperlogo1.png" />
+					</div>
+					<div class="spacer"></div>
+					<h1>TOPPER</h1>
+				</center>
 			</div>
-			<div class="col">
-				Test 2
+			<div class="col" id="login" overflow-scroll="true" scroll="false">
+				<h1>LOG IN</h1>
+				<hr>
+				<div class="list">
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Email</span>
+						<input type="email" placeholder="Email">
+					</label>
+					<label class="item item-input item-floating-label">
+						<span class="input-label">Password</span>
+						<input type="password" placeholder="Password">
+					</label>
+				</div>
 			</div>
-			<div class="col">
+			<div class="col" id="register">
 				Test 3
 			</div>
 		</slick>
