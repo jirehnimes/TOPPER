@@ -1,23 +1,24 @@
-@media screen and (orientation:portrait) {
-
-}
-/*
-@media screen and (orientation:landscape) {
-
-}
-*/
-
 #index {
 	background: linear-gradient(
           rgba(52, 52, 52, 0.5),
           rgba(52, 52, 52, 0.5)
         ),
 	url('../img/bg.gif');
-	/*background-image: url('../img/bg.gif');*/
-	background-size: auto 100%;
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;
+}
+
+@media screen and (orientation:portrait) {
+	#index {
+		background-size: auto 100%;
+	}
+}
+
+@media screen and (orientation:landscape) {
+	#index {
+		background-size: 100% auto;
+	}
 }
 
 #index slick {
@@ -72,5 +73,16 @@
 #index #main *,
 #index #login *,
 #index #register * {
+	color: white;
+}
+
+#index #login button.button-outline.button-light {
+	box-shadow: none;
+	border: 3px white solid;
+}
+
+#index .slick-dots li button:before {
+	font-size: 20px;
+	line-height: 20px;
 	color: white;
 }
