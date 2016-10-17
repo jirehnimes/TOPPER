@@ -1,19 +1,43 @@
 /*General CSS*/
 
-/*html, body, #index {
-	font-family: RobotoDraft !important;
-}*/
-
 @font-face {
-    font-family: 'Lobster-Regular';
-    src: url('../fonts/Lobster-Regular.ttf') format('truetype');
+    font-family: 'Roboto-Regular';
+    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
 
 @font-face {
-    font-family: 'Roboto-Regular';
-    src: url('../fonts/Roboto-Regular.ttf') format('truetype');
+    font-family: 'Roboto-Medium';
+    src: url('../fonts/Roboto-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'Roboto-Bold';
+    src: url('../fonts/Roboto-Bold.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans-Regular';
+    src: url('../fonts/OpenSans-Regular.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans-Medium';
+    src: url('../fonts/OpenSans-Medium.ttf') format('truetype');
+    font-weight: normal;
+    font-style: normal;
+}
+
+@font-face {
+    font-family: 'OpenSans-Bold';
+    src: url('../fonts/OpenSans-Bold.ttf') format('truetype');
     font-weight: normal;
     font-style: normal;
 }
@@ -22,9 +46,7 @@
 	text-align: center !important;
 }
 
-.spinner svg {
-	width: 80px;
-	height: 80px;
-	stroke: #0080ff !important;
-	fill: #0080ff !important;
+button.button-outline.button-light {
+    box-shadow: none;
+    border: 3px white solid !important;
 }

@@ -18,31 +18,23 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
-    // .state('register', {
-    //   url: '/register',
-    //   templateUrl: 'view/register.html',
-    //   controller: 'RegisterCtrl'
-    // })
+    .state('menu', {
+      url: '/',
+      templateUrl: 'view/menu.html',
+      controller: 'MenuCtrl'
+    })
 
 
 
-    // .state('menu', {
-    //   url: '/',
-    //   templateUrl: 'view/menu.html',
-    //   controller: 'MenuCtrl'
-    // })
-
-
-
-    // .state('menu.home', {
-    //   url: 'home',
-    //   views: {
-    //     'menuContent': {
-    //       templateUrl: 'view/home.html',
-    //       controller: 'HomeCtrl'
-    //     }
-    //   }
-    // })
+    .state('menu.home', {
+      url: 'home',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/home.html',
+          controller: 'HomeCtrl'
+        }
+      }
+    })
 
 
 

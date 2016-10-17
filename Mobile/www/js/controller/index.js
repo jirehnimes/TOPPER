@@ -4,7 +4,7 @@ angular.module('topper.indexCtrl', [])
 
 	// Before entering the index page
 	// $scope.$on('$ionicView.beforeEnter', function (e) {
-		
+
 	// 	// Checking the user login session
 	// 	LocalStorage.session().then(
 	//         function(success) {
@@ -34,22 +34,23 @@ angular.module('topper.indexCtrl', [])
 	 * Do the login action
 	 */
 	$scope.doLogin = function() {
-		console.log($scope.loginData);
-		var _oData = $scope.loginData;
-		Http.post('api/login', _oData).then(
-			function success(success) {
-				var _oData = success;
-				if ((typeof _oData) === 'object') {
-					console.log('Login success!');
-					LocalStorage.init();
-					LocalStorage.login(_oData);
+		$state.go('menu.home');
+		// console.log($scope.loginData);
+		// var _oData = $scope.loginData;
+		// Http.post('api/login', _oData).then(
+		// 	function success(success) {
+		// 		var _oData = success;
+		// 		if ((typeof _oData) === 'object') {
+		// 			console.log('Login success!');
+		// 			LocalStorage.init();
+		// 			LocalStorage.login(_oData);
 
-					return $state.go('menu.find');
-				}
-				console.log('Login Failed!');
-				alert('Login Failed!');
-			}
-		);
+		// 			return $state.go('menu.find');
+		// 		}
+		// 		console.log('Login Failed!');
+		// 		alert('Login Failed!');
+		// 	}
+		// );
 	}
 
 });

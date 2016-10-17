@@ -8,7 +8,7 @@
 			</ion-nav-buttons>
 
 			<ion-nav-title>
-				<h2 class="title">Ignite</h2>
+				<h2 class="title">TOPPER</h2>
 			</ion-nav-title>
 		</ion-nav-bar>
 
@@ -19,14 +19,14 @@
 		<ion-header-bar class="bar-stable">
 			<div class="row center">
 				<div class="col">
-					<img ng-src="{{server + 'uploads/images/' + session.user_id + '/' + session.photo}}" onerror="this.onerror=null; this.src='img/ionic.png';" id="avatar" />
+					<img ng-src="{{server + 'uploads/images/' + session.user_id + '/' + session.photo}}" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" />
 					<h3>{{session.first_name + ' ' + session.last_name}}</h3>
 				</div>
 			</div>
 		</ion-header-bar>
 		<ion-content>
 			<ion-list>
-				<!-- <ion-item menu-close>
+				<ion-item menu-close>
 					<div class="row" ui-sref="menu.home">
 						<div class="col-10 center itemList"><i class="icon ion-home"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Home</div>
@@ -40,20 +40,26 @@
 				</ion-item>
 				<ion-item menu-close>
 					<div class="row" ui-sref="menu.filter">
-						<div class="col-10 center itemList"><i class="icon ion-toggle"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Filter</div>
+						<div class="col-10 center itemList"><i class="icon ion-clipboard"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Study Mode</div>
+					</div>
+				</ion-item>
+				<ion-item menu-close>
+					<div class="row" ui-sref="menu.filter">
+						<div class="col-10 center itemList"><i class="icon ion-clipboard"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Mock Exam</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
 					<div class="row" ui-sref="menu.find">
-						<div class="col-10 center itemList"><i class="icon ion-search"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Find</div>
+						<div class="col-10 center itemList"><i class="icon ion-clock"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;History</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close>
-					<div class="row" ui-sref="menu.friends">
-						<div class="col-10 center itemList"><i class="icon ion-person-stalker"></i></div>
-						<div class="col-80 itemList">&nbsp;&nbsp;Friends</div>
+					<div class="row" ui-sref="menu.find">
+						<div class="col-10 center itemList"><i class="icon ion-stats-bars"></i></div>
+						<div class="col-80 itemList">&nbsp;&nbsp;Analytics</div>
 					</div>
 				</ion-item>
 				<ion-item menu-close ng-click="doLogout()">
@@ -61,7 +67,7 @@
 						<div class="col-10 center itemList"><i class="icon ion-arrow-return-left"></i></div>
 						<div class="col-80 itemList">&nbsp;&nbsp;Logout</div>
 					</div>
-				</ion-item> -->
+				</ion-item>
 			</ion-list>
 		</ion-content>
 	</ion-side-menu>
