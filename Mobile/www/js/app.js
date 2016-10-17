@@ -21,6 +21,10 @@ angular.module('topper', [
   'topper.indexCtrl',
   'topper.menuCtrl',
   'topper.homeCtrl',
+  'topper.examMockIndexCtrl',
+  'topper.examMockExamCtrl',
+  'topper.examStudyIndexCtrl',
+  'topper.examStudyExamCtrl',
 
   // services
   'topper.httpSrvc',

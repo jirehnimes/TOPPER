@@ -38,6 +38,54 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu.exam_mock', {
+      url: 'exam_mock',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/index.html',
+          controller: 'ExamMockIndexCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.exam_mock_exam', {
+      url: 'exam_mock_exam',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/exam.html',
+          controller: 'ExamMockExamCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.exam_study', {
+      url: 'exam_study',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/index.html',
+          controller: 'ExamStudyIndexCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.exam_study_exam', {
+      url: 'exam_study_exam',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/exam.html',
+          controller: 'ExamStudyExamCtrl'
+        }
+      }
+    })
+
+
+
   ;
 
   // if none of the above states are matched, use this as the fallback
