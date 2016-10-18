@@ -29,6 +29,7 @@ angular.module('topper', [
   // services
   'topper.httpSrvc',
   'topper.localStorageSrvc',
+  'topper.modalSrvc',
 
   // directives
 
