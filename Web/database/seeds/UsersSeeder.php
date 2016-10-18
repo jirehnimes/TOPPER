@@ -23,7 +23,8 @@ class UsersSeeder extends Seeder
             // 'password' => Hash::make('t0pp3r@dmin2016'),
             'password' => Hash::make('password'),
             'birthdate' => '2016-10-01',
-            'nickname' => 'Admin Topper'
+            'nickname' => 'Admin Topper',
+            'api_token' => Hash::make(str_random(60))
         ));
     }
 }
