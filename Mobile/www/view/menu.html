@@ -19,7 +19,8 @@
 		<ion-header-bar class="bar-stable">
 			<div class="row center">
 				<div class="col">
-					<img ng-src="{{server + 'uploads/images/' + session.user_id + '/' + session.photo}}" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" />
+					<!-- <img ng-src="{{server + 'uploads/images/' + session.user_id + '/' + session.photo}}" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" /> -->
+					<img ng-src="img/defaultuser.png" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" />
 					<h3>{{session.first_name + ' ' + session.last_name}}</h3>
 				</div>
 			</div>

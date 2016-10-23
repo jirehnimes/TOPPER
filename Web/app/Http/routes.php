@@ -15,6 +15,11 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
+// Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
+//     Route::get('question', 'QuestionController@index');
+// });
+
+Route::group(['prefix' => 'api'], function () {
     Route::get('question', 'QuestionController@index');
+    Route::get('module', 'ModuleController@index');
 });

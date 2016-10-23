@@ -1,0 +1,25 @@
+#exam_exam ion-content {
+	background-color: #0d6aa3;
+}
+
+#exam_exam .button-calm {
+	background-color: #d9d9d9;
+}
+
+#exam_exam .button-answers {
+	text-align: right;
+}
+
+#exam_exam ion-content .timer {
+	text-align: center;
+	line-height: 100%;
+	font-size: 2em;
+}
+
+#exam_exam ion-content .list.card {
+	background-color: #d9d9d9;
+}
+
+#exam_exam ion-content .list.card * {
+	color: #0d6aa3;
+}

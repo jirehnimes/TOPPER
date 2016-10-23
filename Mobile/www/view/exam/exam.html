@@ -1,5 +1,5 @@
-<ion-view id="exam.exam">
-    <ion-content overflow-scroll="false" padding="true" scroll="false">
+<ion-view id="exam_exam">
+    <ion-content overflow-scroll="true" padding="true" scroll="true">
 
         <div class="row no-padding">
             <div class="col col-25">
@@ -7,7 +7,8 @@
                     <i class="icon ion-chevron-left"></i>
                 </button>
             </div>
-            <div class="col col-50">
+            <div class="col col-50 timer">
+                <p>00:00:00</p>
                 <!-- <timer interval="1000">{{hhours}}:{{mminutes}}:{{sseconds}}</timer> -->
             </div>
             <div class="col col-25">
@@ -17,24 +18,41 @@
             </div>
         </div>
 
+        <!-- Question cards -->
         <div class="list card">
 
             <div class="item item-body">
-                <h3>Module {{aQuestions[qNum].module}}</h3>
-                <h2>Topic: {{aQuestions[qNum].id}}</h2>
+                <h3>Module: {{questions[0].name}}</h3>
+                <h2>Topic: {{questions[0].topics[0].name}}</h2>
                 <hr>
                 <h4>Question:</h4>
                 <p>
-                    Which is the weakest oxidzing agent?
+                    {{questions[0].topics[0].questions[0].text}}
                 </p>
-                <div class="button-bar">
-                    <a class="button button-calm">First</a>
-                    <a class="button button-calm">Second</a>
-                </div>
-                <div class="button-bar">
-                    <a class="button button-calm">Third</a>
-                    <a class="button button-calm">Fourth</a>
-                </div>
+                <button class="button button-outline button-full button-light button-answers">
+                    First
+                </button>
+                <button class="button button-outline button-full button-light button-answers">
+                    Second
+                </button>
+                <button class="button button-outline button-full button-light button-answers">
+                    Third
+                </button>
+                <button class="button button-outline button-full button-light button-answers">
+                    Fourth
+                </button>
+            </div>
+
+        </div>
+
+        <div class="list card">
+
+            <div class="item item-body">
+                <h3>Rationale</h3>
+                <hr>
+                <p>
+                    {{questions[0].topics[0].questions[0].rationale}}
+                </p>
             </div>
 
         </div>

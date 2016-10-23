@@ -39,14 +39,13 @@
 	height: 100%;
 }
 
+#index slick .slick-list {
+	padding-bottom: 30px;
+}
+
 #index slick .slick-dots {
 	bottom: 0;
 }
-
-/*#index slick .slick-dots li button {
-	height: 100px;
-	width: 100px;
-}*/
 
 #index #main {
 	display: flex;
@@ -74,6 +73,11 @@
 #index #login *,
 #index #register * {
 	color: white;
+}
+
+#index ion-scroll {
+	height: 100%;
+	width: 100%;
 }
 
 #index .slick-dots li button:before {

@@ -23,12 +23,9 @@ angular.module('topper.indexCtrl', [])
 		password: ''
 	}
 
-	/**
-	 * Go to register page
-	 */
-	$scope.goRegister = function() {
-		$state.go('register');
-	}
+	$scope.registerData = {
+
+	};
 
 	/**
 	 * Do the login action
@@ -51,6 +48,14 @@ angular.module('topper.indexCtrl', [])
 		// 		alert('Login Failed!');
 		// 	}
 		// );
+	}
+
+	/**
+	 * Go to register page
+	 */
+	$scope.doRegister = function() {
+		console.log($scope.registerData);
+		// $state.go('register');
 	}
 
 });

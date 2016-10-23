@@ -6,9 +6,7 @@ use Illuminate\Http\Request;
 
 use App\Http\Requests;
 
-use App\Question;
-
-class QuestionController extends Controller
+class TopicController extends Controller
 {
     /**
      * Display a listing of the resource.
@@ -17,7 +15,7 @@ class QuestionController extends Controller
      */
     public function index()
     {
-        return response()->json(Question::all());
+        //
     }
 
     /**

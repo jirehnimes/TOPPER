@@ -11,41 +11,75 @@
 					<h1>TOPPER</h1>
 				</center>
 			</div>
-			<div class="col" id="login" overflow-scroll="true">
-				<h1>LOG IN</h1>
-				<hr>
-				<div class="list">
-					<label class="item item-input item-floating-label">
-						<span class="input-label">Email</span>
-						<input type="email" placeholder="Email">
-					</label>
-					<label class="item item-input item-floating-label">
-						<span class="input-label">Password</span>
-						<input type="password" placeholder="Password">
-					</label>
-					<br>
+			<div class="col" id="login" overflow-scroll="true" scroll="true">
+				<ion-scroll direction="y">
+					<h1>LOG IN</h1>
+					<hr>
+					<div class="list">
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Email</span>
+							<input type="email" placeholder="Email">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Password</span>
+							<input type="password" placeholder="Password">
+						</label>
+					</div>
 					<button class="button button-outline button-full button-light" ng-click="doLogin()">
 						Log In
 					</button>
-					Or Log In With:
-					<button class="button button-outline button-full button-light">
-						Facebook
-					</button>
-				</div>
+					<p>Or Log In With:</p>
+					<div class="row">
+						<button class="button button-outline button-full button-light col-50">
+							Facebook
+						</button>
+						<button class="button button-outline button-full button-light col-50">
+							Google
+						</button>
+					</div>
+				</ion-scroll>
 			</div>
 			<div class="col" id="register">
-				<h1>REGISTER</h1>
-				<hr>
-				<div class="list">
-					<label class="item item-input item-floating-label">
-						<span class="input-label">Email</span>
-						<input type="email" placeholder="Email">
-					</label>
-					<label class="item item-input item-floating-label">
-						<span class="input-label">Password</span>
-						<input type="password" placeholder="Password">
-					</label>
-				</div>
+				<ion-scroll direction="y">
+					<h1>REGISTER</h1>
+					<hr>
+					<div class="list">
+						<label class="item item-input item-floating-label">
+							<span class="input-label">First Name</span>
+							<input type="text" placeholder="First Name" ng-model="registerData.firstName">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Last Name</span>
+							<input type="text" placeholder="Last Name" ng-model="registerData.lastName">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Nickname</span>
+							<input type="text" placeholder="Nickname" ng-model="registerData.nickname">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Email</span>
+							<input type="email" placeholder="Email" ng-model="registerData.email">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Password</span>
+							<input type="password" placeholder="Password" ng-model="registerData.password">
+						</label>
+						<label class="item item-input item-floating-label">
+							<span class="input-label">Birthdate</span>
+							<input type="date" placeholder="Birthdate" ng-model="registerData.birthdate">
+						</label>
+						<label class="item item-input item-select">
+							<span class="input-label">Gender</span>
+							<select ng-model="registerData.gender">
+			      				<option selected>Male</option>
+			      				<option>Female</option>
+			  				</select>
+						</label>
+					</div>
+					<button class="button button-outline button-full button-light" ng-click="doRegister()">
+						Submit
+					</button>
+				</ion-scroll>
 			</div>
 		</slick>
 
