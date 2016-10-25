@@ -55,6 +55,14 @@ angular.module('topper.indexCtrl', [])
 	 */
 	$scope.doRegister = function() {
 		console.log($scope.registerData);
+
+		Http.post('api/user/store', $scope.registerData).then(
+			function success(success) {
+				// var _oData = success;
+				console.log(success);
+			}
+		);
+
 		// $state.go('register');
 	}
 

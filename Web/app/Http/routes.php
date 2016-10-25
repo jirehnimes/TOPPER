@@ -20,6 +20,10 @@ Route::get('/', function () {
 // });
 
 Route::group(['prefix' => 'api'], function () {
+
+	// User
+    Route::post('user/store', 'UserController@store');
+
     Route::get('question', 'QuestionController@index');
     Route::get('module', 'ModuleController@index');
 });

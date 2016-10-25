@@ -2,9 +2,14 @@
 
 namespace App\Http\Controllers;
 
+use Hash;
+
 use Illuminate\Http\Request;
+use Illuminate\Http\Response;
 
 use App\Http\Requests;
+
+use App\User;
 
 class UserController extends Controller
 {
@@ -36,7 +41,22 @@ class UserController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $oInput = $request->all();
+        
+        $oUser = new User;
+        $oUser->first_name = $oInput['firstName'];
+        $oUser->last_name  = $oInput['lastName'];
+        $oUser->nickname   = $oInput['nickname'];
+        $oUser->email      = $oInput['email'];
+        $oUser->password   = Hash::make($oInput['password']);
+        $oUser->birthdate  = $oInput['birthdate'];
+        // $oUser->gender     = $oInput['gender'];
+
+        if($oUser->save()){
+            return response()->json(true);
+        }
+
+        return response()->json(false);
     }
 
     /**
