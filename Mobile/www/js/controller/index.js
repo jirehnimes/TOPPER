@@ -57,9 +57,14 @@ angular.module('topper.indexCtrl', [])
 		console.log($scope.registerData);
 
 		Http.post('api/user/store', $scope.registerData).then(
-			function success(success) {
-				// var _oData = success;
-				console.log(success);
+			function success(mReturn) {
+				if (mReturn === true) {
+					alert('Registration successful!');
+				} else {
+					alert('Registration failed!');
+				}
+
+				$scope.registerData = {};
 			}
 		);
 

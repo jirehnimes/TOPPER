@@ -50,11 +50,11 @@ class UserController extends Controller
         $oUser->email      = $oInput['email'];
         $oUser->password   = Hash::make($oInput['password']);
         $oUser->birthdate  = $oInput['birthdate'];
-        // $oUser->gender     = $oInput['gender'];
+        $oUser->gender     = $oInput['gender'];
 
-        if($oUser->save()){
-            return response()->json(true);
-        }
+        // if($oUser->save()){
+        //     return response()->json(true);
+        // }
 
         return response()->json(false);
     }
