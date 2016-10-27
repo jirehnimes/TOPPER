@@ -17,21 +17,18 @@ angular.module('topper.indexCtrl', [])
 	//     );
  //    });
 
-	// Initial login data
-	$scope.loginData = {
-		email: '',
-		password: ''
-	}
+	$scope.loginData = {};
 
-	$scope.registerData = {
-
-	};
+	$scope.registerData = {};
 
 	/**
 	 * Do the login action
 	 */
 	$scope.doLogin = function() {
-		$state.go('menu.home');
+		// $state.go('menu.home');
+
+		console.log($scope.loginData);
+
 		// console.log($scope.loginData);
 		// var _oData = $scope.loginData;
 		// Http.post('api/login', _oData).then(
@@ -48,6 +45,12 @@ angular.module('topper.indexCtrl', [])
 		// 		alert('Login Failed!');
 		// 	}
 		// );
+		
+		Http.post('api/user/login', $scope.loginData).then(
+			function success(mReturn) {
+				console.log(mReturn);
+			}
+		);
 	}
 
 	/**
@@ -58,17 +61,14 @@ angular.module('topper.indexCtrl', [])
 
 		Http.post('api/user/store', $scope.registerData).then(
 			function success(mReturn) {
-				if (mReturn === true) {
-					alert('Registration successful!');
-				} else {
-					alert('Registration failed!');
+				console.log(mReturn);
+				alert(mReturn.msg);
+				if (mReturn.status === true) {
+					$scope.registerData = {};
+					$state.go('index');
 				}
-
-				$scope.registerData = {};
 			}
 		);
-
-		// $state.go('register');
 	}
 
 });

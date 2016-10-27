@@ -7,6 +7,10 @@ use Hash;
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Illuminate\Support\Facades\DB;
+
+use Illuminate\Support\Facades\Auth;
+
 use App\Http\Requests;
 
 use App\User;
@@ -33,6 +37,31 @@ class UserController extends Controller
         //
     }
 
+    public function login(Request $request)
+    {
+        $oInput = $request->all();
+
+        // To check if email exist
+        // $oUser = User::where('email', $oInput['email'])
+        //         ->get();
+
+        $oUser = DB::table('users')
+                ->where('email', $oInput['email'])
+                ->get();
+
+        if (count($oUser) === 0) {
+            return response()->json(false);
+        }
+
+        // Password verification from encrypted password
+        if(Hash::check($oInput['password']), $oUser[0]->password){
+            return response()->json(true);
+            // return response()->json($oUser[0]);
+        }
+        
+        return response()->json(false);
+    }
+
     /**
      * Store a newly created resource in storage.
      *
@@ -43,20 +72,33 @@ class UserController extends Controller
     {
         $oInput = $request->all();
         
+        $oExist = User::where('email', $oInput['email'])
+                ->get();
+
+        if (count($oExist) !== 0) {
+            $aMsg['msg'] = 'Email is already registered!';
+            $aMsg['status'] = false;
+            return response()->json($aMsg);
+        }
+
         $oUser = new User;
         $oUser->first_name = $oInput['firstName'];
-        $oUser->last_name  = $oInput['lastName'];
-        $oUser->nickname   = $oInput['nickname'];
-        $oUser->email      = $oInput['email'];
-        $oUser->password   = Hash::make($oInput['password']);
-        $oUser->birthdate  = $oInput['birthdate'];
-        $oUser->gender     = $oInput['gender'];
+        $oUser->last_name = $oInput['lastName'];
+        $oUser->nickname = $oInput['nickname'];
+        $oUser->email = $oInput['email'];
+        $oUser->password = Hash::make($oInput['password']);
+        $oUser->birthdate = $oInput['birthdate'];
+        $oUser->gender = $oInput['gender'];
 
-        // if($oUser->save()){
-        //     return response()->json(true);
-        // }
+        if($oUser->save()){
+            $aMsg['msg'] = 'Successfully registered!';
+            $aMsg['status'] = true;
+            return response()->json($aMsg);
+        }
 
-        return response()->json(false);
+        $aMsg['msg'] = 'Failed to register!';
+        $aMsg['status'] = false;
+        return response()->json($aMsg);
     }
 
     /**

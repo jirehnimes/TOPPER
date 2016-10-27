@@ -24,8 +24,9 @@ class UsersSeeder extends Seeder
             'password' => Hash::make('password'),
             'birthdate' => '2016-10-01',
             'nickname' => 'Admin Topper',
+            'gender' => 'Male',
             // 'api_token' => Hash::make(str_random(60))
-            'api_token' => str_random(60)
+            // 'api_token' => str_random(60)
         ));
     }
 }
