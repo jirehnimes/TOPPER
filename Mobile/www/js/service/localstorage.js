@@ -1,6 +1,6 @@
 angular.module('topper.localStorageSrvc',[])
 
-.factory("LocalStorage", function($q) {
+.factory("LocalStorage", function($q, SessionModel) {
 
 	var _DB = undefined;
 
@@ -10,42 +10,34 @@ angular.module('topper.localStorageSrvc',[])
 			return false;
 		}
 
-		_DB = window.openDatabase('ignitedb', '1.0', 'Ignite DB', 2 * 1024 * 1024);
+		_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
 		console.log('Local storage loaded.');
 
-		_DB.transaction(function (tx) {
-			tx.executeSql('CREATE TABLE IF NOT EXISTS SESSION (user_id unique, is_login, first_name, last_name, email, password, birthdate, gender, photo)');
-		});
+		var _bRes = SessionModel.createTable(_DB);
+		console.log(_bRes);
 
 		return true;
 	}
 
 	function login(oUser) {
+		console.log('Local storage login');
+		console.log(oUser);
+
 		_DB.transaction(function(tx) {
 			tx.executeSql('SELECT * FROM SESSION WHERE user_id=' + oUser.id, [], function(_tx, results) {
 				var _resLen = results.rows.length;
 				var _sQuery = '';
 
+				console.log(_resLen);
+
 				if (_resLen === 0) {
-					_sQuery = 'INSERT INTO SESSION VALUES (' + oUser.id + ', ' +
-						'1, "' +
-						oUser.first_name + '", "' +
-						oUser.last_name + '", "' +
-						oUser.email + '", "' +
-						oUser.password + '", "' +
-						oUser.birthdate + '", "' +
-						oUser.gender + '", "' +
-						oUser.photo +
-					'")';
+					_sQuery = SessionModel.store(oUser);
 
 				} else {
-					_sQuery = 'UPDATE SESSION SET is_login=1, first_name="' + oUser.first_name + 
-						'", last_name="' + oUser.last_name + 
-						'", birthdate="' + oUser.birthdate + 
-						'", gender="' + oUser.gender + 
-						'", photo="' + oUser.photo + 
-						'" WHERE user_id=' + oUser.id;
+					_sQuery = SessionModel.update(oUser);
 				}
+
+				console.log(_sQuery);
 
 				_tx.executeSql(_sQuery);
 
@@ -61,7 +53,7 @@ angular.module('topper.localStorageSrvc',[])
 				var _oData = results.rows[0];
 
 				if (_oData) {
-					var _sQuery = 'UPDATE SESSION SET is_login=0 WHERE user_id=' + _oData.user_id;
+					var _sQuery = SessionModel.update({id: _oData.user_id}, 0);
 					_tx.executeSql(_sQuery);
 					console.log(_sQuery);
 					return true;

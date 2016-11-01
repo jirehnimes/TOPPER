@@ -6,12 +6,18 @@ angular.module('topper.menuCtrl', [])
     $scope.$on('$ionicView.beforeEnter', function (e) {
 
         // Get the server URL
-        // $scope.server = Http.session();
+        $scope.server = Http.session();
 
         // Get the login session data
-        // $scope.$on('Session', function(e, data) {
-        //     $scope.session = data;
-        // });
+        $scope.$on('Session', function(e, data) {
+            $scope.session = data;
+        });
+
+        Http.get().then(
+            function(success) {
+
+            }
+        );
     });
 
     // leftMenu HTML element object
@@ -19,7 +25,7 @@ angular.module('topper.menuCtrl', [])
 
     // When logout button is clicked
 	$scope.doLogout = function() {
-        // LocalStorage.logout();
+        LocalStorage.logout();
 		$state.go('index');
 	}
 

@@ -29,6 +29,8 @@
     "videogular": "^1.4.4",
     "videogular-buffering": "^1.4.4",
     "robotodraft": "^1.1.0",
-    "angular-slick": "^0.2.1"
+    "angular-slick": "^0.2.1",
+    "moment": "^2.15.2",
+    "angular-datetime": "^4.1.0"
   }
 }

@@ -21,6 +21,8 @@ angular.module('topper', [
   'topper.indexCtrl',
   'topper.menuCtrl',
   'topper.homeCtrl',
+  'topper.profileCtrl',
+  'topper.moduleCtrl',
   'topper.examMockIndexCtrl',
   'topper.examMockExamCtrl',
   'topper.examStudyIndexCtrl',
@@ -33,7 +35,12 @@ angular.module('topper', [
 
   // directives
 
-  // data
+  // model
+  'topper.sessionModel',
+  
+  // filters
+  'topper.sentenceCaseFilter',
+  'topper.rangeFilter',
 
 ])
 
@@ -54,15 +61,3 @@ angular.module('topper', [
     }
   });
 })
-
-.filter('range', function() {
-  return function(input, total) {
-    total = parseInt(total);
-
-    for (var i=0; i<total; i++) {
-      input.push(i);
-    }
-
-    return input;
-  };
-});

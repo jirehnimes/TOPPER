@@ -4,14 +4,26 @@ angular.module('topper.homeCtrl', [])
 
 	// Before entering the home page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
-		// console.log('Entered home');
+		console.log('Entered home');
 
-		// If login session is undefined go back to login page
-		// if ($scope.session === undefined) {
-		// 	$state.go('index');
-		// }
+		// Checking the user login session
+		LocalStorage.session().then(
+	        function(success) {
 
-		// $scope.server = Http.session();
+	        	console.log('To set session');
+	        	console.log(success);
+
+	        	// If fails, go back to login page
+	            if(success === false){
+	                return $state.go('index');
+	            }
+
+	            // Since this is the first page after login,
+	            // it will send to all page the login session
+	            // to be checked.
+	            $scope.$emit('Session', success);
+	        }
+	    );
 	});
 
 	// Home page is entered

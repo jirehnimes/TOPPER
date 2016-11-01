@@ -2,11 +2,10 @@
 
 namespace App\Http\Controllers;
 
-use Hash;
-
 use Illuminate\Http\Request;
 use Illuminate\Http\Response;
 
+use Hash;
 use Illuminate\Support\Facades\DB;
 
 use Illuminate\Support\Facades\Auth;
@@ -14,6 +13,7 @@ use Illuminate\Support\Facades\Auth;
 use App\Http\Requests;
 
 use App\User;
+use App\ModuleTransaction;
 
 class UserController extends Controller
 {
@@ -42,24 +42,28 @@ class UserController extends Controller
         $oInput = $request->all();
 
         // To check if email exist
-        // $oUser = User::where('email', $oInput['email'])
-        //         ->get();
-
         $oUser = DB::table('users')
                 ->where('email', $oInput['email'])
                 ->get();
 
         if (count($oUser) === 0) {
-            return response()->json(false);
+            $aMsg['msg'] = 'Email doesn\'t exist!';
+            $aMsg['status'] = false;
+            return response()->json($aMsg);
         }
 
         // Password verification from encrypted password
-        if(Hash::check($oInput['password']), $oUser[0]->password){
-            return response()->json(true);
-            // return response()->json($oUser[0]);
+        if(Hash::check($oInput['password'], $oUser[0]->password)) {
+            $aMsg['msg'] = 'Login successfully!';
+            $aMsg['status'] = true;
+            $aMsg['data'] = (array)$oUser[0];
+
+            return response()->json($aMsg);
+        } else {
+            $aMsg['msg'] = 'Password doesn\'t match!';
+            $aMsg['status'] = false;
+            return response()->json($aMsg);
         }
-        
-        return response()->json(false);
     }
 
     /**
@@ -82,6 +86,8 @@ class UserController extends Controller
         }
 
         $oUser = new User;
+        $oModuleTransaction = new ModuleTransaction;
+
         $oUser->first_name = $oInput['firstName'];
         $oUser->last_name = $oInput['lastName'];
         $oUser->nickname = $oInput['nickname'];
@@ -91,6 +97,10 @@ class UserController extends Controller
         $oUser->gender = $oInput['gender'];
 
         if($oUser->save()){
+            $oModuleTransaction->user_id = $oUser->id;
+            $oModuleTransaction->module_id = 1;
+            $oModuleTransaction->save();
+
             $aMsg['msg'] = 'Successfully registered!';
             $aMsg['status'] = true;
             return response()->json($aMsg);
@@ -132,7 +142,34 @@ class UserController extends Controller
      */
     public function update(Request $request, $id)
     {
-        //
+        $oInput = $request->all();      
+
+        if ($oInput['user_id'] === (int)$id) {
+
+            $oUser = User::find($id);
+
+            $oUser->first_name = $oInput['first_name'];
+            $oUser->last_name = $oInput['last_name'];
+            $oUser->nickname = $oInput['nickname'];
+            $oUser->gender = $oInput['gender'];
+            $oUser->birthdate = $oInput['birthdate'];
+
+            if ($oUser->save()) {
+                $aMsg['msg'] = 'Updated successfully!';
+                $aMsg['status'] = true;
+                $aMsg['data'] = User::find($id);
+                return response()->json($aMsg);
+            }
+
+            $aMsg['msg'] = 'Update failed!';
+            $aMsg['status'] = false;
+            return response()->json($aMsg);
+
+        }
+
+        $aMsg['msg'] = 'Invalid user ID!';
+        $aMsg['status'] = false;
+        return response()->json($aMsg);
     }
 
     /**

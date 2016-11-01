@@ -4,12 +4,13 @@ angular.module('topper.modalSrvc',[])
 
     var _oScope = null;
 
-    var _sTemplate = 'view/modal.html';
+    var _sTemplate = '';
 
-    function init(oScope) {
+    function init(oScope, sTemplate) {
         // Initializing $scope object
         if (_oScope === null) {
             _oScope = oScope;
+            _sTemplate = sTemplate;
         }
 
         var _oOptions = {
@@ -18,14 +19,18 @@ angular.module('topper.modalSrvc',[])
         }
 
         $ionicModal.fromTemplateUrl(
-            '/view/modal.html',
+            '/view/modal/' + _sTemplate + '.html',
             _oOptions
-        ).then(function(modal) {
-            _oScope.modal = modal;
-        });
+        ).then(
+            function(modal) {
+                console.log(modal);
+                _oScope.modal = modal;
+            }
+        );
 
         // Cleanup the modal when we're done with it!
         _oScope.$on('$destroy', function() {
+            console.log('Modal destroyed!');
             _oScope.modal.remove();
         });
 
@@ -37,6 +42,7 @@ angular.module('topper.modalSrvc',[])
         // Execute action on remove modal
         _oScope.$on('modal.removed', function() {
         // Execute action
+            console.log('Modal removed!');
         });
     }
 
@@ -49,16 +55,20 @@ angular.module('topper.modalSrvc',[])
     }
 
     return {
-        init: function(oScope) {
-            return init(oScope);
+        init: function(oScope, sTemplate) {
+            return init(oScope, sTemplate);
         },
 
-        open: function(scope) {
+        open: function() {
             return open();
         },
 
-        close: function(scope) {
+        close: function() {
             return close();
+        },
+
+        destroy: function() {
+            return _oScope.modal.remove();
         }
     }
 })

@@ -1,0 +1,71 @@
+<ion-modal-view id="edit_profile">
+	<ion-header-bar>
+		<h1 class="title">Edit Profile</h1>
+		<button class="button button-light button-outline" ng-click="closeEditProfile()">
+			<i class="icon ion-close"></i>
+		</button>
+	</ion-header-bar>
+
+	<ion-content>
+		<div class="row">
+			<div class="col center">
+
+				<img ng-src="img/defaultuser.png" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" />
+			
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col center">
+
+				<button class="button button-light button-outline button-small">
+					<i class="icon ion-image"></i> Change
+				</button>
+			
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+				<div class="list">
+					<label class="item item-input">
+						<span class="input-label">First name:</span>
+						<input type="text" ng-model="userUpdate.first_name">
+					</label>
+
+					<label class="item item-input">
+						<span class="input-label">Last name:</span>
+						<input type="text" ng-model="userUpdate.last_name">
+					</label>
+
+					<label class="item item-input">
+						<span class="input-label">Nickname:</span>
+						<input type="text" ng-model="userUpdate.nickname">
+					</label> 
+
+					<label class="item item-input">
+						<span class="input-label">Gender:</span>
+						<input type="text" ng-model="userUpdate.gender">
+					</label>
+
+					<label class="item item-input">
+						<span class="input-label">Birthdate:</span>
+						<input type="date" ng-model="userUpdate.birthdate">
+					</label>
+
+					
+				</div>	
+			</div>
+		</div>
+
+		<div class="row">
+			<div class="col">
+
+				<button class="button button-full button-light button-outline" ng-click="submitEditProfile()">
+					Update
+				</button>
+
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

@@ -1,0 +1,25 @@
+#edit_profile {
+	background-color: #0d6aa3;
+}
+
+#edit_profile ion-header-bar {
+	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+	height: 60px;
+	background-color: #c2c2c2;
+}
+
+#edit_profile ion-header-bar h1.title {
+}
+
+#edit_profile ion-content {
+	padding: 10px;
+	margin-top: 30px;
+}
+
+#edit_profile #avatar {
+	height: 120px;
+	width: 120px;
+	overflow: hidden;
+}

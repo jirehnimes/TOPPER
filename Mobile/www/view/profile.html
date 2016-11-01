@@ -1,0 +1,48 @@
+<ion-view id="profile">
+    <ion-content overflow-scroll="true" padding="true" scroll="true">
+			
+    <div class="row">
+		<div class="col">
+			<button class="button button-outline button-light button-small" ng-click="openEditProfile()">
+	            Edit
+	        </button>
+		</div>
+    </div>
+
+    <div class="row">
+		<div class="col">
+			<img ng-src="img/defaultuser.png" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar" />
+			<h3>{{session.nickname || foo}}</h3>
+		</div>
+    </div>
+
+    <hr>
+
+    <div class="row">
+		<div class="col">
+			<ul class="list">
+				<li class="item">
+			    	Access: {{session.access_type | sentenceCase}}
+			    </li>
+
+			    <li class="item">
+			    	Name: {{session.first_name + ' ' + session.last_name}}
+			    </li>
+
+			    <li class="item">
+			    	Email: {{session.email}}
+			    </li>
+
+			    <li class="item">
+			    	Gender: {{session.gender}}
+			    </li>
+
+			    <li class="item">
+			    	Birthday: {{session.birthdate | date}}
+			    </li>
+			</ul>
+		</div>
+    </div>
+
+    </ion-content>
+</ion-view>

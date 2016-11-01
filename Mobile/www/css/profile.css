@@ -1,0 +1,10 @@
+#profile {
+	background-color: #c2c2c2;
+}
+
+#profile #avatar {
+	height: 150px;
+	width: 150px;
+	border-radius: 100%;
+}
+

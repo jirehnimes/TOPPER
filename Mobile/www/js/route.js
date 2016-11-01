@@ -38,6 +38,30 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu.profile', {
+      url: 'profile',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/profile.html',
+          controller: 'ProfileCtrl'
+        }
+      }
+    })
+
+
+
+    .state('menu.module', {
+      url: 'module',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/module.html',
+          controller: 'ModuleCtrl'
+        }
+      }
+    })
+
+
+
     .state('menu.exam_mock', {
       url: 'exam_mock',
       views: {
