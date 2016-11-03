@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 
 use App\Module;
+use App\ModuleTransaction;
 
 class ModuleController extends Controller
 {
@@ -15,10 +16,14 @@ class ModuleController extends Controller
      *
      * @return \Illuminate\Http\Response
      */
-    public function index()
+    public function index($id)
     {
+        // return response()->json(Module::with(['topics', 'topics.questions'])->get());
+        $aData['status'] = true;
+        $aData['data']['modules'] = Module::all();
+        $aData['data']['transaction'] = ModuleTransaction::where('user_id', $id)->get();
 
-        return response()->json(Module::with(['topics', 'topics.questions'])->get());
+        return response()->json($aData);
     }
 
     /**

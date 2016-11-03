@@ -26,5 +26,7 @@ class DatabaseSeeder extends Seeder
         foreach ($aSeeder as $sValue) {
             $this->call($sValue);
         }
+
+        Model::reguard();
     }
 }

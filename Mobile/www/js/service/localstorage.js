@@ -34,7 +34,7 @@ angular.module('topper.localStorageSrvc',[])
 					_sQuery = SessionModel.store(oUser);
 
 				} else {
-					_sQuery = SessionModel.update(oUser);
+					_sQuery = SessionModel.update(oUser	);
 				}
 
 				console.log(_sQuery);

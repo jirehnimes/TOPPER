@@ -1,7 +1,21 @@
 <ion-view id="module">
     <ion-content overflow-scroll="true" padding="true" scroll="true">
-			
-    Module
+
+		<div class="row no-padding-margin" ng-repeat="module in modules">
+			<div class="col col-67 responsive-sm no-padding-margin">
+				<h2>{{module.name}}</h2>
+				<p>P {{module.price}}</p>
+			</div>
+
+			<div class="col col-33 responsive-sm no-padding-margin center">
+				<button class="button button-positive">
+					<i class="icon ion-android-download"></i>
+				</button>
+				<button class="button button-positive">
+					<i class="icon ion-android-cart"></i>
+				</button>
+			</div>
+		</div>
 
     </ion-content>
 </ion-view>
