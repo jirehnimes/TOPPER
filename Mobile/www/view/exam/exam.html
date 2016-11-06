@@ -22,24 +22,15 @@
         <div class="list card">
 
             <div class="item item-body">
-                <h3>Module: {{questions[0].name}}</h3>
-                <h2>Topic: {{questions[0].topics[0].name}}</h2>
+                <h3>Module: </h3>
+                <h2>Topic: </h2>
                 <hr>
                 <h4>Question:</h4>
                 <p>
-                    {{questions[0].topics[0].questions[0].text}}
+                    {{questions[number].text}}
                 </p>
-                <button class="button button-outline button-full button-light button-answers">
-                    First
-                </button>
-                <button class="button button-outline button-full button-light button-answers">
-                    Second
-                </button>
-                <button class="button button-outline button-full button-light button-answers">
-                    Third
-                </button>
-                <button class="button button-outline button-full button-light button-answers">
-                    Fourth
+                <button class="button button-outline button-full button-light button-answers" ng-repeat="answer in questions[number].selection">
+                    {{answer.choice}}
                 </button>
             </div>
 

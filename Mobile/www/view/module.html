@@ -1,19 +1,24 @@
 <ion-view id="module">
     <ion-content overflow-scroll="true" padding="true" scroll="true">
 
-		<div class="row no-padding-margin" ng-repeat="module in modules">
+		<div class="row no-padding-margin" ng-repeat="module in modules track by module.id">
 			<div class="col col-67 responsive-sm no-padding-margin">
 				<h2>{{module.name}}</h2>
 				<p>P {{module.price}}</p>
 			</div>
 
 			<div class="col col-33 responsive-sm no-padding-margin center">
-				<button class="button button-positive">
-					<i class="icon ion-android-download"></i>
-				</button>
-				<button class="button button-positive">
+				<button class="button button-positive" ng-hide="renderButton(module.is_paid, 1)">
 					<i class="icon ion-android-cart"></i>
 				</button>
+
+				<button class="button button-positive" ng-hide="renderButton(module.is_paid, 2)">
+					<i class="icon ion-android-download"></i>
+				</button>
+
+				<!-- <button class="button button-positive" ng-hide="buttonHide(module.id)">
+					<i class="icon ion-checkmark-circled"></i>
+				</button> -->
 			</div>
 		</div>
 

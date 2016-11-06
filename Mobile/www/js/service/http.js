@@ -3,7 +3,7 @@ angular.module('topper.httpSrvc',[])
 .factory("Http", function($q, $http) {
 
 	// IP Address of the server
-	// var _sServer = 'http://192.168.0.34:8080/';
+	// var _sServer = 'http://192.168.0.34:8081/';
 	var _sServer = 'http://localhost:8081/';
 
 	// Additional options for the request
@@ -65,6 +65,13 @@ angular.module('topper.httpSrvc',[])
 	    return _mDeferred.promise;
 	}
 
+	function urlReplace(sUrl) {
+		if (sUrl.replace) {
+			return sUrl.replace(_sServer, '');
+		}
+		return sUrl;
+	}
+
 	return{
 		/**
 		 * Executes HTTP GET
@@ -72,7 +79,9 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		get: function(sUrl) {
-			sUrl = sUrl.replace(_sServer, '');
+			console.log('THIS URL GET ERROR REPLACE');
+			console.log(sUrl);
+			sUrl = urlReplace(sUrl);
 			return get(sUrl);
 		},
 
@@ -83,7 +92,9 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		post: function(sUrl, oData) {
-			sUrl = sUrl.replace(_sServer, '');
+			console.log('THIS URL POST ERROR REPLACE');
+			console.log(sUrl);
+			sUrl = urlReplace(sUrl);
 			return post(sUrl, oData);
 		},
 

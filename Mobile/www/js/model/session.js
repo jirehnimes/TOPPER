@@ -2,11 +2,13 @@ angular.module('topper.sessionModel',[])
 
 .factory("SessionModel", function() {
 
-    function createTable(oDB) { 
+    var TABLE = 't_session';
+
+    function createTable(oDB) {
         if (oDB) {
             oDB.transaction(function (tx) {
-                var _sQuery = 'CREATE TABLE IF NOT EXISTS SESSION (' + 
-                    'user_id unique, ' + 
+                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_session (' + 
+                    'user_id UNIQUE, ' + 
                     'is_login, ' + 
                     'first_name, ' + 
                     'last_name, ' +
@@ -39,7 +41,7 @@ angular.module('topper.sessionModel',[])
     }
 
     function store(oData) {
-        return 'INSERT INTO SESSION VALUES (' + 
+        return 'INSERT INTO t_session VALUES (' + 
             oData.id + ', ' +
             '1, ' +
             '"' + oData.first_name + '", ' +
@@ -56,10 +58,7 @@ angular.module('topper.sessionModel',[])
     }
 
     function update(oData, iIsLogin = 1) {
-        console.log('Session update');
-        console.log(oData);
-        console.log(iIsLogin);
-        return 'UPDATE SESSION SET ' + 
+        return 'UPDATE t_session SET ' + 
             'is_login=' + iIsLogin + 
             (oData.first_name ? ', first_name="' + oData.first_name + '"' : '') +
             (oData.last_name ? ', last_name="' + oData.last_name + '"' : '') +

@@ -12,12 +12,6 @@ angular.module('topper.menuCtrl', [])
         $scope.$on('Session', function(e, data) {
             $scope.session = data;
         });
-
-        Http.get().then(
-            function(success) {
-
-            }
-        );
     });
 
     // leftMenu HTML element object

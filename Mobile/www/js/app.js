@@ -37,6 +37,7 @@ angular.module('topper', [
 
   // model
   'topper.sessionModel',
+  'topper.moduleModel',
   
   // filters
   'topper.sentenceCaseFilter',

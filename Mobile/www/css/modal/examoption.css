@@ -1,0 +1,19 @@
+#exam_option {
+	background-color: #0d6aa3;
+}
+
+#exam_option ion-header-bar {
+	display: flex;
+  	flex-direction: column;
+  	justify-content: center;
+	height: 60px;
+	background-color: #c2c2c2;
+}
+
+#exam_option ion-header-bar h1.title {
+}
+
+#exam_option ion-content {
+	padding: 10px;
+	margin-top: 30px;
+}

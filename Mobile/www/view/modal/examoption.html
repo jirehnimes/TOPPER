@@ -1,0 +1,29 @@
+<ion-modal-view id="exam_option">
+	<ion-header-bar>
+		<h1 class="title">Exam Option</h1>
+		<button class="button button-light button-outline" ng-click="closeExamOption()">
+			<i class="icon ion-close"></i>
+		</button>
+	</ion-header-bar>
+
+	<ion-content>
+
+		<hr>
+
+		<div class="row">
+			<div class="col center">
+
+				<h3>Module select:</h3>
+
+				<ion-list>
+
+					<ion-checkbox ng-model="filter.red">Red</ion-checkbox>
+					<ion-checkbox ng-model="filter.yellow">Yellow</ion-checkbox>
+					<ion-checkbox ng-model="filter.pink">Pink</ion-checkbox>
+
+				</ion-list>
+			
+			</div>
+		</div>
+	</ion-content>
+</ion-modal-view>

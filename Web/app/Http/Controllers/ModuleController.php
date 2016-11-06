@@ -17,11 +17,25 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($id)
-    {
-        // return response()->json(Module::with(['topics', 'topics.questions'])->get());
+    {   
+        $aModules = Module::all();
+        $aPaid = ModuleTransaction::where('user_id', $id)->get(['module_transactions.module_id']);
+        $aPaidId = array();
+
+        foreach ($aPaid as $iKey => $aValue) {
+            array_push($aPaidId, $aValue['module_id']);
+        }
+
+        foreach ($aModules as $iKey => $aValue) {
+            $aModules[$iKey]['is_paid'] = false;
+
+            if (in_array($aValue['id'], $aPaidId) === true) {
+                $aModules[$iKey]['is_paid'] = true;
+            }
+        }
+
         $aData['status'] = true;
-        $aData['data']['modules'] = Module::all();
-        $aData['data']['transaction'] = ModuleTransaction::where('user_id', $id)->get();
+        $aData['data'] = $aModules;
 
         return response()->json($aData);
     }

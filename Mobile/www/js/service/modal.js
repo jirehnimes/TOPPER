@@ -8,10 +8,8 @@ angular.module('topper.modalSrvc',[])
 
     function init(oScope, sTemplate) {
         // Initializing $scope object
-        if (_oScope === null) {
-            _oScope = oScope;
-            _sTemplate = sTemplate;
-        }
+        _oScope = oScope;
+        _sTemplate = sTemplate;
 
         var _oOptions = {
             scope: _oScope,
@@ -19,7 +17,7 @@ angular.module('topper.modalSrvc',[])
         }
 
         $ionicModal.fromTemplateUrl(
-            '/view/modal/' + _sTemplate + '.html',
+            'view/modal/' + _sTemplate + '.html',
             _oOptions
         ).then(
             function(modal) {

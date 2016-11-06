@@ -13,4 +13,9 @@ class Question extends Model
     {
         return $this->belongsTo('App\Topic');
     }
+
+    public function selection()
+    {
+    	return $this->hasMany('App\Selection');
+    }
 }
