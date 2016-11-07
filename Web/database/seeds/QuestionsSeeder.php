@@ -47,30 +47,30 @@ class QuestionsSeeder extends Seeder
 
         // Organic Chemistry
 
-        $aQuestion[5]['topic_id'] = 2;
-        $aQuestion[5]['reference_id'] = 1;
-        $aQuestion[5]['text'] = 'It is the number of protons inside an atom\'s nucleus.';
-        $aQuestion[5]['rationale'] = 'Mass number is the sum of an atom\'s protons and neutrons. Atomic weight is the average weighted mass of an element\'s atoms. Molecular weight is the sum of the atomic weights of all the atoms in the molecule.';
+        // $aQuestion[5]['topic_id'] = 2;
+        // $aQuestion[5]['reference_id'] = 1;
+        // $aQuestion[5]['text'] = 'It is the number of protons inside an atom\'s nucleus.';
+        // $aQuestion[5]['rationale'] = 'Mass number is the sum of an atom\'s protons and neutrons. Atomic weight is the average weighted mass of an element\'s atoms. Molecular weight is the sum of the atomic weights of all the atoms in the molecule.';
 
-        $aQuestion[6]['topic_id'] = 2;
-        $aQuestion[6]['reference_id'] = 1;
-        $aQuestion[6]['text'] = 'According to this principle, an electron always occupy the available orbital with the lowest energy.';
-        $aQuestion[6]['rationale'] = 'Pauli exclusion states that no more than 2 electrons occupy the same orbital and that they must be of opposite spin. Hund\'s rule states that an electron will occupy an empty orbital before pairing up with another electron. Quantum mechanics states that electrons can be thought of as accupying a set of concentric shells that surround the nucleus.';
+        // $aQuestion[6]['topic_id'] = 2;
+        // $aQuestion[6]['reference_id'] = 1;
+        // $aQuestion[6]['text'] = 'According to this principle, an electron always occupy the available orbital with the lowest energy.';
+        // $aQuestion[6]['rationale'] = 'Pauli exclusion states that no more than 2 electrons occupy the same orbital and that they must be of opposite spin. Hund\'s rule states that an electron will occupy an empty orbital before pairing up with another electron. Quantum mechanics states that electrons can be thought of as accupying a set of concentric shells that surround the nucleus.';
 
-        $aQuestion[7]['topic_id'] = 2;
-        $aQuestion[7]['reference_id'] = 1;
-        $aQuestion[7]['text'] = 'Which specie is the most basic?';
-        $aQuestion[7]['rationale'] = 'Larger size stabilizes negative charge which makes the base weaker.';
+        // $aQuestion[7]['topic_id'] = 2;
+        // $aQuestion[7]['reference_id'] = 1;
+        // $aQuestion[7]['text'] = 'Which specie is the most basic?';
+        // $aQuestion[7]['rationale'] = 'Larger size stabilizes negative charge which makes the base weaker.';
 
-        $aQuestion[8]['topic_id'] = 2;
-        $aQuestion[8]['reference_id'] = 1;
-        $aQuestion[8]['text'] = 'Choose the strongest acid:';
-        $aQuestion[8]['rationale'] = 'HF forms the most stable conjugate base, hence strongest acid.';
+        // $aQuestion[8]['topic_id'] = 2;
+        // $aQuestion[8]['reference_id'] = 1;
+        // $aQuestion[8]['text'] = 'Choose the strongest acid:';
+        // $aQuestion[8]['rationale'] = 'HF forms the most stable conjugate base, hence strongest acid.';
 
-        $aQuestion[9]['topic_id'] = 2;
-        $aQuestion[9]['reference_id'] = 1;
-        $aQuestion[9]['text'] = 'What equation gives the relationship between pH and pKa?';
-        $aQuestion[9]['rationale'] = '';
+        // $aQuestion[9]['topic_id'] = 2;
+        // $aQuestion[9]['reference_id'] = 1;
+        // $aQuestion[9]['text'] = 'What equation gives the relationship between pH and pKa?';
+        // $aQuestion[9]['rationale'] = '';
 
         foreach ($aQuestion as $aValue) {
             Question::create($aValue);

@@ -1,8 +1,10 @@
 angular.module('topper.examMockExamCtrl', [])
 
-.controller('ExamMockExamCtrl', function($scope, $state, Http) {
+.controller('ExamMockExamCtrl', function($scope, $state, Http, Popover) {
 
 	$scope.number = 0;
+
+	$scope.answers = {};
 
 	Http.get('api/question').then(
 		function success(success) {
@@ -18,9 +20,20 @@ angular.module('topper.examMockExamCtrl', [])
 	}
 
 	$scope.goNext = function() {
-		if ($scope.number !== $scope.questions.length - 1) {
+		if ($scope.number === $scope.questions.length - 1) {
+			Popover.confirmEndOfExam().then(
+				function(success) {
+					console.log(success);
+				}
+			);
+		} else {
 			++$scope.number;
 		}
+	}
+
+	$scope.selectAnswer = function(num, data) {
+		$scope.answers[num] = data;
+		console.log($scope.answers);
 	}
 
 });
