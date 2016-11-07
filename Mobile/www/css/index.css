@@ -85,3 +85,12 @@
 	line-height: 20px;
 	color: white;
 }
+
+#index .item.item-select select {
+	background: transparent;
+}
+
+#index select option {
+	/*background: transparent !important;*/
+	color: black;
+}
