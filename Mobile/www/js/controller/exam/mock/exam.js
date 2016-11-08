@@ -2,6 +2,8 @@ angular.module('topper.examMockExamCtrl', [])
 
 .controller('ExamMockExamCtrl', function($scope, $state, Http, Popover) {
 
+	console.log('Entered exam');
+
 	$scope.number = 0;
 
 	$scope.answers = {};
@@ -23,7 +25,20 @@ angular.module('topper.examMockExamCtrl', [])
 		if ($scope.number === $scope.questions.length - 1) {
 			Popover.confirmEndOfExam().then(
 				function(success) {
-					console.log(success);
+					if (success === true) {
+						console.log($scope.answers);
+						// if ($scope.answers.length !== $scope.questions.length) {
+						// 	alert('There are unanswered questions!');
+						// } else {
+						// 	$state.go('menu.exam_result');
+						// }
+						var _oData = {
+							questions: $scope.questions,
+							answers: $scope.answers
+						};
+
+						$state.go('menu.exam_result', _oData);
+					}
 				}
 			);
 		} else {

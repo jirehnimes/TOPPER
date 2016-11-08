@@ -110,6 +110,22 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu.exam_result', {
+      url: 'exam_result',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/result.html',
+          controller: 'ResultExamCtrl'
+        }
+      },
+      params: {
+        questions: null,
+        answers: null
+      }
+    })
+
+
+
   ;
 
   // if none of the above states are matched, use this as the fallback

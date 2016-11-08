@@ -23,6 +23,7 @@ angular.module('topper', [
   'topper.homeCtrl',
   'topper.profileCtrl',
   'topper.moduleCtrl',
+  'topper.resultExamCtrl',
   'topper.examMockIndexCtrl',
   'topper.examMockExamCtrl',
   'topper.examStudyIndexCtrl',
