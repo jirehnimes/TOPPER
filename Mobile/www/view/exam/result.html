@@ -5,12 +5,27 @@
             BACK
         </button>
 
-        <div class="row">
-            <div class="col col-50">
-                RESULT
-            </div>
-            <div class="col col-50">
-                RESULT
+        <div class="card" ng-repeat="result in results">
+            <div class="item item-text-wrap">
+                {{result.question_text}}
+                <hr>
+                <div class="row">
+                    <div class="col col-50 center">
+                        {{result.answer}}
+                    </div>
+
+                    <div class="col col-50 center" ng-if="result.is_answer === 0" style="background-color: red; color: white;">
+                        {{result.question_answer}}
+                    </div>
+
+                    <div class="col col-50 center" ng-if="result.is_answer === 1">
+                        <i class="icon ion-checkmark-circled"></i>
+                    </div>
+                </div>
+                <hr>
+                Rationale:
+                <br>
+                {{result.question_rationale}}
             </div>
         </div>
 
