@@ -110,17 +110,25 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu.exam_score', {
+      url: 'exam_score',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/exam/score.html',
+          controller: 'ExamScoreCtrl'
+        }
+      }
+    })
+
+
+
     .state('menu.exam_result', {
       url: 'exam_result',
       views: {
         'menuContent': {
           templateUrl: 'view/exam/result.html',
-          controller: 'ResultExamCtrl'
+          controller: 'ExamResultCtrl'
         }
-      },
-      params: {
-        questions: null,
-        answers: null
       }
     })
 

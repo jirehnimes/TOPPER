@@ -1,0 +1,25 @@
+<ion-view id="exam_score">
+    <ion-content overflow-scroll="true" padding="true" scroll="true">
+
+    <div class="row">
+        <div class="col">
+            Score: {{score}} <br>
+            Total: {{total}} <br>
+            Percentage: {{percentage}}%
+        </div>
+    </div>
+
+    <button class="button button-outline button-light button-full" ng-click="goResults()">
+    	SEE RESULTS
+    </button>
+
+    <button class="button button-outline button-light button-full" ui-sref="menu.exam_mock">
+        START NEW EXAM
+    </button>
+
+    <button class="button button-outline button-light button-full" ui-sref="menu.home">
+        GO HOME
+    </button>
+
+    </ion-content>
+</ion-view>
