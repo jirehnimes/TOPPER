@@ -1,21 +1,15 @@
-#module {
-    background:
+#exam_index {
+	background:
         linear-gradient(
           rgba(0, 89, 179, 0.5),
           rgba(0, 89, 179, 0.5)
         ),
-        url('../img/bg1.jpg');
+        url('/img/bg1.jpg');
     background-repeat: no-repeat;
     background-position: center;
     background-attachment: fixed;
 }
 
-#module .button {
-	box-shadow: none;
-}
-
-#module div.module_list {
-	background-color: rgba(255, 255, 255, 0.5);
-	margin-bottom: 10px;
-	padding: 5px;
+#exam_index #title {
+	color: white;
 }

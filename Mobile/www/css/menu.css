@@ -11,9 +11,13 @@
 }
 
 #menu ion-side-menu-content .title {
-    font-family: 'Roboto-Medium';
-    color: white;
-    font-size: 1.3em;
+    background-color: white;
+    padding: 5px;
+}
+
+#menu ion-side-menu-content .title img {
+    height: 100%;
+    width: auto;
 }
 
 #menu ion-nav-bar button.activated {

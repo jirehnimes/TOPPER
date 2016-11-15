@@ -1,3 +1,11 @@
-#exam_result * {
+#exam_result {
+	background-color: #0d6aa3;
+}
+
+#exam_result ion-content > button {
+	padding: 5px;
+}
+
+#exam_result div.card * {
 	color: black;
 }

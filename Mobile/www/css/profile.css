@@ -1,10 +1,43 @@
 #profile {
-	background-color: #c2c2c2;
+	background-color: #0d6aa3;
 }
 
-#profile #avatar {
+#profile .avatar_container {
+	background:
+        linear-gradient(
+          rgba(0, 0, 0, 0.3),
+          rgba(0, 0, 0, 0.3)
+        ),
+        url('/img/bg2.jpg');
+	background-repeat: no-repeat;
+	background-position: center;
+	background-attachment: fixed;
+	border-bottom: 5px white solid;
+}
+
+#profile .avatar_container h3 {
+	color: white;
+	font-weight: bolder;
+}
+
+#profile .avatar_container #avatar {
 	height: 150px;
 	width: 150px;
 	border-radius: 100%;
 }
 
+#profile .avatar_container > div > div:nth-child(1) {
+	text-align: right;
+	margin-bottom: 10px;
+}
+
+#profile .avatar_container > div > div:nth-child(1) > button {
+	height: 50px;
+	width: 50px;
+	padding: 0;
+}
+
+#profile .profile_container * {
+	color: white;
+	font-size: 15px;
+}

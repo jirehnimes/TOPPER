@@ -32,10 +32,9 @@ angular.module('topper.examMockExamCtrl', [])
 				Popover.confirmEndOfExam().then(
 					function(success) {
 						if (success === true) {
-							// console.log($scope.answers);
-							// if ($scope.answers.length !== $scope.questions.length) {
-							// 	alert('There are unanswered questions!');
-							// } else {
+							if (Object.keys($scope.answers).length !== $scope.questions.length) {
+								alert('There are unanswered questions!');
+							} else {
 								var _oData = {
 									questions: $scope.questions,
 									answers: $scope.answers
@@ -44,7 +43,7 @@ angular.module('topper.examMockExamCtrl', [])
 								$rootScope.$emit('ExamAnswers', _oData);
 
 								$state.go('menu.exam_score');
-							// }
+							}
 						}
 					}
 				);
