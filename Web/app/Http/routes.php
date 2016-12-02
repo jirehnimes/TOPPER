@@ -11,13 +11,25 @@
 |
 */
 
-Route::get('/', function () {
-    return view('welcome');
-});
+// Route::get('/', function () {
+//     return view('welcome');
+// });
 
 // Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
 //     Route::get('question', 'QuestionController@index');
 // });
+
+/*
+ * Web
+ */
+
+Route::auth();
+
+Route::get('/', 'HomeController@index');
+
+/*
+ * API
+ */
 
 Route::group(['prefix' => 'api'], function () {
 
@@ -32,3 +44,4 @@ Route::group(['prefix' => 'api'], function () {
     // Module
     Route::get('module/{id}', 'ModuleController@index');
 });
+

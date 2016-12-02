@@ -156,6 +156,11 @@ return [
         App\Providers\EventServiceProvider::class,
         App\Providers\RouteServiceProvider::class,
 
+        /*
+         * External Packages...
+         */
+        JeroenNoten\LaravelAdminLte\ServiceProvider::class,
+
     ],
 
     /*
