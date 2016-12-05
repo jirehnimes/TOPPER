@@ -25,7 +25,10 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 			'HomeController@index');
+
+Route::get('module', 		'Admin\ModuleController@index');
+Route::post('module/store', 'Admin\ModuleController@store');
 
 /*
  * API
@@ -34,14 +37,15 @@ Route::get('/', 'HomeController@index');
 Route::group(['prefix' => 'api'], function () {
 
 	// User
-    Route::post('user/login', 'UserController@login');
-    Route::post('user/store', 'UserController@store');
+    Route::post('user/login', 		'UserController@login');
+    Route::post('user/store', 		'UserController@store');
     Route::post('user/update/{id}', 'UserController@update');
 
     // Question
-    Route::get('question', 'QuestionController@index');
+    Route::get('question', 			'QuestionController@index');
 
     // Module
-    Route::get('module/{id}', 'ModuleController@index');
+    Route::get('module/{id}', 		'ModuleController@index');
+
 });
 
