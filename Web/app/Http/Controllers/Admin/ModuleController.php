@@ -10,6 +10,8 @@ use App\Http\Controllers\Controller;
 use App\Module;
 use App\ModuleTransaction;
 
+use Storage;
+
 class ModuleController extends Controller
 {
     /**
@@ -40,10 +42,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        $file = $request->file('fModule');
-        echo "<pre>";
-        var_dump($file);
-        die();
+        
     }
 
     /**
@@ -89,5 +88,15 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         //
+    }
+
+    public function fileUpload(Request $request)
+    {
+        $oFile = $request->file('fModule');
+
+        Storage::put(
+            'public/' . $oFile->getClientOriginalName(),
+            file_get_contents($oFile->getRealPath())
+        );
     }
 }
