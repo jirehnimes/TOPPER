@@ -2,18 +2,28 @@
 
 namespace App\Http\Controllers\Admin;
 
-use Illuminate\Http\Request;
-
+// Http
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-use App\Module;
-use App\ModuleTransaction;
+// Contracts
+use App\Repositories\Contracts\ModuleRepositoryInterface;
+
+// Business Logics
+use App\BLs\ModuleBL;
 
 use Storage;
+use Excel;
 
 class ModuleController extends Controller
 {
+    protected $_oModel;
+
+    public function __construct(ModuleRepositoryInterface $oModule)
+    {
+        $this->_oModel = $oModule;
+    }
+
     /**
      * Display a listing of the resource.
      *
@@ -94,9 +104,26 @@ class ModuleController extends Controller
     {
         $oFile = $request->file('fModule');
 
-        Storage::put(
-            'public/' . $oFile->getClientOriginalName(),
+        $sFileName = $oFile->getClientOriginalName();
+
+        $bResult = Storage::put(
+            'files/' . $sFileName,
             file_get_contents($oFile->getRealPath())
         );
+
+        Excel::load('public/files/' . $sFileName, function($reader) {
+            $aData = $reader->get()->first()->toArray();
+
+            $foo = array_filter($aData, function($arr) {
+                return $arr['module'] === 'Module 1';
+            });
+
+            echo "<pre>";
+            var_dump($foo);
+        });
+
+        // if ($bResult === true) {
+        //     return view('admin/module');
+        // }
     }
 }
