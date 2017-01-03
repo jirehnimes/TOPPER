@@ -17,7 +17,7 @@ class ModuleController extends Controller
      * @return \Illuminate\Http\Response
      */
     public function index($id)
-    {   
+    {
         $aModules = Module::all();
         $aPaid = ModuleTransaction::where('user_id', $id)->get(['module_transactions.module_id']);
         $aPaidId = array();
@@ -58,7 +58,9 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-        //
+        $aInput = $request->all();
+
+        var_dump($aInput);
     }
 
     /**
