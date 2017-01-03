@@ -19,20 +19,21 @@
 //     Route::get('question', 'QuestionController@index');
 // });
 
-/*
- * Web
- */
+////////////////
+// Web Routes //
+////////////////
 
 Route::auth();
 
 Route::get('/', 			'HomeController@index');
 
-Route::get('module', 		'Admin\ModuleController@index');
-Route::post('module/store', 'Admin\ModuleController@store');
+Route::get('module', 		 'Admin\ModuleController@index');
+Route::post('module/store',  'Admin\ModuleController@store');
+Route::post('module/upload', 'Admin\ModuleController@fileUpload');
 
-/*
- * API
- */
+////////////////
+// API Routes //
+////////////////
 
 Route::group(['prefix' => 'api'], function () {
 

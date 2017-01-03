@@ -6,8 +6,12 @@
     <h1>MODULE</h1>
 @stop
 
+@section('css')
+
+@stop
+
 @section('content')
-	<form method="post" action="module/store" enctype="multipart/form-data">
+	<form method="post" action="module/upload" enctype="multipart/form-data">
 		<input type="file" name="fModule">
 		<button type="submit">Submit</button>
 	</form>
