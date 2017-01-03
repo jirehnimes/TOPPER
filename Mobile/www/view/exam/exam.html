@@ -36,16 +36,24 @@
 
         </div>
 
-        <div class="list card">
+        <!-- Rationale -->
 
-            <div class="item item-body">
-                <h3>Rationale</h3>
-                <hr>
-                <p>
-                    {{questions[0].topics[0].questions[0].rationale}}
-                </p>
+        <div ng-if="checkType('study')">
+            <button class="button button-outline button-full button-light">
+                Show Rationale
+            </button>
+
+            <div class="list card" >
+
+                <div class="item item-body">
+                    <h3>Rationale</h3>
+                    <hr>
+                    <p>
+                        {{questions[0].topics[0].questions[0].rationale}}
+                    </p>
+                </div>
+
             </div>
-
         </div>
 
     </ion-content>

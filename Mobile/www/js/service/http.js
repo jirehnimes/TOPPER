@@ -4,8 +4,8 @@ angular.module('topper.httpSrvc',[])
 
 	// IP Address of the server
 	// var _sServer = 'http://192.168.0.34:8081/';
-	var _sServer = 'http://192.168.1.181:8081/';
-	// var _sServer = 'http://localhost:8081/';
+	// var _sServer = 'http://192.168.1.181:8081/';
+	var _sServer = 'http://localhost:8080/';
 
 	// Additional options for the request
 	var _oOptions = {
@@ -80,7 +80,6 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		get: function(sUrl) {
-			console.log('THIS URL GET ERROR REPLACE');
 			console.log(sUrl);
 			sUrl = urlReplace(sUrl);
 			return get(sUrl);
@@ -93,7 +92,6 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		post: function(sUrl, oData) {
-			console.log('THIS URL POST ERROR REPLACE');
 			console.log(sUrl);
 			sUrl = urlReplace(sUrl);
 			return post(sUrl, oData);

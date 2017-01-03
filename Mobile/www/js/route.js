@@ -62,48 +62,24 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
-    .state('menu.exam_mock', {
-      url: 'exam_mock',
+    .state('menu.exam_index', {
+      url: 'exam_index/:type',
       views: {
         'menuContent': {
           templateUrl: 'view/exam/index.html',
-          controller: 'ExamMockIndexCtrl'
+          controller: 'ExamIndexCtrl'
         }
       }
     })
 
 
 
-    .state('menu.exam_mock_exam', {
-      url: 'exam_mock_exam',
+    .state('menu.exam', {
+      url: 'exam/:type',
       views: {
         'menuContent': {
           templateUrl: 'view/exam/exam.html',
-          controller: 'ExamMockExamCtrl'
-        }
-      }
-    })
-
-
-
-    .state('menu.exam_study', {
-      url: 'exam_study',
-      views: {
-        'menuContent': {
-          templateUrl: 'view/exam/index.html',
-          controller: 'ExamStudyIndexCtrl'
-        }
-      }
-    })
-
-
-
-    .state('menu.exam_study_exam', {
-      url: 'exam_study_exam',
-      views: {
-        'menuContent': {
-          templateUrl: 'view/exam/exam.html',
-          controller: 'ExamStudyExamCtrl'
+          controller: 'ExamCtrl'
         }
       }
     })

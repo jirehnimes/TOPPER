@@ -1,10 +1,10 @@
 <ion-view id="home">
     <ion-content overflow-scroll="true" padding="true" scroll="true">
-        <button class="button button-outline button-full button-light" ui-sref="menu.exam_study">
+        <button class="button button-outline button-full button-light" ng-click="goExam('study')">
             STUDY MODE
         </button>
 
-        <button class="button button-outline button-full button-light" ui-sref="menu.exam_mock">
+        <button class="button button-outline button-full button-light" ng-click="goExam('mock')">
             MOCK EXAM
         </button>
 
