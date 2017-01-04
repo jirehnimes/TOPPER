@@ -16,6 +16,10 @@ angular.module('topper.menuCtrl', [])
 
     // leftMenu HTML element object
     // var _oLeftMenu = $('#leftMenu');
+    
+    $scope.goExam = function(sType) {
+        $state.go('menu.exam_index', {type: sType});
+    }
 
     // When logout button is clicked
 	$scope.doLogout = function() {
