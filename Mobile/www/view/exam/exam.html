@@ -29,7 +29,7 @@
                 <p>
                     {{questions[number].text}}
                 </p>
-                <button class="button button-full button-answers repeater" ng-repeat="answer in questions[number].selection" ng-click="selectAnswer(answer)" ng-class="checkAnswer(answer)">
+                <button class="button button-full button-answers repeater" ng-repeat="answer in questions[number].selection" ng-click="selectAnswer(answer)" ng-class="checkAnswer(answer)" ng-style="fontColor(answer)">
                     {{answer.choice}}
                 </button>
             </div>

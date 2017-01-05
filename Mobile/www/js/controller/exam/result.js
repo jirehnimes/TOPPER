@@ -1,23 +1,12 @@
 angular.module('topper.examResultCtrl', [])
 
-.controller('ExamResultCtrl', function($scope, $rootScope, $state, $stateParams, $ionicHistory, Http) {
+.controller('ExamResultCtrl', function($scope, $rootScope, $state, $stateParams, $ionicHistory, Http, Cache) {
 
 	$scope.$on('$ionicView.beforeEnter', function (event) {
-		// $rootScope.$on('ExamResults', function(e, data) {
-  //       	console.log('Entered result');
-  //       	console.log(data);
-  //           $scope.results = data;
-  //       });
 	}); 
 
 	$scope.$on('$ionicView.enter', function (e) {
-		$rootScope.$on('ExamResults', function(e, data) {
-        	console.log('Entered result');
-        	console.log(data);
-            $scope.results = data;
-            console.log('Scope Result');
-            console.log($scope.results);
-        });
+        $scope.results = Cache.get('ExamResults');
 
         $scope.goBack = function() {
 			$ionicHistory.goBack();

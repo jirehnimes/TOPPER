@@ -1,6 +1,6 @@
 angular.module('topper.examCtrl', [])
 
-.controller('ExamCtrl', function($scope, $state, $stateParams, Http, Popover) {
+.controller('ExamCtrl', function($scope, $rootScope, $state, $stateParams, Http, Popover, Cache) {
 
 	$scope._sType = undefined;
 
@@ -23,7 +23,6 @@ angular.module('topper.examCtrl', [])
 	});
 
 	$scope.$on('$ionicView.enter', function (e) {
-		console.log($scope._sType);
 	});
 
 	$scope.$on('$ionicView.beforeLeave', function (e) {
@@ -39,8 +38,17 @@ angular.module('topper.examCtrl', [])
 
 	$scope.checkAnswer = function(data) {
 		return {
-			'button-light' : $scope.answers[$scope.number] !== data,
-			'button-assertive' : $scope.answers[$scope.number] === data
+			'button-outline'  : $scope.answers[$scope.number] !== data,
+			'button-light'    : $scope.answers[$scope.number] !== data,
+			'button-positive' : $scope.answers[$scope.number] === data
+		};
+	}
+
+	$scope.fontColor = function(data) {
+		if ($scope.answers[$scope.number] === data) {
+			return {
+				'color': 'white'
+			};
 		}
 	}
 
@@ -53,25 +61,28 @@ angular.module('topper.examCtrl', [])
 	$scope.goNext = function() {
 		if ($scope.number === $scope.questions.length - 1) {
 			Popover.confirmEndOfExam().then(
-				function(success) {
-					if (success === true) {
-						if (Object.keys($scope.answers).length !== $scope.questions.length) {
-							alert('There are unanswered questions!');
-						} else {
-							var _oData = {
-								questions: $scope.questions,
-								answers: $scope.answers
-							};
-
-							$rootScope.$emit('ExamAnswers', _oData);
-
-							$state.go('menu.exam_score');
-						}
-					}
-				}
+				confirmSuccess
 			);
 		} else {
 			++$scope.number;
+		}
+	}
+
+	function confirmSuccess(success) {
+		if (success === true) {
+			if (Object.keys($scope.answers).length !== $scope.questions.length) {
+				alert('There are unanswered questions!');
+			} else {
+				var _oData = {
+					examType  : $scope._sType,
+					questions : $scope.questions,
+					answers   : $scope.answers
+				};
+
+				Cache.set('ExamAnswers', _oData);
+
+				$state.go('menu.exam_score');
+			}
 		}
 	}
 });
