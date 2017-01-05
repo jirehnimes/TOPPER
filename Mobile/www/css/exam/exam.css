@@ -23,3 +23,7 @@
 #exam_exam ion-content .list.card * {
 	color: #0d6aa3;
 }
+
+#exam_exam .repeater.ng-animate {
+    transition: 0s none;
+}
