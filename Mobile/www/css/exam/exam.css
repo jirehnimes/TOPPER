@@ -2,14 +2,6 @@
 	background-color: #0d6aa3;
 }
 
-#exam_exam .button-calm {
-	background-color: #d9d9d9;
-}
-
-#exam_exam .button-answers {
-	text-align: right;
-}
-
 #exam_exam ion-content .timer {
 	text-align: center;
 	line-height: 100%;
@@ -22,6 +14,18 @@
 
 #exam_exam ion-content .list.card * {
 	color: #0d6aa3;
+}
+
+#exam_exam .button-calm {
+	background-color: #d9d9d9;
+}
+
+#exam_exam ion-content .list.card .button-positive * {
+	color: white !important;
+}
+
+#exam_exam .button-answers {
+	text-align: right;
 }
 
 #exam_exam .repeater.ng-animate {

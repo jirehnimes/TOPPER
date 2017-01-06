@@ -33,6 +33,7 @@ angular.module('topper', [
   'topper.localStorageSrvc',
   'topper.modalSrvc',
   'topper.popoverSrvc',
+  'topper.cacheSrvc',
 
   // directives
 
