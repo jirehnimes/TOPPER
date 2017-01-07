@@ -24,10 +24,14 @@ angular.module('topper.examScoreCtrl', [])
 	}
 
 	$scope.$on('$ionicView.beforeEnter', function (event) {
+		$scope.examData = Cache.get('ExamAnswers');
+
+		if ($scope.examData === undefined) {
+			$state.go('menu.home');
+		}
 	}); 
 
 	$scope.$on('$ionicView.enter', function (e) {
-		$scope.examData  = Cache.get('ExamAnswers');
 		$scope.questions = $scope.examData.questions;
         $scope.answers   = $scope.examData.answers;
         $scope.results   = $scope.getResult();
@@ -39,7 +43,6 @@ angular.module('topper.examScoreCtrl', [])
 
 	$scope.goResults = function() {
 		Cache.set('ExamResults', $scope.results);
-
 		$state.go('menu.exam_result');
 	}
 
@@ -59,6 +62,10 @@ angular.module('topper.examScoreCtrl', [])
 			});
 			return _result;
 		}
+	}
+
+	$scope.goExam = function() {
+		$state.go('menu.exam_index', {type: $scope.examData.examType});
 	}
 });
 

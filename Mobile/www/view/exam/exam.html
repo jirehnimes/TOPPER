@@ -37,19 +37,18 @@
         </div>
 
         <!-- Rationale -->
-
-        <div ng-if="checkType('study')">
-            <button class="button button-outline button-full button-light">
-                Show Rationale
+        <div ng-show="checkType('study')">
+            <button class="button button-outline button-full button-light" ng-click="showRationale()">
+                {{rationale}} Rationale
             </button>
 
-            <div class="list card" >
+            <div class="list card" ng-show="rationale === 'Hide'">
 
                 <div class="item item-body">
                     <h3>Rationale</h3>
                     <hr>
                     <p>
-                        {{questions[0].topics[0].questions[0].rationale}}
+                        {{questions[number].rationale}}
                     </p>
                 </div>
 
