@@ -10,6 +10,8 @@ angular.module('topper.examCtrl', [])
 
 		$scope.answers = {};
 
+		$scope.rationale = 'Show';
+
 		Http.get('api/question').then(
 			function success(success) {
 				console.log(success);
@@ -56,6 +58,8 @@ angular.module('topper.examCtrl', [])
 		if ($scope.number !== 0) {
 			--$scope.number;
 		}
+
+		$scope.rationale = 'Show';
 	}
 
 	$scope.goNext = function() {
@@ -65,6 +69,16 @@ angular.module('topper.examCtrl', [])
 			);
 		} else {
 			++$scope.number;
+		}
+
+		$scope.rationale = 'Show';
+	}
+
+	$scope.showRationale = function() {
+		if ($scope.rationale === 'Show') {
+			$scope.rationale = 'Hide';
+		} else {
+			$scope.rationale = 'Show';
 		}
 	}
 

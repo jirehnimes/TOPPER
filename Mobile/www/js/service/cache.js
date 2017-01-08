@@ -13,7 +13,11 @@ angular.module('topper.cacheSrvc',[])
     }
 
     function get(key) {
-        return _mData[key];
+        if (_mData[key]) {
+            return _mData[key];
+        }
+
+        return undefined;
     }
 
     function clear() {
