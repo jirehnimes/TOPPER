@@ -14,6 +14,7 @@ angular.module('topper.examCtrl', [])
 
 		Http.get('api/question').then(
 			function success(success) {
+				console.log(success);
 				$scope.questions = Util.shuffle(success);
 			}
 		);

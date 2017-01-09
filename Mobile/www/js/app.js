@@ -19,6 +19,7 @@ angular.module('topper', [
 
   // controllers
   'topper.indexCtrl',
+  'topper.loaderCtrl',
   'topper.menuCtrl',
   'topper.homeCtrl',
   'topper.profileCtrl',

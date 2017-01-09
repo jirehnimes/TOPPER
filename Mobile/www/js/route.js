@@ -18,6 +18,14 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('loader', {
+      url: '/',
+      templateUrl: 'view/loader.html',
+      controller: 'LoaderCtrl'
+    })
+
+
+
     .state('menu', {
       url: '/',
       templateUrl: 'view/menu.html',
