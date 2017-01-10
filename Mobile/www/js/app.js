@@ -19,6 +19,7 @@ angular.module('topper', [
 
   // controllers
   'topper.indexCtrl',
+  'topper.loaderCtrl',
   'topper.menuCtrl',
   'topper.homeCtrl',
   'topper.profileCtrl',
@@ -34,6 +35,7 @@ angular.module('topper', [
   'topper.modalSrvc',
   'topper.popoverSrvc',
   'topper.cacheSrvc',
+  'topper.utilSrvc',
 
   // directives
 

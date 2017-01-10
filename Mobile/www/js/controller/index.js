@@ -1,6 +1,19 @@
 angular.module('topper.indexCtrl', [])
 
-.controller('IndexCtrl', function($rootScope, $scope, $state, Http, LocalStorage) {
+.controller('IndexCtrl', function(
+	$scope, 
+	$state, 
+	$ionicPlatform,
+	$cordovaNetwork, 
+	Http, 
+	LocalStorage
+) {
+
+	$ionicPlatform.ready(function() {
+		if (window.cordova) {
+			alert($cordovaNetwork.isOnline());
+		}
+	});
 
 	// Before entering the index page
 	$scope.$on('$ionicView.beforeEnter', function (e) {

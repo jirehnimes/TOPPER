@@ -1,6 +1,6 @@
 angular.module('topper.examCtrl', [])
 
-.controller('ExamCtrl', function($scope, $rootScope, $state, $stateParams, Http, Popover, Cache) {
+.controller('ExamCtrl', function($scope, $rootScope, $state, $stateParams, Http, Popover, Cache, Util) {
 
 	$scope._sType = undefined;
 
@@ -15,7 +15,7 @@ angular.module('topper.examCtrl', [])
 		Http.get('api/question').then(
 			function success(success) {
 				console.log(success);
-				$scope.questions = success;
+				$scope.questions = Util.shuffle(success);
 			}
 		);
 		
