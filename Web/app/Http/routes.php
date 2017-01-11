@@ -25,11 +25,22 @@
 
 Route::auth();
 
-Route::get('/', 			'HomeController@index');
+Route::get('/', 'HomeController@index');
 
 Route::get('module', 		 'Admin\ModuleController@index');
 Route::post('module/store',  'Admin\ModuleController@store');
 Route::post('module/upload', 'Admin\ModuleController@fileUpload');
+
+/////////////////
+/// Datatables //
+/////////////////
+
+Route::group(['prefix' => 'datatables'], function () {
+
+    // Module
+    Route::get('module', 'Datatables\ModuleController@index');
+
+});
 
 ////////////////
 // API Routes //
@@ -43,10 +54,10 @@ Route::group(['prefix' => 'api'], function () {
     Route::post('user/update/{id}', 'UserController@update');
 
     // Question
-    Route::get('question', 			'QuestionController@index');
+    Route::get('question', 'QuestionController@index');
 
     // Module
-    Route::get('module/{id}', 		'ModuleController@index');
+    Route::get('module/{id}', 'ModuleController@index');
 
 });
 

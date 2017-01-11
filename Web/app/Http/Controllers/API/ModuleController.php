@@ -1,30 +1,14 @@
 <?php
 
-namespace App\Http\Controllers\Admin;
+namespace App\Http\Controllers\API;
 
-// Http
+use Illuminate\Http\Request;
+
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
-// Contracts
-use App\Repositories\Contracts\ModuleRepositoryInterface;
-
-// Business Logics
-use App\BLs\ModuleBL;
-
-use Storage;
-use Excel;
-use Datatables;
-
 class ModuleController extends Controller
 {
-    protected $_oModel;
-
-    public function __construct(ModuleRepositoryInterface $oModule)
-    {
-        $this->_oModel = $oModule;
-    }
-
     /**
      * Display a listing of the resource.
      *
@@ -32,7 +16,7 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        return view('admin/module');
+        //
     }
 
     /**
@@ -53,7 +37,7 @@ class ModuleController extends Controller
      */
     public function store(Request $request)
     {
-
+        //
     }
 
     /**
@@ -99,32 +83,5 @@ class ModuleController extends Controller
     public function destroy($id)
     {
         //
-    }
-
-    public function fileUpload(Request $request)
-    {
-        $oFile = $request->file('fModule');
-
-        $sFileName = $oFile->getClientOriginalName();
-
-        $bResult = Storage::put(
-            'files/' . $sFileName,
-            file_get_contents($oFile->getRealPath())
-        );
-
-        Excel::load('public/files/' . $sFileName, function($reader) {
-            $aData = $reader->get()->first()->toArray();
-
-            $foo = array_filter($aData, function($arr) {
-                return $arr['module'] === 'Module 1';
-            });
-
-            echo "<pre>";
-            var_dump($foo);
-        });
-
-        // if ($bResult === true) {
-        //     return view('admin/module');
-        // }
     }
 }

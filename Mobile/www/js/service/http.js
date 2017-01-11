@@ -5,7 +5,7 @@ angular.module('topper.httpSrvc',[])
 	// IP Address of the server
 	// var _sServer = 'http://192.168.0.34:8080/';
 	// var _sServer = 'http://192.168.1.181:8081/';
-	var _sServer = 'http://localhost:8080/';
+	var _sServer = 'http://localhost:8081/';
 
 	// Additional options for the request
 	var _oOptions = {
