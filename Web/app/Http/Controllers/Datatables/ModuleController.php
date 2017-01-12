@@ -8,6 +8,7 @@ use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
 use App\Module;
+use Datatables;
 
 class ModuleController extends Controller
 {
@@ -18,7 +19,8 @@ class ModuleController extends Controller
      */
     public function index()
     {
-        return Module::all();
+        $aRes = Module::all();
+        return Datatables::of($aRes)->make(true);
     }
 
     /**

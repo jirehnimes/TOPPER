@@ -38,7 +38,7 @@ Route::post('module/upload', 'Admin\ModuleController@fileUpload');
 Route::group(['prefix' => 'datatables'], function () {
 
     // Module
-    Route::get('module', 'Datatables\ModuleController@index');
+    Route::get('module', ['as'=>'datatables.module', 'uses'=>'Datatables\ModuleController@index']);
 
 });
 

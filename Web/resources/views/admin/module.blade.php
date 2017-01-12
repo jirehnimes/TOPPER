@@ -9,34 +9,45 @@
 @section('css')
 @stop
 
-@section('js')
-@stop
-
 @section('content')
 	<!-- <form method="post" action="module/upload" enctype="multipart/form-data">
 		<input type="file" name="fModule">
 		<button type="submit">Submit</button>
 	</form> -->
 
-	<table class="datatable">
-    <thead>
-      <tr>
-        <th>ID</th>
-        <th>Name</th>
-        <th>Email</th>
-        <th>Created at</th>
-      </tr>
-    </thead>
-    <tbody>
-    </tbody>
-  </table>
+    <div class="row">
+        <div class="col-sm-12">
+            <table class="datatable">
+                <thead>
+                    <tr>
+                        <th>Name</th>
+                        <th>Price</th>
+                        <th>Created At</th>
+                        <th>Updated At</th>
+                    </tr>
+                </thead>
+                <tbody>
+                </tbody>
+            </table>
+        </div>
+    </div>
+@stop
 
+@section('js')
   <script>
-    $(document).ready(function(){
-      $('.datatable').DataTable({
+    $(function() {
+        $('.datatable').DataTable({
             processing: true,
             serverSide: true,
-            ajax: '{{ route("datatables/module") }}'
+            ajax: {
+                url: '{{ route("datatables.module") }}'
+            },
+            columns: [
+                {data: 'name', name: 'name'},
+                {data: 'price', name: 'price'},
+                {data: 'created_at', name: 'created_at'},
+                {data: 'updated_at', name: 'updated_at'}
+            ]
         });
     });
   </script>
