@@ -1,14 +1,14 @@
-angular.module('topper.topicModel',[])
+angular.module('topper.schoolModel',[])
 
-.factory('TopicModel', function() {
+.factory('SchoolModel', function() {
 
     function createTable(oDB) {
         if (oDB) {
             oDB.transaction(function (tx) {
-                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_topics (' +
+                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_schools (' +
                     'id UNIQUE PRIMARY KEY, ' +
-                    'module_id, ' +
                     'name, ' +
+                    'address, ' +
                     'created_at, ' +
                     'updated_at' +
                 ')';

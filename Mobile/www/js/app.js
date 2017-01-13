@@ -42,7 +42,12 @@ angular.module('topper', [
   // model
   'topper.sessionModel',
   'topper.moduleModel',
-  
+  'topper.topicModel',
+  'topper.questionModel',
+  'topper.selectionModel',
+  'topper.examModel',
+  'topper.schoolModel',
+
   // filters
   'topper.sentenceCaseFilter',
   'topper.rangeFilter',

@@ -1,6 +1,16 @@
 angular.module('topper.localStorageSrvc',[])
 
-.factory("LocalStorage", function($q, SessionModel, ModuleModel) {
+.factory('LocalStorage', function(
+	$q,
+	$timeout,
+	SessionModel,
+	ModuleModel,
+	TopicModel,
+	QuestionModel,
+	SelectionModel,
+	ExamModel,
+	SchoolModel
+) {
 
 	var _DB = undefined;
 
@@ -11,15 +21,20 @@ angular.module('topper.localStorageSrvc',[])
 		}
 
 		_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
-		console.log('Local storage loaded.');
-
-		console.log('Initiating tables...');
-		var _bRes = SessionModel.createTable(_DB);
-		console.log(_bRes);
-		var _bRes = ModuleModel.createTable(_DB);
-		console.log(_bRes);
 
 		return true;
+	}
+
+	function loader(oScope) {
+		SessionModel.createTable(_DB);
+		ModuleModel.createTable(_DB);
+		TopicModel.createTable(_DB);
+		QuestionModel.createTable(_DB);
+		SelectionModel.createTable(_DB);
+		ExamModel.createTable(_DB);
+		SchoolModel.createTable(_DB);
+
+		$timeout(function() { oScope.status = 'Done loading...'; }, 2000);
 	}
 
 	function session() {
@@ -27,7 +42,6 @@ angular.module('topper.localStorageSrvc',[])
 		// Initialize promise
 	    var _mDeferred = $q.defer();
 
-		init();
 		_DB.transaction(function(tx) {
 			tx.executeSql('SELECT * FROM t_session WHERE is_login=1', [], function(_tx, results) {
 				if (results.rows.length === 1) {
@@ -42,30 +56,25 @@ angular.module('topper.localStorageSrvc',[])
 	    return _mDeferred.promise;
 	}
 
-	function login(oUser) {
-		console.log('Local storage login');
+	function login(sStatus, oUser) {
+		console.log(sStatus);
 		console.log(oUser);
+		// _DB.transaction(function(tx) {
+		// 	tx.executeSql('SELECT * FROM t_session WHERE id=' + oUser.id, [], function(_tx, results) {
+		// 		var _resLen = results.rows.length;
+		// 		var _sQuery = '';
 
-		_DB.transaction(function(tx) {
-			tx.executeSql('SELECT * FROM t_session WHERE user_id=' + oUser.id, [], function(_tx, results) {
-				var _resLen = results.rows.length;
-				var _sQuery = '';
+		// 		if (_resLen === 0) {
+		// 			_sQuery = SessionModel.store(oUser);
+		// 		} else {
+		// 			_sQuery = SessionModel.update(oUser);
+		// 		}
 
-				if (_resLen === 0) {
-					_sQuery = SessionModel.store(oUser);
+		// 		_tx.executeSql(_sQuery);
 
-				} else {
-					_sQuery = SessionModel.update(oUser	);
-				}
-
-				console.log('Login query');
-				console.log(_sQuery);
-
-				_tx.executeSql(_sQuery);
-
-				return true;
-			}, null);
-		});
+		// 		return true;
+		// 	}, null);
+		// });
 	}
 
 	function logout() {
@@ -90,8 +99,8 @@ angular.module('topper.localStorageSrvc',[])
 			return init();
 		},
 
-		login: function(oUser) {
-			return login(oUser);
+		login: function(sStatus, oUser) {
+			return login(sStatus, oUser);
 		},
 
 		logout: function() {
@@ -100,6 +109,8 @@ angular.module('topper.localStorageSrvc',[])
 
 		session: function() {
 			return session();
-		}
+		},
+
+		loader: loader
 	}
 })

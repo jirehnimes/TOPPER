@@ -1,16 +1,13 @@
-angular.module('topper.topicModel',[])
+angular.module('topper.passwordModel',[])
 
-.factory('TopicModel', function() {
+.factory('PasswordModel', function() {
 
     function createTable(oDB) {
         if (oDB) {
             oDB.transaction(function (tx) {
-                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_topics (' +
-                    'id UNIQUE PRIMARY KEY, ' +
-                    'module_id, ' +
-                    'name, ' +
-                    'created_at, ' +
-                    'updated_at' +
+                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_passwords (' +
+                    'user_id UNIQUE PRIMARY KEY, ' +
+                    'password' +
                 ')';
 
                 tx.executeSql(_sQuery);
@@ -60,8 +57,8 @@ angular.module('topper.topicModel',[])
             return store(oData);
         },
 
-        update: function(oData, iIsLogin) {
-            return update(oData, iIsLogin);
+        update: function(oData) {
+            return update(oData);
         },
 
         destroy: function(oDB) {
