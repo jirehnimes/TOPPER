@@ -15,7 +15,8 @@ class CreateModulesTable extends Migration
         Schema::create('modules', function (Blueprint $table) {
             $table->increments('id');
             $table->string('name');
-            $table->decimal('price', 15, 2)->default(00.00);
+            // $table->decimal('price', 15, 2)->default(00.00);
+            $table->integer('is_premium');
             $table->timestamps();
         });
     }

@@ -1,19 +1,19 @@
 angular.module('topper.indexCtrl', [])
 
 .controller('IndexCtrl', function(
-	$scope, 
-	$state, 
+	$scope,
+	$state,
 	$ionicPlatform,
-	$cordovaNetwork, 
-	Http, 
+	$cordovaNetwork,
+	Http,
 	LocalStorage
 ) {
 
-	$ionicPlatform.ready(function() {
-		if (window.cordova) {
-			alert($cordovaNetwork.isOnline());
-		}
-	});
+	// $ionicPlatform.ready(function() {
+	// 	if (window.cordova) {
+	// 		alert($cordovaNetwork.isOnline());
+	// 	}
+	// });
 
 	// Before entering the index page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
@@ -40,18 +40,25 @@ angular.module('topper.indexCtrl', [])
 	 * Do the login action
 	 */
 	$scope.doLogin = function() {
-		console.log($scope.loginData);
-		
-		Http.post('api/user/login', $scope.loginData).then(
-			function success(mReturn) {
-				console.log(mReturn);
-				alert(mReturn['msg']);
-				if (mReturn['status'] === true) {
-					LocalStorage.login(mReturn.data);
-					$state.go('menu.home');
-				}
-			}
-		);
+		$ionicPlatform.ready(function() {
+			// if (window.cordova) {
+			// 	if ($cordovaNetwork.isOnline() === true) {
+					Http.post('api/user/login', $scope.loginData).then(
+						function success(mReturn) {
+							alert(mReturn['msg']);
+							if (mReturn['status'] === true) {
+								LocalStorage.login('online', mReturn.data);
+								// $state.go('loader');
+							}
+						}
+					);
+			// 	} else {
+			// 		LocalStorage.login('offline', $scope.loginData);
+			// 	}
+			// } else {
+			// 	LocalStorage.login('offline', $scope.loginData);
+			// }
+		});
 	}
 
 	/**

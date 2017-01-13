@@ -1,19 +1,20 @@
 angular.module('topper.moduleModel',[])
 
-.factory("ModuleModel", function() {
+.factory('ModuleModel', function() {
 
-    function createTable(oDB) { 
+    function createTable(oDB) {
         if (oDB) {
             oDB.transaction(function (tx) {
-                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_module (' + 
-                    'module_id UNIQUE, ' + 
-                    'name, ' + 
-                    'price, ' + 
-                    'is_paid, ' + 
-                    'is_download, ' + 
-                    'created_at' + 
+                var _sQuery = 'CREATE TABLE IF NOT EXISTS t_modules (' +
+                    'id UNIQUE PRIMARY KEY, ' +
+                    'name, ' +
+                    'price, ' +
+                    'is_paid, ' +
+                    'is_download, ' +
+                    'created_at, ' +
+                    'updated_at' +
                 ')';
-                
+
                 tx.executeSql(_sQuery);
             });
 
