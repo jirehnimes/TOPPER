@@ -41,6 +41,7 @@ angular.module('topper', [
 
   // model
   'topper.sessionModel',
+  'topper.passwordModel',
   'topper.moduleModel',
   'topper.topicModel',
   'topper.questionModel',
