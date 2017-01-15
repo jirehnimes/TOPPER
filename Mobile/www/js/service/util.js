@@ -1,6 +1,6 @@
 angular.module('topper.utilSrvc',[])
 
-.factory('Util', function() {
+.factory('Util', function($cordovaToast) {
 
     function arrayShuffle(aData) {
         if (aData.constructor !== Array) {
@@ -19,7 +19,16 @@ angular.module('topper.utilSrvc',[])
         return aData;
     }
 
+    function displayMessage(sText) {
+        if (window.cordova) {
+            $cordovaToast.show(sText, 'long', 'bottom');
+        } else {
+            console.log(sText);
+        }
+    }
+
     return {
-        shuffle : arrayShuffle
+        shuffle : arrayShuffle,
+        message : displayMessage
     }
 })

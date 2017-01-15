@@ -1,6 +1,20 @@
 angular.module('topper.localStorageSrvc',[])
 
-.factory("LocalStorage", function($q, SessionModel, ModuleModel) {
+.factory('LocalStorage', function(
+	$q,
+	$state,
+	$timeout,
+	$localStorage,
+    $sessionStorage,
+	SessionModel,
+	PasswordModel,
+	ModuleModel,
+	TopicModel,
+	QuestionModel,
+	SelectionModel,
+	ExamModel,
+	SchoolModel
+) {
 
 	var _DB = undefined;
 
@@ -11,61 +25,61 @@ angular.module('topper.localStorageSrvc',[])
 		}
 
 		_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
-		console.log('Local storage loaded.');
 
-		console.log('Initiating tables...');
-		var _bRes = SessionModel.createTable(_DB);
-		console.log(_bRes);
-		var _bRes = ModuleModel.createTable(_DB);
-		console.log(_bRes);
+		SessionModel.createTable(_DB);
+		ModuleModel.createTable(_DB);
+		TopicModel.createTable(_DB);
+		QuestionModel.createTable(_DB);
+		SelectionModel.createTable(_DB);
+		ExamModel.createTable(_DB);
+		SchoolModel.createTable(_DB);
 
 		return true;
 	}
 
-	function session() {
-
-		// Initialize promise
-	    var _mDeferred = $q.defer();
-
-		init();
-		_DB.transaction(function(tx) {
-			tx.executeSql('SELECT * FROM t_session WHERE is_login=1', [], function(_tx, results) {
-				if (results.rows.length === 1) {
-					var _oData = results.rows[0];
-					return _mDeferred.resolve(_oData);
-				}
-				_mDeferred.resolve(false);
-			}, null);
-		});
-
-		// Return stored promise
-	    return _mDeferred.promise;
+	function loader(oScope) {
+		$timeout(function() { oScope.status = 'Done loading...'; }, 2000);
 	}
 
-	function login(oUser) {
-		console.log('Local storage login');
-		console.log(oUser);
+	function login(sStatus, oUser) {
+		if (sStatus === 'online') {
+			_DB.transaction(function(tx) {
+				tx.executeSql('SELECT * FROM t_session WHERE id=' + oUser.id, [], function(_tx, results) {
+					var _resLen = results.rows.length;
+					var _sQuery = '';
 
-		_DB.transaction(function(tx) {
-			tx.executeSql('SELECT * FROM t_session WHERE user_id=' + oUser.id, [], function(_tx, results) {
-				var _resLen = results.rows.length;
-				var _sQuery = '';
+					if (_resLen === 0) {
+						_sQuery = SessionModel.store(oUser);
+					} else {
+						_sQuery = SessionModel.update(oUser);
+					}
 
-				if (_resLen === 0) {
-					_sQuery = SessionModel.store(oUser);
+					_tx.executeSql(_sQuery);
 
-				} else {
-					_sQuery = SessionModel.update(oUser	);
-				}
+					return $state.go('loader');
+				}, null);
+			});	
+		} else {
+			_DB.transaction(function(tx) {
+				tx.executeSql('SELECT * FROM t_session WHERE email="' + oUser.email + '"', [], function(_tx, results) {
+					var _resLen = results.rows.length;
+					if (_resLen === 0) {
+						return $state.go('index');
+					} 
 
-				console.log('Login query');
-				console.log(_sQuery);
+					_tx.executeSql('SELECT * FROM t_passwords WHERE user_id=' + results.id + 'password=' + oUser.password, [], function(__tx, _results) {
+						var __resLen = _results.rows.length;
+						if (_resLen === 0) {
+							return $state.go('index');
+						} 
 
-				_tx.executeSql(_sQuery);
+						_tx.executeSql(SessionModel.update(oUser));
 
-				return true;
-			}, null);
-		});
+						return $state.go('loader');
+					}, null);
+				}, null);
+			});	
+		}
 	}
 
 	function logout() {
@@ -90,8 +104,8 @@ angular.module('topper.localStorageSrvc',[])
 			return init();
 		},
 
-		login: function(oUser) {
-			return login(oUser);
+		login: function(sStatus, oUser) {
+			return login(sStatus, oUser);
 		},
 
 		logout: function() {
@@ -100,6 +114,8 @@ angular.module('topper.localStorageSrvc',[])
 
 		session: function() {
 			return session();
-		}
+		},
+
+		loader: loader
 	}
 })

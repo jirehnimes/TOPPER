@@ -47,20 +47,20 @@ class UserController extends Controller
                 ->get();
 
         if (count($oUser) === 0) {
-            $aMsg['msg'] = 'Email doesn\'t exist!';
+            $aMsg['msg'] = 'wrong email';
             $aMsg['status'] = false;
             return response()->json($aMsg);
         }
 
         // Password verification from encrypted password
         if(Hash::check($oInput['password'], $oUser[0]->password)) {
-            $aMsg['msg'] = 'Login successfully!';
+            $aMsg['msg'] = 'login success';
             $aMsg['status'] = true;
             $aMsg['data'] = (array)$oUser[0];
 
             return response()->json($aMsg);
         } else {
-            $aMsg['msg'] = 'Password doesn\'t match!';
+            $aMsg['msg'] = 'wrong password';
             $aMsg['status'] = false;
             return response()->json($aMsg);
         }

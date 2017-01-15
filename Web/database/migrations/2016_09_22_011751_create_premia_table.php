@@ -14,6 +14,8 @@ class CreatePremiaTable extends Migration
     {
         Schema::create('premia', function (Blueprint $table) {
             $table->increments('id');
+            $table->string('code');
+            $table->integer('user_id')->nullable();
             $table->timestamps();
         });
     }

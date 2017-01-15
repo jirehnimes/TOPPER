@@ -17,17 +17,18 @@ class ModulesSeeder extends Seeder
         DB::table('modules')->delete();
 
         Module::create(array(
-            'name' => 'Free Module'
+            'name' => 'Free Module',
+            'is_premium' => 0
         ));
 
         Module::create(array(
             'name' => 'Module 1',
-            'price' => '1000.00'
+            'is_premium' => 1
         ));
 
         Module::create(array(
             'name' => 'Module 2',
-            'price' => '1000.00'
+            'is_premium' => 1
         ));
     }
 }

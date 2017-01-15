@@ -13,6 +13,7 @@ angular.module('topper', [
   'ionic-material',
   'ngCordova',
   'slick',
+  'ngStorage',
 
   // route
   'topper.routes',
@@ -37,12 +38,21 @@ angular.module('topper', [
   'topper.cacheSrvc',
   'topper.utilSrvc',
 
+  // bl
+  'topper.sesssionBL',
+
   // directives
 
   // model
   'topper.sessionModel',
+  'topper.passwordModel',
   'topper.moduleModel',
-  
+  'topper.topicModel',
+  'topper.questionModel',
+  'topper.selectionModel',
+  'topper.examModel',
+  'topper.schoolModel',
+
   // filters
   'topper.sentenceCaseFilter',
   'topper.rangeFilter',
