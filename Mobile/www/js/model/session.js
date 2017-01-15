@@ -39,7 +39,7 @@ angular.module('topper.sessionModel',[])
     }
 
     function store(oData) {
-        return 'INSERT INTO t_session VALUES (' +
+        return 'INSERT OR REPLACE INTO t_session VALUES (' +
             oData.id + ', ' +
             '"' + oData.first_name + '", ' +
             '"' + oData.last_name + '", ' +
@@ -50,10 +50,10 @@ angular.module('topper.sessionModel',[])
             '"' + oData.photo + '", ' +
             '"' + oData.user_type + '", ' +
             '"' + oData.access_type + '"' +
-        ')';
+            ')';
     }
 
-    function update(oData, iIsOnline = 1) {
+    function update(oData) {
         if (iIsOnline === 1) {
             return 'UPDATE t_session SET ' +
                 (oData.first_name ? ', first_name="' + oData.first_name + '"' : '') +
@@ -92,8 +92,8 @@ angular.module('topper.sessionModel',[])
             return store(oData);
         },
 
-        update: function(oData, iIsLogin) {
-            return update(oData, iIsLogin);
+        update: function(oData) {
+            return update(oData);
         },
 
         destroy: function(oDB) {

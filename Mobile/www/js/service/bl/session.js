@@ -7,7 +7,9 @@ angular.module('topper.sesssionBL',[])
     $cordovaNetwork,
     $cordovaToast,
     Http,
-    Util
+    Util,
+    LocalStorage,
+    SessionModel
 ) {
 
     function checkLoginData(oData) {
@@ -37,7 +39,9 @@ angular.module('topper.sesssionBL',[])
 
         if (aSuccess['msg'] === 'login success') {
             alert('Log in successfully.');
-            
+            $sessionStorage.auth = aSuccess['data']['id'];
+            var sQuery = SessionModel.store(aSuccess['data']);
+            LocalStorage.login(sQuery);
             return true;
         }
     }
