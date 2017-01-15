@@ -13,6 +13,7 @@ angular.module('topper', [
   'ionic-material',
   'ngCordova',
   'slick',
+  'ngStorage',
 
   // route
   'topper.routes',
@@ -36,6 +37,9 @@ angular.module('topper', [
   'topper.popoverSrvc',
   'topper.cacheSrvc',
   'topper.utilSrvc',
+
+  // bl
+  'topper.sesssionBL',
 
   // directives
 

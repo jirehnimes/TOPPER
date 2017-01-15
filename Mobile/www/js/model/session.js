@@ -9,7 +9,6 @@ angular.module('topper.sessionModel',[])
             oDB.transaction(function (tx) {
                 var _sQuery = 'CREATE TABLE IF NOT EXISTS t_session (' +
                     'id UNIQUE PRIMARY KEY, ' +
-                    'is_login, ' +
                     'first_name, ' +
                     'last_name, ' +
                     'email, ' +
@@ -42,7 +41,6 @@ angular.module('topper.sessionModel',[])
     function store(oData) {
         return 'INSERT INTO t_session VALUES (' +
             oData.id + ', ' +
-            '1, ' +
             '"' + oData.first_name + '", ' +
             '"' + oData.last_name + '", ' +
             '"' + oData.email + '", ' +
@@ -55,10 +53,9 @@ angular.module('topper.sessionModel',[])
         ')';
     }
 
-    function update(oData, iIsLogin = 1, iIsOnline = 1) {
+    function update(oData, iIsOnline = 1) {
         if (iIsOnline === 1) {
             return 'UPDATE t_session SET ' +
-                'is_login=' + iIsLogin +
                 (oData.first_name ? ', first_name="' + oData.first_name + '"' : '') +
                 (oData.last_name ? ', last_name="' + oData.last_name + '"' : '') +
                 (oData.email ? ', email="' + oData.email + '"' : '') +

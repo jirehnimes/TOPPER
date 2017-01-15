@@ -4,34 +4,23 @@ angular.module('topper.indexCtrl', [])
 	$rootScope,
 	$scope,
 	$state,
+	$localStorage,
+    $sessionStorage,
 	$ionicPlatform,
 	$cordovaNetwork,
 	$cordovaToast,
 	Http,
-	LocalStorage
+	LocalStorage,
+	SessionBL
 ) {
-
-	// $ionicPlatform.ready(function() {
-	// 	if (window.cordova) {
-	// 		alert($cordovaNetwork.isOnline());
-	// 	}
-	// });
-
 	// Before entering the index page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
 
 		LocalStorage.init();
 
 		// Checking the user login session
-		LocalStorage.session().then(
-	        function(success) {
-
-	        	// If there is login session, go to first page
-	            if(success !== false){
-	                return $state.go('menu.home');
-	            }
-	        }
-	    );
+    	// If there is login session, go to first page
+        // return $state.go('menu.home');
     });
 
 	$scope.loginData = {};
@@ -53,43 +42,29 @@ angular.module('topper.indexCtrl', [])
 		/**
 		 * Do the login action
 		 */
-		$scope.doLogin = function() {
-			// if (window.cordova && $cordovaNetwork.isOnline() === true) {
-					Http.post('api/user/login', $scope.loginData).then(
-						function success(mReturn) {
-							alert(mReturn['msg']);
-							if (mReturn['status'] === true) {
-								LocalStorage.login('online', $scope.loginData);
-							}
+		$scope.doLogin = function() {	
+			SessionBL.login($scope.loginData);
+		}
+
+		/**
+		 * Go to register page
+		 */
+		$scope.doRegister = function() {
+			if (window.cordova && $cordovaNetwork.isOnline() === true) {
+				Http.post('api/user/store', $scope.registerData).then(
+					function success(mReturn) {
+						console.log(mReturn);
+						alert(mReturn.msg);
+						if (mReturn.status === true) {
+							$scope.registerData = {};
+							$state.go('index');
 						}
-					);
-			// } else {
-			// 	LocalStorage.login('offline', $scope.loginData);
-			// }
+					}
+				);
+			} else {
+				$cordovaToast.show('Can\'t register. Network is offline.', 'long', 'bottom');
+			}
 		}
 	});
-
-	
-
-	/**
-	 * Go to register page
-	 */
-	$scope.doRegister = function() {
-		if (window.cordova && $cordovaNetwork.isOnline() === true) {
-			Http.post('api/user/store', $scope.registerData).then(
-				function success(mReturn) {
-					console.log(mReturn);
-					alert(mReturn.msg);
-					if (mReturn.status === true) {
-						$scope.registerData = {};
-						$state.go('index');
-					}
-				}
-			);
-		} else {
-			$cordovaToast.show('Can\'t register. Network is offline.', 'long', 'bottom');
-		}
-	}
-
 });
 

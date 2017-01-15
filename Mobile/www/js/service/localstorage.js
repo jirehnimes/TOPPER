@@ -4,6 +4,8 @@ angular.module('topper.localStorageSrvc',[])
 	$q,
 	$state,
 	$timeout,
+	$localStorage,
+    $sessionStorage,
 	SessionModel,
 	PasswordModel,
 	ModuleModel,
@@ -36,28 +38,7 @@ angular.module('topper.localStorageSrvc',[])
 	}
 
 	function loader(oScope) {
-		
-
 		$timeout(function() { oScope.status = 'Done loading...'; }, 2000);
-	}
-
-	function session() {
-
-		// Initialize promise
-	    var _mDeferred = $q.defer();
-
-		_DB.transaction(function(tx) {
-			tx.executeSql('SELECT * FROM t_session WHERE is_login=1', [], function(_tx, results) {
-				if (results.rows.length === 1) {
-					var _oData = results.rows[0];
-					return _mDeferred.resolve(_oData);
-				}
-				_mDeferred.resolve(false);
-			}, null);
-		});
-
-		// Return stored promise
-	    return _mDeferred.promise;
 	}
 
 	function login(sStatus, oUser) {
