@@ -20,7 +20,9 @@ angular.module('topper.indexCtrl', [])
 
 		// Checking the user login session
     	// If there is login session, go to first page
-        // return $state.go('menu.home');
+    	if ($sessionStorage.auth) {
+	        return $state.go('menu.home');
+    	}
     });
 
 	$scope.loginData = {};
@@ -42,7 +44,7 @@ angular.module('topper.indexCtrl', [])
 		/**
 		 * Do the login action
 		 */
-		$scope.doLogin = function() {	
+		$scope.doLogin = function() {
 			SessionBL.login($scope.loginData);
 		}
 

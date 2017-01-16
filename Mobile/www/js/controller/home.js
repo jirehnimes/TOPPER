@@ -1,6 +1,14 @@
 angular.module('topper.homeCtrl', [])
 
-.controller('HomeCtrl', function($scope, $state, $interval, Http, LocalStorage) {
+.controller('HomeCtrl', function(
+	$scope,
+	$state,
+	$interval,
+	$localStorage,
+    $sessionStorage,
+	Http,
+	LocalStorage
+) {
 
 	// Before entering the home page
 	$scope.$on('$ionicView.beforeEnter', function (e) {

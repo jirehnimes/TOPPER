@@ -39,11 +39,16 @@ angular.module('topper.sesssionBL',[])
 
         if (aSuccess['msg'] === 'login success') {
             alert('Log in successfully.');
-            $sessionStorage.auth = aSuccess['data']['id'];
+            $sessionStorage.auth = aSuccess['data'];
             var sQuery = SessionModel.store(aSuccess['data']);
             LocalStorage.login(sQuery);
+            $state.go('menu.home');
             return true;
         }
+    }
+
+    function offlineLogin() {
+
     }
 
     function doLogin(oData) {
@@ -53,6 +58,7 @@ angular.module('topper.sesssionBL',[])
             // if (window.cordova && $cordovaNetwork.isOnline() === true) {
                 Http.post('api/user/login', oData).then(successHttpLogin);
             // } else {
+                // offlineLogin(oData);
             // }
         }
     }
