@@ -7,6 +7,9 @@ use Illuminate\Http\Request;
 use App\Http\Requests;
 use App\Http\Controllers\Controller;
 
+use App\User;
+use App\Module;
+
 class ModuleController extends Controller
 {
     /**
@@ -48,7 +51,23 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        //
+        $aUser = User::find($id)->first();
+
+        $aRes['msg'] = '';
+        $aRes['status'] = false;
+        $aRes['data'] = null;
+
+        if ($aUser['access_type'] === 'free' && $aUser['premium_id'] === null) {
+            $aRes['status'] = true;
+            $aRes['data'] = Module::where('is_premium', 0)->get();
+        }
+
+        if ($aUser['access_type'] === 'premium' && $aUser['premium_id'] !== null) {
+            $aRes['status'] = true;
+            $aRes['data'] = Module::all();
+        }
+
+        return $aRes;
     }
 
     /**

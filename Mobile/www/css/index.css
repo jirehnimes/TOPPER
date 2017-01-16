@@ -1,12 +1,13 @@
 #index {
-	background: linear-gradient(
+	/*background: linear-gradient(
           rgba(52, 52, 52, 0.5),
           rgba(52, 52, 52, 0.5)
         ),
 	url('../img/bg.gif');
 	background-repeat: no-repeat;
 	background-position: center;
-	background-attachment: fixed;
+	background-attachment: fixed;*/
+	background-color: #0d6aa3;
 }
 
 @media screen and (orientation:portrait) {

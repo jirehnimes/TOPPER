@@ -26,7 +26,7 @@ class CreateUsersTable extends Migration
             $table->string('photo')->nullable();
             $table->string('user_type')->default('user');
             $table->string('access_type')->default('free');
-            $table->string('premium_id')->nullable();
+            $table->integer('premium_id')->nullable();
             // $table->string('api_token', 60)->unique();
             $table->rememberToken();
             $table->timestamps();

@@ -18,8 +18,6 @@ angular.module('topper.indexCtrl', [])
 
 		LocalStorage.init();
 
-		// Checking the user login session
-    	// If there is login session, go to first page
     	if ($sessionStorage.auth) {
 	        return $state.go('menu.home');
     	}

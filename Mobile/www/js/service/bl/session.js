@@ -42,13 +42,19 @@ angular.module('topper.sesssionBL',[])
             $sessionStorage.auth = aSuccess['data'];
             var sQuery = SessionModel.store(aSuccess['data']);
             LocalStorage.login(sQuery);
-            $state.go('menu.home');
+            $state.go('loader');
             return true;
         }
     }
 
-    function offlineLogin() {
+    function offlineLogin(oData) {
 
+    }
+
+    function checkSession() {
+        if (!$sessionStorage.auth) {
+            $state.go('index');
+        }
     }
 
     function doLogin(oData) {
@@ -63,7 +69,19 @@ angular.module('topper.sesssionBL',[])
         }
     }
 
+    function doRegister(oData) {
+
+    }
+
+    function doLogout() {
+        delete $sessionStorage.auth;
+        $state.go('index');
+    }
+
     return {
-        login : doLogin
+        login : doLogin,
+        register : doRegister,
+        logout : doLogout,
+        check : checkSession
     }
 })

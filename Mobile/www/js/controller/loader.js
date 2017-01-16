@@ -1,6 +1,10 @@
 angular.module('topper.loaderCtrl', [])
 
-.controller('LoaderCtrl', function($scope, $state, LocalStorage) {
+.controller('LoaderCtrl', function(
+	$scope, 
+	$state, 
+	LocalStorage
+) {
 
 	$scope.status = '';
 
@@ -10,13 +14,12 @@ angular.module('topper.loaderCtrl', [])
 
 	// Entered
  	$scope.$on('$ionicView.enter', function (e) {
+ 		LocalStorage.init();
+		LocalStorage.loader($scope);
 	});
 
  	// Before leaving the page
 	$scope.$on('$ionicView.beforeLeave', function (e) {
 	});
-
-	LocalStorage.loader($scope);
-
 });
 

@@ -57,7 +57,7 @@ Route::group(['prefix' => 'api'], function () {
     Route::get('question', 'QuestionController@index');
 
     // Module
-    Route::get('module/{id}', 'ModuleController@index');
+    Route::get('module/{id}', 'API\ModuleController@show');
 
 });
 

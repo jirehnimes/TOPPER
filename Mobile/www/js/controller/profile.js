@@ -1,28 +1,24 @@
 angular.module('topper.profileCtrl', [])
 
-.controller('ProfileCtrl', function($scope, $state, $filter, $cordovaImagePicker, $cordovaFileTransfer, Http, LocalStorage, Modal) {
+.controller('ProfileCtrl', function(
+	$scope, 
+	$state, 
+	$filter,
+	$localStorage,
+    $sessionStorage,
+	$cordovaImagePicker, 
+	$cordovaFileTransfer, 
+	Http, 
+	Modal
+) {
 
 	// Before entering the profile page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
-		
-		// Checking the user login session
-		LocalStorage.session().then(
-			function(success) {
-				
-				// If fails, go back to login page
-				if(success === false){
-		 			$state.go('index');
-				}
-
-				// If success, save to variable
-				$scope.session = success;
-				$scope.userUpdate = updateData($scope.session);
-				console.log($scope.session);
-			}
-		);
-
 		// Get the server URL
 		$scope.server = Http.session();
+
+		$scope.session = $sessionStorage.auth;
+		$scope.userUpdate = $sessionStorage.auth;
 
 		Modal.init($scope, 'editprofile');
 	});

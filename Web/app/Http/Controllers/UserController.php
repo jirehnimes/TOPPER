@@ -57,7 +57,6 @@ class UserController extends Controller
             $aMsg['msg'] = 'login success';
             $aMsg['status'] = true;
             $aMsg['data'] = (array)$oUser[0];
-
             return response()->json($aMsg);
         } else {
             $aMsg['msg'] = 'wrong password';
