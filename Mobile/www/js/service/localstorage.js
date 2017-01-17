@@ -15,7 +15,8 @@ angular.module('topper.localStorageSrvc',[])
 	QuestionModel,
 	SelectionModel,
 	ExamModel,
-	SchoolModel
+	SchoolModel,
+	OfflineLoginBL
 ) {
 
 	var _DB = undefined;
@@ -28,6 +29,7 @@ angular.module('topper.localStorageSrvc',[])
 		_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
 
 		SessionModel.createTable(_DB);
+		PasswordModel.createTable(_DB);
 		ModuleModel.createTable(_DB);
 		TopicModel.createTable(_DB);
 		QuestionModel.createTable(_DB);
@@ -55,26 +57,19 @@ angular.module('topper.localStorageSrvc',[])
 		SessionModel.store(_DB, oData);
 	}
 
+	function storePassword(oData) {
+		PasswordModel.store(_DB, oData);
+	}
+
 	function offlineLogin(oData) {
-		_DB.transaction(function (tx) {
-            var _sQuery = 'SELECT * FROM t_session WHERE email="' + oData.email + '"';
-            tx.executeSql(_sQuery, [], function(_tx, _results) {
-            	if (_results.rows.length === 1) {
-            		alert('Log in successfully.');
-            		$sessionStorage.auth = _results.rows[0];
-            		$state.go('loader');
-            	} else {
-            		Util.message('Invalid login.');
-            		$state.go('index');
-            	}
-            });
-        });
+        OfflineLoginBL.init(_DB, oData);
 	}
 
 	return {
 		init : init,
 		loader : loader,
 		login : login,
-		offlineLogin : offlineLogin
+		offlineLogin : offlineLogin,
+		password : storePassword
 	}
 })

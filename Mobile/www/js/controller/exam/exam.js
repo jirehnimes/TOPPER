@@ -22,6 +22,12 @@ angular.module('topper.examCtrl', [])
 		if ($scope._sType === undefined) {
 			$scope._sType = $stateParams.type;
 		}
+
+		$scope.$on('timer-tick', function (event, data) {
+			$scope.examTime = Util.time(data.millis);
+		});
+
+		$scope.$broadcast('timer-start');
 	});
 
 	$scope.$on('$ionicView.enter', function (e) {
@@ -90,10 +96,13 @@ angular.module('topper.examCtrl', [])
 				var _oData = {
 					examType  : $scope._sType,
 					questions : $scope.questions,
-					answers   : $scope.answers
+					answers   : $scope.answers,
+					time      : $scope.examTime
 				};
 
 				Cache.set('ExamAnswers', _oData);
+
+				$scope.$broadcast('timer-stop');
 
 				$state.go('menu.exam_score');
 			}

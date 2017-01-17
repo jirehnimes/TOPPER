@@ -28,8 +28,21 @@ angular.module('topper.passwordModel',[])
 
     }
 
-    function store(oData) {
+    function store(oDB, oData) {
+        if (oDB) {
+            oDB.transaction(function (tx) {
+                var _sQuery = 'INSERT OR REPLACE INTO t_passwords VALUES (' +
+                    oData.id + ', ' +
+                    '"' + oData.password + '"' +
+                    ')';
+                tx.executeSql(_sQuery);
+            });
 
+            return true;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function update(oData) {
@@ -41,28 +54,7 @@ angular.module('topper.passwordModel',[])
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
-
-        all: function(oDB) {
-
-        },
-
-        show: function(oDB) {
-
-        },
-
-        store: function(oData) {
-            return store(oData);
-        },
-
-        update: function(oData) {
-            return update(oData);
-        },
-
-        destroy: function(oDB) {
-
-        }
+        createTable : createTable,
+        store : store
     }
 })

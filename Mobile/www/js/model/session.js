@@ -30,14 +30,6 @@ angular.module('topper.sessionModel',[])
         return false;
     }
 
-    function all(oDB) {
-
-    }
-
-    function show(oDB) {
-
-    }
-
     function store(oDB, oData) {
         if (oDB) {
             oDB.transaction(function (tx) {
@@ -79,10 +71,6 @@ angular.module('topper.sessionModel',[])
         } else {
 
         }
-    }
-
-    function destroy(oDB) {
-
     }
 
     return {

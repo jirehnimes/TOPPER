@@ -14,6 +14,7 @@ angular.module('topper', [
   'ngCordova',
   'slick',
   'ngStorage',
+  'timer',
 
   // route
   'topper.routes',
@@ -40,6 +41,7 @@ angular.module('topper', [
 
   // bl
   'topper.sesssionBL',
+  'topper.offlineLoginBL',
 
   // directives
 

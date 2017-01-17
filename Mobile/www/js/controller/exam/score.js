@@ -34,6 +34,7 @@ angular.module('topper.examScoreCtrl', [])
 	$scope.$on('$ionicView.enter', function (e) {
 		$scope.questions = $scope.examData.questions;
         $scope.answers   = $scope.examData.answers;
+        $scope.time      = $scope.examData.time;
         $scope.results   = $scope.getResult();
 
         $scope.score      = countScore($scope.results);

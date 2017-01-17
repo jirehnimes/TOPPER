@@ -11,6 +11,8 @@ angular.module('topper.sesssionBL',[])
     LocalStorage
 ) {
 
+    var _loginData = undefined;
+
     function checkLoginData(oData) {
         if (!oData.email) {
             Util.message('Invalid email data.');
@@ -38,15 +40,17 @@ angular.module('topper.sesssionBL',[])
 
         if (aSuccess['msg'] === 'login success') {
             alert('Log in successfully.');
+            
             $sessionStorage.auth = aSuccess['data'];
             LocalStorage.login(aSuccess['data']);
+
+            _loginData.id = aSuccess['data']['id'];
+            LocalStorage.password(_loginData);
+            _loginData = undefined;
+            
             $state.go('loader');
             return true;
         }
-    }
-
-    function offlineLogin(oData) {
-        LocalStorage.offlineLogin(oData);
     }
 
     function checkSession() {
@@ -59,9 +63,10 @@ angular.module('topper.sesssionBL',[])
         var bRes = checkLoginData(oData);
         if (bRes === true) {
             // if (window.cordova && $cordovaNetwork.isOnline() === true) {
-                // Http.post('api/user/login', oData).then(successHttpLogin);
+                _loginData = oData;            
+                Http.post('api/user/login', oData).then(successHttpLogin);
             // } else {
-                offlineLogin(oData);
+                // LocalStorage.offlineLogin(oData);
             // }
         }
     }
