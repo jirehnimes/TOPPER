@@ -8,8 +8,7 @@ angular.module('topper.sesssionBL',[])
     $cordovaToast,
     Http,
     Util,
-    LocalStorage,
-    SessionModel
+    LocalStorage
 ) {
 
     function checkLoginData(oData) {
@@ -40,15 +39,14 @@ angular.module('topper.sesssionBL',[])
         if (aSuccess['msg'] === 'login success') {
             alert('Log in successfully.');
             $sessionStorage.auth = aSuccess['data'];
-            var sQuery = SessionModel.store(aSuccess['data']);
-            LocalStorage.login(sQuery);
+            LocalStorage.login(aSuccess['data']);
             $state.go('loader');
             return true;
         }
     }
 
     function offlineLogin(oData) {
-
+        LocalStorage.offlineLogin(oData);
     }
 
     function checkSession() {
@@ -59,12 +57,11 @@ angular.module('topper.sesssionBL',[])
 
     function doLogin(oData) {
         var bRes = checkLoginData(oData);
-
         if (bRes === true) {
             // if (window.cordova && $cordovaNetwork.isOnline() === true) {
-                Http.post('api/user/login', oData).then(successHttpLogin);
+                // Http.post('api/user/login', oData).then(successHttpLogin);
             // } else {
-                // offlineLogin(oData);
+                offlineLogin(oData);
             // }
         }
     }

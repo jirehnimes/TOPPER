@@ -42,7 +42,6 @@ angular.module('topper.moduleModel',[])
                         '"' + value.created_at + '", ' +
                         '"' + value.updated_at + '"' +
                         ')';
-                    console.log(_sQuery);
                     tx.executeSql(_sQuery);
                 });
             });

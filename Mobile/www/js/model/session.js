@@ -38,19 +38,29 @@ angular.module('topper.sessionModel',[])
 
     }
 
-    function store(oData) {
-        return 'INSERT OR REPLACE INTO t_session VALUES (' +
-            oData.id + ', ' +
-            '"' + oData.first_name + '", ' +
-            '"' + oData.last_name + '", ' +
-            '"' + oData.email + '", ' +
-            '"' + oData.birthdate + '", ' +
-            '"' + oData.gender + '", ' +
-            '"' + oData.nickname + '", ' +
-            '"' + oData.photo + '", ' +
-            '"' + oData.user_type + '", ' +
-            '"' + oData.access_type + '"' +
-            ')';
+    function store(oDB, oData) {
+        if (oDB) {
+            oDB.transaction(function (tx) {
+                var _sQuery = 'INSERT OR REPLACE INTO t_session VALUES (' +
+                    oData.id + ', ' +
+                    '"' + oData.first_name + '", ' +
+                    '"' + oData.last_name + '", ' +
+                    '"' + oData.email + '", ' +
+                    '"' + oData.birthdate + '", ' +
+                    '"' + oData.gender + '", ' +
+                    '"' + oData.nickname + '", ' +
+                    '"' + oData.photo + '", ' +
+                    '"' + oData.user_type + '", ' +
+                    '"' + oData.access_type + '"' +
+                    ')';
+                tx.executeSql(_sQuery);
+            });
+
+            return true;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function update(oData) {
@@ -67,7 +77,7 @@ angular.module('topper.sessionModel',[])
                 (oData.access_type ? ', access_type="' + oData.access_type + '"' : '') +
                 ' WHERE id=' + oData.id;
         } else {
-            
+
         }
     }
 
@@ -76,28 +86,8 @@ angular.module('topper.sessionModel',[])
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
-
-        all: function(oDB) {
-
-        },
-
-        show: function(oDB) {
-
-        },
-
-        store: function(oData) {
-            return store(oData);
-        },
-
-        update: function(oData) {
-            return update(oData);
-        },
-
-        destroy: function(oDB) {
-
-        }
+        createTable : createTable,
+        store : store,
+        update : update
     }
 })
