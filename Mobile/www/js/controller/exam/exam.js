@@ -1,11 +1,20 @@
 angular.module('topper.examCtrl', [])
 
-.controller('ExamCtrl', function($scope, $rootScope, $state, $stateParams, Http, Popover, Cache, Util) {
+.controller('ExamCtrl', function(
+	$scope,
+	$rootScope,
+	$state,
+	$stateParams,
+	$localStorage,
+	Http,
+	Popover,
+	Util
+) {
 
 	$scope._sType = undefined;
 
 	$scope.$on('$ionicView.beforeEnter', function (e) {
-		
+
 		$scope.number = 0;
 
 		$scope.answers = {};
@@ -18,7 +27,7 @@ angular.module('topper.examCtrl', [])
 				$scope.questions = Util.shuffle(success);
 			}
 		);
-		
+
 		if ($scope._sType === undefined) {
 			$scope._sType = $stateParams.type;
 		}
@@ -100,7 +109,7 @@ angular.module('topper.examCtrl', [])
 					time      : $scope.examTime
 				};
 
-				Cache.set('ExamAnswers', _oData);
+				$localStorage.examAnswers = _oData;
 
 				$scope.$broadcast('timer-stop');
 

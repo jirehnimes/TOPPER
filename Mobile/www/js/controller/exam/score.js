@@ -1,6 +1,15 @@
 angular.module('topper.examScoreCtrl', [])
 
-.controller('ExamScoreCtrl', function($scope, $rootScope, $state, $ionicHistory, Http, Cache) {
+.controller('ExamScoreCtrl', function(
+	$scope,
+	$rootScope,
+	$state,
+	$ionicHistory,
+	$localStorage,
+	Http,
+	Cache,
+	ChartJsProvider
+) {
 
 	function getObjectByValue(array, key, value) {
 		var _answer = undefined;
@@ -24,12 +33,12 @@ angular.module('topper.examScoreCtrl', [])
 	}
 
 	$scope.$on('$ionicView.beforeEnter', function (event) {
-		$scope.examData = Cache.get('ExamAnswers');
+		$scope.examData = $localStorage.examAnswers;
 
 		if ($scope.examData === undefined) {
 			$state.go('menu.home');
 		}
-	}); 
+	});
 
 	$scope.$on('$ionicView.enter', function (e) {
 		$scope.questions = $scope.examData.questions;

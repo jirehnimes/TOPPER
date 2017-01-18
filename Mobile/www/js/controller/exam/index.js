@@ -1,6 +1,14 @@
 angular.module('topper.examIndexCtrl', [])
 
-.controller('ExamIndexCtrl', function($scope, $state, $stateParams, LocalStorage, Http, Modal) {
+.controller('ExamIndexCtrl', function(
+	$scope,
+	$state,
+	$stateParams,
+	$localStorage,
+	LocalStorage,
+	Http,
+	Modal
+) {
 
 	var _sType = undefined;
 
@@ -18,6 +26,7 @@ angular.module('topper.examIndexCtrl', [])
 	});
 
 	$scope.startExam = function() {
+		delete $localStorage.examAnswers;
 		$state.go('menu.exam', {type: _sType});
 	}
 

@@ -15,6 +15,7 @@ angular.module('topper', [
   'slick',
   'ngStorage',
   'timer',
+  'chart.js',
 
   // route
   'topper.routes',

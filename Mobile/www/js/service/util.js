@@ -15,7 +15,7 @@ angular.module('topper.utilSrvc',[])
             aData[i] = aData[j];
             aData[j] = temp;
         }
-        
+
         return aData;
     }
 
@@ -35,7 +35,7 @@ angular.module('topper.utilSrvc',[])
         var mins = s % 60;
         var hrs = (s - mins) / 60;
 
-        return hrs + ':' + mins + ':' + secs;        
+        return ('0' + hrs).slice(-2) + ':' + ('0' + mins).slice(-2) + ':' + ('0' + secs).slice(-2);
     }
 
     return {
