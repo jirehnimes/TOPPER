@@ -1,37 +1,66 @@
 <ion-view id="exam_score">
     <ion-content overflow-scroll="true" padding="true" scroll="true">
 
-    <div class="row">
-        <div class="col">
-            Score: {{score}} <br>
-            Total: {{total}} <br>
-            Percentage: {{percentage}}% <br>
-            Time: {{time}}
+        <div id="chart" class="row">
+            <div class="col card">
+                <div class="item item-text-wrap">
+                    <canvas id="doughnut" class="chart chart-doughnut" chart-data="chartData" chart-labels="chartLabels" chart-colors="chartColors" chart-options="chartOptions" style="width:50%;height:auto;">
+                    </canvas>
+                    <hr>
+                    <center>
+                        <i class="icon ion-record" style="color:#009900;"></i>
+                        <span>Correct</span>
+                        &nbsp;&nbsp;&nbsp;
+                        <i class="icon ion-record" style="color:#ff0000;">
+                        </i><span>Incorrect</span>
+                    </center>
+                </div>
+            </div>
         </div>
-    </div>
 
-    <div class="row responsive-md">
-        <div class="col">
-            {{score}}
-            SCORE
+        <div class="row data">
+            <div class="col">
+                <span class="value">{{score}}</span>
+                <br>
+                <span class="label">SCORE</span>
+            </div>
+            <div class="col">
+                <span class="value">{{total}}</span>
+                <br>
+                <span class="label">TOTAL</span>
+            </div>
         </div>
-        <div class="col">
-            {{score}}
-            SCORE
+
+        <div class="row data">
+            <div class="col">
+                <span class="value">{{percentage}}%</span>
+                <br>
+                <span class="label">PERCENTAGE</span>
+            </div>
+            <div class="col">
+                <span class="value">{{time}}</span>
+                <br>
+                <span class="label">TIME</span>
+            </div>
         </div>
-    </div>
 
-    <button class="button button-outline button-light button-full" ng-click="goResults()">
-    	SEE RESULTS
-    </button>
+        <div class="row nav">
+            <button class="col button button-outline button-light" ng-click="goResults()">
+                <i class="icon ion-clipboard"></i>&nbsp;RESULTS
+            </button>
+            <button class="col button button-outline button-light">
+                <i class="icon ion-archive"></i>&nbsp;SAVE
+            </button>
+        </div>
 
-    <button class="button button-outline button-light button-full" ng-click="goExam()">
-        START NEW EXAM
-    </button>
-
-    <button class="button button-outline button-light button-full" ui-sref="menu.home">
-        GO HOME
-    </button>
+        <div class="row nav">
+            <button class="col button button-outline button-light" ng-click="goExam()">
+                <i class="icon ion-compose"></i>&nbsp;NEW
+            </button>
+            <button class="col button button-outline button-light" ui-sref="menu.home">
+                <i class="icon ion-home"></i>&nbsp;HOME
+            </button>
+        </div>
 
     </ion-content>
 </ion-view>

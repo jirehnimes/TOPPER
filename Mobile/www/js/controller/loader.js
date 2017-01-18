@@ -14,7 +14,6 @@ angular.module('topper.loaderCtrl', [])
 
 	// Entered
  	$scope.$on('$ionicView.enter', function (e) {
- 		LocalStorage.init();
 		LocalStorage.loader($scope);
 	});
 

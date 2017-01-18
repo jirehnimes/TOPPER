@@ -31,8 +31,26 @@ angular.module('topper.selectionModel',[])
 
     }
 
-    function store(oData) {
+    function store(oDB, oData) {
+        if (oDB) {
+            oData.forEach(function(value, index) {
+                oDB.transaction(function (tx) {
+                    var _sQuery = 'INSERT OR REPLACE INTO t_selections VALUES (' +
+                        value.question_id + ', ' +
+                        '"' + value.choice + '", ' +
+                        value.isAnswer + ', ' +
+                        '"' + value.created_at + '", ' +
+                        '"' + value.updated_at + '"' +
+                        ')';
+                    tx.executeSql(_sQuery);
+                });
+            });
 
+            return true;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function update(oData) {
@@ -44,9 +62,7 @@ angular.module('topper.selectionModel',[])
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
+        createTable: createTable,
 
         all: function(oDB) {
 
@@ -56,9 +72,7 @@ angular.module('topper.selectionModel',[])
 
         },
 
-        store: function(oData) {
-            return store(oData);
-        },
+        store: store,
 
         update: function(oData, iIsLogin) {
             return update(oData, iIsLogin);

@@ -44,6 +44,7 @@ angular.module('topper.localStorageSrvc',[])
 
 		Http.get('api/module/' + $sessionStorage.auth['id']).then(
 			function(success) {
+				console.log(success);
 		  		ModuleModel.store(_DB, success.data);
 			}
 		);
@@ -65,11 +66,28 @@ angular.module('topper.localStorageSrvc',[])
         OfflineLoginBL.init(_DB, oData);
 	}
 
+	function getModuleAll() {
+		init();
+
+		// Initialize promise
+        var _mDeferred = $q.defer();
+
+		ModuleModel.all(_DB, $sessionStorage.auth).then(
+			function success(success) {
+				_mDeferred.resolve(success);
+			}
+		);
+
+		// Return stored promise
+        return _mDeferred.promise;
+	}
+
 	return {
 		init : init,
 		loader : loader,
 		login : login,
 		offlineLogin : offlineLogin,
-		password : storePassword
+		password : storePassword,
+		moduleAll : getModuleAll
 	}
 })

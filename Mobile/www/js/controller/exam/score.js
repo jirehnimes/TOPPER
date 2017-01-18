@@ -7,8 +7,7 @@ angular.module('topper.examScoreCtrl', [])
 	$ionicHistory,
 	$localStorage,
 	Http,
-	Cache,
-	ChartJsProvider
+	Cache
 ) {
 
 	function getObjectByValue(array, key, value) {
@@ -49,6 +48,12 @@ angular.module('topper.examScoreCtrl', [])
         $scope.score      = countScore($scope.results);
 		$scope.total      = $scope.results.length;
 		$scope.percentage = ($scope.score / $scope.results.length) * 100;
+
+		// Chart data
+        $scope.chartLabels = ['Correct', 'Incorrect'];
+		$scope.chartData   = [$scope.score, $scope.total - $scope.score];
+		$scope.chartColors = ['#009900', '#ff0000'];
+		// $scope.chartOptions = { elements: { arc: { borderColor: 'black' } } };
 	});
 
 	$scope.goResults = function() {

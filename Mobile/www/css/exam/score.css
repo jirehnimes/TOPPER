@@ -9,3 +9,24 @@
     background-position: center;
     background-attachment: fixed;
 }
+
+#exam_score .data .col {
+	text-align: center;
+	background-color: blue;
+	margin: 5px;
+	padding: 15px;
+}
+
+#exam_score .data .value {
+	font-size: 30px;
+	font-weight: bold;
+}
+
+#exam_score .data .label {
+	font-size: 14px;
+}
+
+#exam_score .nav button {
+	margin: 5px;
+	padding: 0;
+}

@@ -21,7 +21,6 @@ angular.module('topper.modalSrvc',[])
             _oOptions
         ).then(
             function(modal) {
-                console.log(modal);
                 _oScope.modal = modal;
             }
         );

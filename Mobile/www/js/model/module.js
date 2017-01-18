@@ -1,6 +1,6 @@
 angular.module('topper.moduleModel',[])
 
-.factory('ModuleModel', function() {
+.factory('ModuleModel', function($q, TopicModel) {
 
     function createTable(oDB) {
         if (oDB) {
@@ -23,8 +23,29 @@ angular.module('topper.moduleModel',[])
         return false;
     }
 
-    function all(oDB) {
+    function all(oDB, oData) {
+        // Initialize promise
+        var _mDeferred = $q.defer();
 
+        if (oDB) {
+            oDB.transaction(function (tx) {
+                var _sQuery = 'SELECT * FROM t_modules WHERE is_premium=0';
+
+                if (oData['access_type'] === 'premium') {
+                    _sQuery = 'SELECT * FROM t_modules';
+                }
+
+                tx.executeSql(_sQuery, [], function(_tx, _result) {
+                    _mDeferred.resolve(_result);
+                });
+            });
+
+            // Return stored promise
+            return _mDeferred.promise;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function show(oDB) {
@@ -44,6 +65,7 @@ angular.module('topper.moduleModel',[])
                         ')';
                     tx.executeSql(_sQuery);
                 });
+                TopicModel.store(oDB, value.topics);
             });
 
             return true;
@@ -63,6 +85,7 @@ angular.module('topper.moduleModel',[])
 
     return {
         createTable : createTable,
+        all : all,
         store : store
     }
 })

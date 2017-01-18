@@ -1,6 +1,6 @@
 angular.module('topper.topicModel',[])
 
-.factory('TopicModel', function() {
+.factory('TopicModel', function(QuestionModel) {
 
     function createTable(oDB) {
         if (oDB) {
@@ -31,8 +31,27 @@ angular.module('topper.topicModel',[])
 
     }
 
-    function store(oData) {
+    function store(oDB, oData) {
+        if (oDB) {
+            oData.forEach(function(value, index) {
+                oDB.transaction(function (tx) {
+                    var _sQuery = 'INSERT OR REPLACE INTO t_topics VALUES (' +
+                        value.id + ', ' +
+                        value.module_id + ', ' +
+                        '"' + value.name + '", ' +
+                        '"' + value.created_at + '", ' +
+                        '"' + value.updated_at + '"' +
+                        ')';
+                    tx.executeSql(_sQuery);
+                });
+                QuestionModel.store(oDB, value.questions);
+            });
 
+            return true;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function update(oData) {
@@ -44,9 +63,7 @@ angular.module('topper.topicModel',[])
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
+        createTable: createTable,
 
         all: function(oDB) {
 
@@ -56,9 +73,7 @@ angular.module('topper.topicModel',[])
 
         },
 
-        store: function(oData) {
-            return store(oData);
-        },
+        store: store,
 
         update: function(oData, iIsLogin) {
             return update(oData, iIsLogin);

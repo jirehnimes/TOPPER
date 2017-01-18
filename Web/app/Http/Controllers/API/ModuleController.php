@@ -51,20 +51,25 @@ class ModuleController extends Controller
      */
     public function show($id)
     {
-        $aUser = User::find($id)->first();
+        $aUser = User::where('id', $id)->first();
 
         $aRes['msg'] = '';
         $aRes['status'] = false;
         $aRes['data'] = null;
 
-        if ($aUser['access_type'] === 'free' && $aUser['premium_id'] === null) {
+        // if ($aUser['access_type'] === 'free' && $aUser['premium_id'] === null) {
+        if ($aUser['access_type'] === 'free') {
             $aRes['status'] = true;
-            $aRes['data'] = Module::where('is_premium', 0)->get();
+            $aRes['data'] = Module::with('topics.questions.selection')
+                ->where('is_premium', 0)
+                ->get();
         }
 
-        if ($aUser['access_type'] === 'premium' && $aUser['premium_id'] !== null) {
+        // if ($aUser['access_type'] === 'premium' && $aUser['premium_id'] !== null) {
+        if ($aUser['access_type'] === 'premium') {
             $aRes['status'] = true;
-            $aRes['data'] = Module::all();
+            $aRes['data'] = Module::with('topics.questions.selection')
+                ->get();
         }
 
         return $aRes;

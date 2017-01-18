@@ -1,6 +1,6 @@
 angular.module('topper.questionModel',[])
 
-.factory('QuestionModel', function() {
+.factory('QuestionModel', function(SelectionModel) {
 
     function createTable(oDB) {
         if (oDB) {
@@ -33,8 +33,29 @@ angular.module('topper.questionModel',[])
 
     }
 
-    function store(oData) {
+    function store(oDB, oData) {
+        if (oDB) {
+            oData.forEach(function(value, index) {
+                oDB.transaction(function (tx) {
+                    var _sQuery = 'INSERT OR REPLACE INTO t_questions VALUES (' +
+                        value.id + ', ' +
+                        value.topic_id + ', ' +
+                        value.reference_id + ', ' +
+                        '"' + value.text + '", ' +
+                        '"' + value.rationale + '", ' +
+                        '"' + value.created_at + '", ' +
+                        '"' + value.updated_at + '"' +
+                        ')';
+                    tx.executeSql(_sQuery);
+                });
+                SelectionModel.store(oDB, value.selection);
+            });
 
+            return true;
+        }
+
+        console.error('No database object.');
+        return false;
     }
 
     function update(oData) {
@@ -46,9 +67,7 @@ angular.module('topper.questionModel',[])
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
+        createTable: createTable,
 
         all: function(oDB) {
 
@@ -58,9 +77,7 @@ angular.module('topper.questionModel',[])
 
         },
 
-        store: function(oData) {
-            return store(oData);
-        },
+        store: store,
 
         update: function(oData, iIsLogin) {
             return update(oData, iIsLogin);

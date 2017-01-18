@@ -2,7 +2,6 @@ angular.module('topper.examCtrl', [])
 
 .controller('ExamCtrl', function(
 	$scope,
-	$rootScope,
 	$state,
 	$stateParams,
 	$localStorage,
@@ -25,6 +24,7 @@ angular.module('topper.examCtrl', [])
 			function success(success) {
 				console.log(success);
 				$scope.questions = Util.shuffle(success);
+				$scope.$broadcast('timer-start');
 			}
 		);
 
@@ -35,8 +35,6 @@ angular.module('topper.examCtrl', [])
 		$scope.$on('timer-tick', function (event, data) {
 			$scope.examTime = Util.time(data.millis);
 		});
-
-		$scope.$broadcast('timer-start');
 	});
 
 	$scope.$on('$ionicView.enter', function (e) {
