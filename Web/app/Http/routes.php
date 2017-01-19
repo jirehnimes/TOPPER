@@ -11,10 +11,6 @@
 |
 */
 
-// Route::get('/', function () {
-//     return view('welcome');
-// });
-
 // Route::group(['prefix' => 'api', 'middleware' => 'auth:api'], function () {
 //     Route::get('question', 'QuestionController@index');
 // });
@@ -25,11 +21,17 @@
 
 Route::auth();
 
-Route::get('/', 'HomeController@index');
+Route::get('/', 'FrontController@index');
 
-Route::get('module', 		 'Admin\ModuleController@index');
-Route::post('module/store',  'Admin\ModuleController@store');
-Route::post('module/upload', 'Admin\ModuleController@fileUpload');
+Route::group(['prefix' => 'admin'], function () {
+
+    Route::get('/', 'HomeController@index');
+
+    Route::get('module',       'Admin\ModuleController@index');
+    Route::post('module/store',  'Admin\ModuleController@store');
+    Route::post('module/upload', 'Admin\ModuleController@fileUpload');
+
+});
 
 /////////////////
 /// Datatables //

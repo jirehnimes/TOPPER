@@ -25,18 +25,25 @@ angular.module('topper.examIndexCtrl', [])
 			_sType = $stateParams.type;
 		}
 
+		if (!$localStorage.examOptions) {
+			LocalStorage.moduleAll().then(
+				function(success) {
+					var _moduleList = renderList($.makeArray(success.rows));
+					$localStorage.examOptions = {
+						shuffle: true,
+						list: _moduleList
+					};
+				}
+			);
+		}
+
+		$scope.tmpOptions = angular.copy($localStorage.examOptions);
+
 		Modal.init($scope, 'examoption');
 	});
 
 	$scope.$on('$ionicView.enter', function (e) {
 		$scope.title =  _sType + ' Exam';
-
-		LocalStorage.moduleAll().then(
-			function(success) {
-				$scope.moduleList = renderList($.makeArray(success.rows));
-				$scope.tmpModuleList = $scope.moduleList;
-			}
-		);
 	});
 
 	$scope.$on('$ionicView.beforeLeave', function (e) {
@@ -52,17 +59,16 @@ angular.module('topper.examIndexCtrl', [])
 	// Option Modal
 
 	$scope.openExamOption = function() {
-		$scope.tmpModuleList = $scope.moduleList;
 		Modal.open();
 	};
 
 	$scope.closeExamOption = function() {
-		$scope.tmpModuleList = $scope.moduleList;
+		$scope.tmpOptions = angular.copy($localStorage.examOptions);
 		Modal.close();
 	};
 
 	$scope.submitExamOption = function() {
-		$scope.moduleList = $scope.tmpModuleList;
+		$localStorage.examOptions = angular.copy($scope.tmpOptions);
 		Modal.close();
 	}
 

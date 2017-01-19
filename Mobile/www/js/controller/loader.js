@@ -1,8 +1,10 @@
 angular.module('topper.loaderCtrl', [])
 
 .controller('LoaderCtrl', function(
-	$scope, 
-	$state, 
+	$scope,
+	$state,
+	$stateParams,
+	$localStorage,
 	LocalStorage
 ) {
 

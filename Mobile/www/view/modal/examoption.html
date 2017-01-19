@@ -8,13 +8,26 @@
 
 	<ion-content>
 
-		<div class="row">
-			<div class="col center">
+		<div class="row no-padding-margin">
+			<div class="col no-padding-margin">
+				<li id="shuffle" class="item item-toggle">
+					Shuffle
+					<label class="toggle toggle-calm">
+						<input type="checkbox" ng-model="tmpOptions.shuffle">
+						<div class="track">
+							<div class="handle"></div>
+						</div>
+					</label>
+				</li>
+			</div>
+		</div>
 
-				<h3>MODULE SELECT</h3>
-			
+		<div class="row">
+			<div class="col">
 				<ul id="moduleList" class="list">
-					<li class="item item-toggle" ng-repeat="module in tmpModuleList">
+					<h3>MODULE LIST</h3>
+
+					<li class="item item-toggle" ng-repeat="module in tmpOptions.list">
 						{{module.name}}
 						<label class="toggle toggle-calm">
 							<input type="checkbox" ng-model="module.iFlag">
@@ -24,11 +37,10 @@
 						</label>
 					</li>
 				</ul>
-
 			</div>
 		</div>
 
-		<button class="button button-full button-outline button-light" ng-click="submitExamOption()">
+		<button id="save" class="button button-outline button-light" ng-click="submitExamOption()">
             SAVE
         </button>
 

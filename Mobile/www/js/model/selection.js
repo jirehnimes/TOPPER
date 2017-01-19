@@ -6,6 +6,7 @@ angular.module('topper.selectionModel',[])
         if (oDB) {
             oDB.transaction(function (tx) {
                 var _sQuery = 'CREATE TABLE IF NOT EXISTS t_selections (' +
+                    'id UNIQUE PRIMARY KEY, ' +
                     'question_id, ' +
                     'choice, ' +
                     'isAnswer, ' +
@@ -36,6 +37,7 @@ angular.module('topper.selectionModel',[])
             oData.forEach(function(value, index) {
                 oDB.transaction(function (tx) {
                     var _sQuery = 'INSERT OR REPLACE INTO t_selections VALUES (' +
+                        value.id + ', ' +
                         value.question_id + ', ' +
                         '"' + value.choice + '", ' +
                         value.isAnswer + ', ' +

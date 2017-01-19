@@ -13,6 +13,7 @@ class CreateSelectionsTable extends Migration
     public function up()
     {
         Schema::create('selections', function (Blueprint $table) {
+            $table->increments('id');
             $table->integer('question_id');
             $table->string('choice');
             $table->boolean('isAnswer')->default(false);

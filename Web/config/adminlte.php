@@ -30,9 +30,9 @@ return [
     |
     */
 
-    'logo' => '<b>Admin</b>LTE',
+    'logo' => '<b>TOPPER</b>',
 
-    'logo_mini' => '<b>A</b>LT',
+    'logo_mini' => '<b>T</b>',
 
     /*
     |--------------------------------------------------------------------------
@@ -85,15 +85,15 @@ return [
     |
     */
 
-    'dashboard_url' => 'home',
+    // 'dashboard_url' => 'admin',
 
-    'logout_url' => 'logout',
+    // 'logout_url' => 'admin/logout',
 
-    'logout_method' => null,
+    // 'logout_method' => null,
 
-    'login_url' => 'login',
+    // 'login_url' => 'admin/login',
 
-    'register_url' => 'register',
+    // 'register_url' => 'register',
 
     /*
     |--------------------------------------------------------------------------
@@ -111,12 +111,12 @@ return [
         'MAIN NAVIGATION',
         [
             'text'        => 'Home',
-            'url'         => '/',
+            'url'         => '/admin',
             'icon'        => 'home'
         ],
         [
             'text'        => 'Module',
-            'url'         => '/module',
+            'url'         => '/admin/module',
             'icon'        => 'cubes'
         ],
         // 'ACCOUNT SETTINGS',

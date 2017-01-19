@@ -18,9 +18,25 @@
 	margin-top: 30px;
 }
 
+#exam_option #shuffle {
+	background-color: white;
+	margin-bottom: 10px;
+	font-size: 20px;
+}
+
+#exam_option #moduleList h3 {
+	margin-left: 5px;
+	color: white;
+}
+
 #exam_option #moduleList li {
 	background-color: white;
-	margin: 5px;
 	font-weight: bold;
 	font-size: 15px;
+	margin-top: 5px;
+	margin-bottom: 5px;
+}
+
+#exam_option button#save {
+	width: 100%;
 }
