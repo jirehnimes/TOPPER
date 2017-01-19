@@ -20,17 +20,20 @@ angular.module('topper.examCtrl', [])
 
 		$scope.rationale = 'Show';
 
-		Http.get('api/question').then(
-			function success(success) {
-				console.log(success);
-				$scope.questions = Util.shuffle(success);
-				$scope.$broadcast('timer-start');
-			}
-		);
-
 		if ($scope._sType === undefined) {
 			$scope._sType = $stateParams.type;
 		}
+
+		Http.get('api/question').then(
+			function success(success) {
+				if ($scope._sType === 'study' && $localStorage.examOptions.shuffle === false) {
+					$scope.questions = success;
+				} else {
+					$scope.questions = Util.shuffle(success);
+				}
+				$scope.$broadcast('timer-start');
+			}
+		);
 
 		$scope.$on('timer-tick', function (event, data) {
 			$scope.examTime = Util.time(data.millis);

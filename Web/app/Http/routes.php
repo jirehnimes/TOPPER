@@ -27,6 +27,8 @@ Route::group(['prefix' => 'admin'], function () {
 
     Route::get('/', 'HomeController@index');
 
+    Route::get('login', 'Auth\AuthController@showLoginForm');
+
     Route::get('module',       'Admin\ModuleController@index');
     Route::post('module/store',  'Admin\ModuleController@store');
     Route::post('module/upload', 'Admin\ModuleController@fileUpload');

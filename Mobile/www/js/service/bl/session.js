@@ -62,12 +62,12 @@ angular.module('topper.sesssionBL',[])
     function doLogin(oData) {
         var bRes = checkLoginData(oData);
         if (bRes === true) {
-            // if (window.cordova && $cordovaNetwork.isOnline() === true) {
+            if (window.cordova && $cordovaNetwork.isOnline() === true) {
                 _loginData = oData;            
                 Http.post('api/user/login', oData).then(successHttpLogin);
-            // } else {
-                // LocalStorage.offlineLogin(oData);
-            // }
+            } else {
+                LocalStorage.offlineLogin(oData);
+            }
         }
     }
 

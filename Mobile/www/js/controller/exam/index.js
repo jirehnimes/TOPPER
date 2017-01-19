@@ -44,6 +44,7 @@ angular.module('topper.examIndexCtrl', [])
 
 	$scope.$on('$ionicView.enter', function (e) {
 		$scope.title =  _sType + ' Exam';
+		$scope.optionFlag = (_sType === 'study');
 	});
 
 	$scope.$on('$ionicView.beforeLeave', function (e) {
