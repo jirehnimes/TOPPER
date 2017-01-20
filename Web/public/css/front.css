@@ -1,0 +1,21 @@
+.navbar-brand {
+	padding: 0;
+}
+
+header .container {
+	padding-top: 130px;
+	background-color: rgb(52,52,52);
+	margin: 0;
+	width: 100%;
+}
+
+img#navlogo {
+	height: 100%;
+	width: auto;
+}
+
+header img#headerlogo {
+	width: 25vh;
+	height: auto;
+	max-width: 300px;
+}

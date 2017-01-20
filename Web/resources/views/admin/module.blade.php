@@ -10,10 +10,10 @@
 @stop
 
 @section('content')
-	<!-- <form method="post" action="module/upload" enctype="multipart/form-data">
+	<form method="post" action="module/upload" enctype="multipart/form-data">
 		<input type="file" name="fModule">
 		<button type="submit">Submit</button>
-	</form> -->
+	</form>
 
     <div class="row">
         <div class="col-sm-12">
