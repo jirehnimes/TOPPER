@@ -26,49 +26,31 @@ angular.module('topper.examModel',[])
         return false;
     }
 
-    function all(oDB) {
+    function store(oDB, oData) {
+        if (oDB) {
+            oDB.transaction(function (tx) {
+                var _sQuery = 'INSERT OR REPLACE INTO t_exams VALUES (' +
+                    oData.id + ', ' +
+                    oData.user_id + ', ' +
+                    oData.raw_score + ', ' +
+                    oData.total_score + ', ' +
+                    oData.percentage + ', ' +
+                    '"' + oData.time + '"' +
+                    '"' + oData.time + '"' +
+                    '"' + oData.time + '"' +
+                    ')';
+                tx.executeSql(_sQuery);
+            });
 
-    }
+            return true;
+        }
 
-    function show(oDB) {
-
-    }
-
-    function store(oData) {
-
-    }
-
-    function update(oData) {
-
-    }
-
-    function destroy(oDB) {
-
+        console.error('No database object.');
+        return false;
     }
 
     return {
-        createTable: function(oDB) {
-            return createTable(oDB);
-        },
-
-        all: function(oDB) {
-
-        },
-
-        show: function(oDB) {
-
-        },
-
-        store: function(oData) {
-            return store(oData);
-        },
-
-        update: function(oData, iIsLogin) {
-            return update(oData, iIsLogin);
-        },
-
-        destroy: function(oDB) {
-
-        }
+        createTable: createTable,
+        store: store,
     }
 })
