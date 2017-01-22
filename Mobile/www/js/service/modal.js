@@ -27,7 +27,6 @@ angular.module('topper.modalSrvc',[])
 
         // Cleanup the modal when we're done with it!
         _oScope.$on('$destroy', function() {
-            console.log('Modal destroyed!');
             _oScope.modal.remove();
         });
 
@@ -39,7 +38,6 @@ angular.module('topper.modalSrvc',[])
         // Execute action on remove modal
         _oScope.$on('modal.removed', function() {
         // Execute action
-            console.log('Modal removed!');
         });
     }
 

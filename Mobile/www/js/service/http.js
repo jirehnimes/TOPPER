@@ -3,10 +3,10 @@ angular.module('topper.httpSrvc',[])
 .factory("Http", function($q, $http) {
 
 	// IP Address of the server
-	var _sServer = 'http://192.168.0.34:8081/';
+	// var _sServer = 'http://192.168.0.34:8081/';
 	// var _sServer = 'http://192.168.0.34:8080/';
 	// var _sServer = 'http://192.168.1.181:8081/';
-	// var _sServer = 'http://localhost:8080/';
+	var _sServer = 'http://localhost:8080/';
 	// var _sServer = 'http://localhost:8081/';
 
 	// Additional options for the request
@@ -28,11 +28,9 @@ angular.module('topper.httpSrvc',[])
 			_oOptions
 		).then(
 			function success(mSuccess) {
-				console.log('GET Success');
 		        _mDeferred.resolve(mSuccess.data);
 			},
 			function error(mFail) {
-				console.log('GET Error');
 				alert('Can\'t connect to the server');
 		        _mDeferred.reject('API Error');
 			}
@@ -54,11 +52,9 @@ angular.module('topper.httpSrvc',[])
 			oData
 		).then(
 			function success(mSuccess) {
-				console.log('POST Success');
 				_mDeferred.resolve(mSuccess.data);
 			},
 			function error(mFail) {
-				console.log('POST Error');
 				alert('Can\'t connect to the server');
 				_mDeferred.reject('API Error');
 			}
@@ -82,7 +78,6 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		get: function(sUrl) {
-			console.log(sUrl);
 			sUrl = urlReplace(sUrl);
 			return get(sUrl);
 		},
@@ -94,7 +89,6 @@ angular.module('topper.httpSrvc',[])
 		 * @return request result
 		 */
 		post: function(sUrl, oData) {
-			console.log(sUrl);
 			sUrl = urlReplace(sUrl);
 			return post(sUrl, oData);
 		},

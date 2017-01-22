@@ -9,11 +9,14 @@ angular.module('topper.profileCtrl', [])
 	$cordovaImagePicker, 
 	$cordovaFileTransfer, 
 	Http, 
-	Modal
+	Modal,
+	SessionBL
 ) {
 
 	// Before entering the profile page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
+		SessionBL.check();
+
 		// Get the server URL
 		$scope.server = Http.session();
 

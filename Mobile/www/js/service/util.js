@@ -38,9 +38,22 @@ angular.module('topper.utilSrvc',[])
         return ('0' + hrs).slice(-2) + ':' + ('0' + mins).slice(-2) + ':' + ('0' + secs).slice(-2);
     }
 
+    function getId(array, attr, value) {
+        var aId = [];
+
+        for(var i = 0; i < array.length; i++) {
+            if(array[i][attr] === value) {
+                aId.push(array[i].id);
+            }
+        }
+        
+        return aId;
+    }
+
     return {
         shuffle : arrayShuffle,
         message : displayMessage,
-        time    : convertToTime
+        time    : convertToTime,
+        getId   : getId
     }
 })

@@ -24,16 +24,21 @@ angular.module('topper.examCtrl', [])
 			$scope._sType = $stateParams.type;
 		}
 
-		Http.get('api/question').then(
-			function success(success) {
-				if ($scope._sType === 'study' && $localStorage.examOptions.shuffle === false) {
-					$scope.questions = success;
-				} else {
-					$scope.questions = Util.shuffle(success);
-				}
-				$scope.$broadcast('timer-start');
-			}
-		);
+		$scope.questions = $localStorage.exam;
+
+		$scope.$broadcast('timer-start');
+		
+
+		// Http.get('api/question').then(
+		// 	function success(success) {
+		// 		if ($scope._sType === 'study' && $localStorage.examOptions.shuffle === false) {
+		// 			$scope.questions = success;
+		// 		} else {
+		// 			$scope.questions = Util.shuffle(success);
+		// 		}
+		// 		$scope.$broadcast('timer-start');
+		// 	}
+		// );
 
 		$scope.$on('timer-tick', function (event, data) {
 			$scope.examTime = Util.time(data.millis);

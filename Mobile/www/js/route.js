@@ -84,6 +84,7 @@ angular.module('topper.routes', ['ui.router'])
 
     .state('menu.exam', {
       url: 'exam/:type',
+      cache: false,
       views: {
         'menuContent': {
           templateUrl: 'view/exam/exam.html',

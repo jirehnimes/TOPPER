@@ -43,6 +43,7 @@ angular.module('topper', [
   // bl
   'topper.sesssionBL',
   'topper.offlineLoginBL',
+  'topper.examBL',
 
   // directives
 
