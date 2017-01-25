@@ -54,6 +54,7 @@
 button.button-outline.button-light {
     box-shadow: none;
     border: 3px white solid !important;
+    padding: none;
 }
 
 .capitalize {

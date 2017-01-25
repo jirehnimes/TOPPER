@@ -62,9 +62,11 @@ angular.module('topper.examIndexCtrl', [])
 	$scope.startExam = function() {
 		LocalStorage.loadExam().then(
 			function(success) {
-				// console.log(success);
-				if (success === false) {
+				if (success === 'error1') {
 					Util.message('No selected module.');
+            		$state.go('menu.exam_index', {type: _sType});
+				} else if (success === 'error2') { 
+					Util.message('Module selected doesn\'t have topics.');
             		$state.go('menu.exam_index', {type: _sType});
 				} else {
 					$localStorage.exam = success;

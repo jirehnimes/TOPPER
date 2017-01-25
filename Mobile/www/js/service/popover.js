@@ -3,7 +3,7 @@ angular.module('topper.popoverSrvc',[])
 .factory("Popover", function($q, $ionicPopup) {
 
     // A confirm dialog
-    var confirmEndOfExam = function() {
+    function confirmEndOfExam() {
 
         // Initialize promise
         var _mDeferred = $q.defer();
@@ -25,9 +25,29 @@ angular.module('topper.popoverSrvc',[])
         return _mDeferred.promise;
     };
 
+    function displayRationale(sText) {
+        // Initialize promise
+        var _mDeferred = $q.defer();
+
+        var confirmPopup = $ionicPopup.alert({
+            title: '<b>Rationale</b>',
+            template: '<p>'+sText+'</p>'
+        });
+
+        confirmPopup.then(function(result) {
+            if (result) {
+                _mDeferred.resolve(true);
+            } else {
+                _mDeferred.resolve(false);
+            }
+        });
+
+        // Return stored promise
+        return _mDeferred.promise;
+    }
+
     return {
-        confirmEndOfExam: function() {
-            return confirmEndOfExam();
-        }
+        confirmEndOfExam : confirmEndOfExam,
+        displayRationale : displayRationale
     }
 })

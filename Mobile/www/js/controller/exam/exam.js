@@ -26,19 +26,17 @@ angular.module('topper.examCtrl', [])
 
 		$scope.questions = $localStorage.exam;
 
+		console.log($scope.questions);
+
 		$scope.$broadcast('timer-start');
 		
-
-		// Http.get('api/question').then(
-		// 	function success(success) {
-		// 		if ($scope._sType === 'study' && $localStorage.examOptions.shuffle === false) {
-		// 			$scope.questions = success;
-		// 		} else {
-		// 			$scope.questions = Util.shuffle(success);
-		// 		}
-		// 		$scope.$broadcast('timer-start');
-		// 	}
-		// );
+		if (!$scope.questions) {
+			$state.go('menu.home');
+		} else {
+			if ($localStorage.examOptions.shuffle === true || $scope._sType === 'mock') {
+				$scope.questions = Util.shuffle($scope.questions);
+			}
+		}
 
 		$scope.$on('timer-tick', function (event, data) {
 			$scope.examTime = Util.time(data.millis);
@@ -96,11 +94,7 @@ angular.module('topper.examCtrl', [])
 	}
 
 	$scope.showRationale = function() {
-		if ($scope.rationale === 'Show') {
-			$scope.rationale = 'Hide';
-		} else {
-			$scope.rationale = 'Show';
-		}
+		Popover.displayRationale($scope.questions[$scope.number].rationale);
 	}
 
 	function confirmSuccess(success) {

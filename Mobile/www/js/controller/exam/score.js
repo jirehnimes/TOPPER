@@ -2,12 +2,12 @@ angular.module('topper.examScoreCtrl', [])
 
 .controller('ExamScoreCtrl', function(
 	$scope,
-	$rootScope,
 	$state,
-	$ionicHistory,
 	$localStorage,
+    $sessionStorage,
 	Http,
-	Cache
+	Cache,
+	LocalStorage
 ) {
 
 	function getObjectByValue(array, key, value) {
@@ -49,6 +49,16 @@ angular.module('topper.examScoreCtrl', [])
 		$scope.total      = $scope.results.length;
 		$scope.percentage = ($scope.score / $scope.results.length) * 100;
 
+		if ($scope.examData.examType === 'mock') {
+			LocalStorage.storeExam({
+				user_id : $sessionStorage.auth.id,
+				raw_score : $scope.score,
+				total_score : $scope.total,
+				percentage : $scope.percentage,
+				time : $scope.time
+			});
+		}
+
 		// Chart data
         $scope.chartLabels = ['Correct', 'Incorrect'];
 		$scope.chartData   = [$scope.score, $scope.total - $scope.score];
@@ -69,7 +79,7 @@ angular.module('topper.examScoreCtrl', [])
 					question_id: item.id,
 					question_text: item.text,
 					question_rationale: item.rationale,
-					question_answer: getObjectByValue(item.selection, 'isAnswer', 1),
+					question_answer: getObjectByValue(item.selections, 'isAnswer', 1),
 					answer: $scope.answers[index].choice,
 					is_answer: $scope.answers[index].isAnswer
 				};

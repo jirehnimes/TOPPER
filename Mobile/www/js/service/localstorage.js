@@ -79,8 +79,8 @@ angular.module('topper.localStorageSrvc',[])
 		return ExamBL.init(_DB);
 	}
 
-	function storeExam() {
-
+	function storeExam(oData) {
+		ExamModel.store(_DB, oData);
 	}
 
 	return {

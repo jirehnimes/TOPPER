@@ -31,3 +31,10 @@
 #exam_exam .repeater.ng-animate {
     transition: 0s none;
 }
+
+#exam_exam .timer,
+#exam_exam #seq-no {
+	display: flex;
+    align-items: center;
+    justify-content: center;
+}
