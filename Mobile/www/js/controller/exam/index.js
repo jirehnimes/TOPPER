@@ -7,7 +7,9 @@ angular.module('topper.examIndexCtrl', [])
 	$localStorage,
 	LocalStorage,
 	Http,
-	Modal
+	Modal,
+	Util,
+	SessionBL
 ) {
 
 	var _sType = undefined;
@@ -21,6 +23,8 @@ angular.module('topper.examIndexCtrl', [])
 	}
 
 	$scope.$on('$ionicView.beforeEnter', function (e) {
+		SessionBL.check();
+
 		if (_sType === undefined) {
 			_sType = $stateParams.type;
 		}
@@ -37,6 +41,10 @@ angular.module('topper.examIndexCtrl', [])
 			);
 		}
 
+		delete $localStorage.examAnswers;
+		delete $localStorage.exam;
+		$scope.$broadcast('timer-stop');
+
 		$scope.tmpOptions = angular.copy($localStorage.examOptions);
 
 		Modal.init($scope, 'examoption');
@@ -52,9 +60,18 @@ angular.module('topper.examIndexCtrl', [])
 	});
 
 	$scope.startExam = function() {
-		delete $localStorage.examAnswers;
-		$scope.$broadcast('timer-stop');
-		$state.go('menu.exam', {type: _sType});
+		LocalStorage.loadExam().then(
+			function(success) {
+				// console.log(success);
+				if (success === false) {
+					Util.message('No selected module.');
+            		$state.go('menu.exam_index', {type: _sType});
+				} else {
+					$localStorage.exam = success;
+					$state.go('menu.exam', {type: _sType});
+				}
+			}
+		);
 	}
 
 	// Option Modal

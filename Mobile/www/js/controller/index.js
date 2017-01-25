@@ -15,11 +15,10 @@ angular.module('topper.indexCtrl', [])
 ) {
 	// Before entering the index page
 	$scope.$on('$ionicView.beforeEnter', function (e) {
-
 		LocalStorage.init();
 
     	if ($sessionStorage.auth) {
-	        return $state.go('menu.home');
+	        return $state.go('loader');
     	}
     });
 

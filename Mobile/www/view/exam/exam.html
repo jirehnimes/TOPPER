@@ -21,14 +21,14 @@
         <div class="list card">
 
             <div class="item item-body">
-                <h3>Module: </h3>
-                <h2>Topic: </h2>
+                <h3>Module: {{questions[number].topic.module.name}}</h3>
+                <h2>Topic: {{questions[number].topic.name}}</h2>
                 <hr>
                 <h4>Question:</h4>
                 <p>
                     {{questions[number].text}}
                 </p>
-                <button class="button button-full button-answers repeater" ng-repeat="answer in questions[number].selection" ng-click="selectAnswer(answer)" ng-class="checkAnswer(answer)" ng-style="fontColor(answer)">
+                <button class="button button-full button-answers repeater" ng-repeat="answer in questions[number].selections" ng-click="selectAnswer(answer)" ng-class="checkAnswer(answer)" ng-style="fontColor(answer)">
                     {{answer.choice}}
                 </button>
             </div>

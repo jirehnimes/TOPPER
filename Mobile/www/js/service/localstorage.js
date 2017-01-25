@@ -16,35 +16,30 @@ angular.module('topper.localStorageSrvc',[])
 	SelectionModel,
 	ExamModel,
 	SchoolModel,
-	OfflineLoginBL
+	OfflineLoginBL,
+	ExamBL
 ) {
 
 	var _DB = undefined;
 
 	function init() {
-		if (_DB) {
-			return false;
+		if (!_DB) {
+			_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
+
+			SessionModel.createTable(_DB);
+			PasswordModel.createTable(_DB);
+			ModuleModel.createTable(_DB);
+			TopicModel.createTable(_DB);
+			QuestionModel.createTable(_DB);
+			SelectionModel.createTable(_DB);
+			ExamModel.createTable(_DB);
+			SchoolModel.createTable(_DB);
 		}
-
-		_DB = window.openDatabase('topperdb', '1.0', 'Topper DB', 2 * 1024 * 1024);
-
-		SessionModel.createTable(_DB);
-		PasswordModel.createTable(_DB);
-		ModuleModel.createTable(_DB);
-		TopicModel.createTable(_DB);
-		QuestionModel.createTable(_DB);
-		SelectionModel.createTable(_DB);
-		ExamModel.createTable(_DB);
-		SchoolModel.createTable(_DB);
-
-		return true;
 	}
 
 	function loader(oScope) {
-
 		Http.get('api/module/' + $sessionStorage.auth['id']).then(
 			function(success) {
-				console.log(success);
 		  		ModuleModel.store(_DB, success.data);
 			}
 		);
@@ -67,8 +62,6 @@ angular.module('topper.localStorageSrvc',[])
 	}
 
 	function getModuleAll() {
-		init();
-
 		// Initialize promise
         var _mDeferred = $q.defer();
 
@@ -82,12 +75,22 @@ angular.module('topper.localStorageSrvc',[])
         return _mDeferred.promise;
 	}
 
+	function loadExam() {
+		return ExamBL.init(_DB);
+	}
+
+	function storeExam() {
+
+	}
+
 	return {
 		init : init,
 		loader : loader,
 		login : login,
 		offlineLogin : offlineLogin,
 		password : storePassword,
-		moduleAll : getModuleAll
+		moduleAll : getModuleAll,
+		loadExam : loadExam,
+		storeExam : storeExam
 	}
 })

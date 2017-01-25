@@ -3,7 +3,7 @@
 namespace App\Http\Controllers\Admin;
 
 // Http
-use App\Http\Requests;
+use Illuminate\Http\Request;
 use App\Http\Controllers\Controller;
 
 // Contracts
@@ -123,8 +123,8 @@ class ModuleController extends Controller
             var_dump($foo);
         });
 
-        // if ($bResult === true) {
-        //     return view('admin/module');
-        // }
+        if ($bResult === true) {
+            return view('admin/module');
+        }
     }
 }

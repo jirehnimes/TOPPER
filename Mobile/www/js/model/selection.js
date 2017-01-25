@@ -33,6 +33,7 @@ angular.module('topper.selectionModel',[])
     }
 
     function store(oDB, oData) {
+        console.log(oData);
         if (oDB) {
             oData.forEach(function(value, index) {
                 oDB.transaction(function (tx) {
