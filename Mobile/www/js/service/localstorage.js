@@ -83,6 +83,10 @@ angular.module('topper.localStorageSrvc',[])
 		ExamModel.store(_DB, oData);
 	}
 
+	function getMockResults() {
+		return ExamModel.all(_DB);
+	}
+
 	return {
 		init : init,
 		loader : loader,
@@ -91,6 +95,7 @@ angular.module('topper.localStorageSrvc',[])
 		password : storePassword,
 		moduleAll : getModuleAll,
 		loadExam : loadExam,
-		storeExam : storeExam
+		storeExam : storeExam,
+		getMockResults : getMockResults
 	}
 })

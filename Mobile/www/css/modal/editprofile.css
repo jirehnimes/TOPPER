@@ -10,8 +10,9 @@
 	background-color: #c2c2c2;
 }
 
-#edit_profile ion-header-bar > h1 {
+#edit_profile ion-header-bar > h1.title {
 	height: 100%;
+	left: 0;
 	display: flex;
   	flex-direction: column;
   	justify-content: center;

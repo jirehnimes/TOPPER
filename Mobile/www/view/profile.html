@@ -1,7 +1,7 @@
 <ion-view id="profile">
     <ion-content overflow-scroll="true" padding="false" scroll="true">
-			
-    
+
+
 
     <div class="row avatar_container">
 		<div class="col">
@@ -13,6 +13,7 @@
 		    <div class="center">
 		    	<img ng-src="img/defaultuser.png" onerror="this.onerror=null; this.src='img/defaultuser.png';" id="avatar">
 				<h3>{{session.nickname || foo}}</h3>
+				<h4>{{session.access_type | sentenceCase}}</h4>
 		    </div>
 		</div>
     </div>
@@ -20,24 +21,36 @@
     <div class="row profile_container">
 		<div class="col">
 			<ul class="list">
-				<li class="item">
-			    	Access: {{session.access_type | sentenceCase}}
+			    <li class="item">
+			    	<div class="prof_title">
+			    		<i class="icon ion-person"></i>&nbsp;
+			    		NAME
+		    		</div>
+			    	<p>{{session.first_name + ' ' + session.last_name}}</p>
 			    </li>
 
 			    <li class="item">
-			    	Name: {{session.first_name + ' ' + session.last_name}}
+			    	<div class="prof_title">
+			    		<i class="icon ion-email"></i>&nbsp;
+			    		EMAIL
+		    		</div>
+			    	<p>{{session.email}}</p>
 			    </li>
 
 			    <li class="item">
-			    	Email: {{session.email}}
+			    	<div class="prof_title">
+			    		<i class="icon ion-person-stalker"></i>&nbsp;
+			    		GENDER
+		    		</div>
+			    	<p>{{session.gender}}</p>
 			    </li>
 
 			    <li class="item">
-			    	Gender: {{session.gender}}
-			    </li>
-
-			    <li class="item">
-			    	Birthday: {{session.birthdate | date}}
+			    	<div class="prof_title">
+			    		<i class="icon ion-calendar"></i>&nbsp;
+			    		BIRTHDAY
+		    		</div>
+			    	<p>{{session.birthdate | date}}</p>
 			    </li>
 			</ul>
 		</div>

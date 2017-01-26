@@ -60,39 +60,47 @@ angular.module('topper.examBL',[])
         });
     }
 
-    var aQuestions = [];
 
     function renderQuestions(aTopics, aModule, mDeferred) {
+        var aQuestions = [];
 
-        aTopics.forEach(function(item, index) {
+        aTopics.forEach(function(topic, index) {
             _oDB.transaction(function (tx) {
-                var _sQuery = 'SELECT * FROM t_questions WHERE topic_id = ' + item.id;
+                var _sQuery = 'SELECT * FROM t_questions WHERE topic_id = ' + topic.id;
                 tx.executeSql(_sQuery, [], function(_tx, _result) {
                     if (_result.rows.length !== 0) {
                         var _aQuestions = $.makeArray(_result.rows);
                         aTopics[index].module = aModule;
-                        renderSelections(_aQuestions, item, mDeferred);
+                        _aQuestions.forEach(function(question, _index) {
+                            renderSelections(question, _index).then(
+                                function(success) {
+                                    _aQuestions[_index].selections = success;
+                                    _aQuestions[_index].topic = topic;
+                                    aQuestions.push(_aQuestions[_index]);
+                                }
+                            );
+                        });
                     }
                 });
             });
         });
 
-        _tmpQuestions = angular.copy(aQuestions);
-        aQuestions = [];
-        mDeferred.resolve(_tmpQuestions);
+        mDeferred.resolve(aQuestions);
     }
 
-    function renderSelections(_aQuestions, aTopic) {
-        _aQuestions.forEach(function(item, index) {
-            _oDB.transaction(function (tx) {
-                var _sQuery = 'SELECT * FROM t_selections WHERE question_id = ' + item.id;
-                tx.executeSql(_sQuery, [], function(_tx, _result) {
-                    _aQuestions[index].selections = $.makeArray(_result.rows);
-                    _aQuestions[index].topic = aTopic;
-                });
+    function renderSelections(item, index) {
+        // Initialize promise
+        var _mDeferred = $q.defer();
+
+        _oDB.transaction(function (tx) {
+            var _sQuery = 'SELECT * FROM t_selections WHERE question_id = ' + item.id;
+            tx.executeSql(_sQuery, [], function(_tx, _result) {
+                _mDeferred.resolve($.makeArray(_result.rows));
             });
-            aQuestions.push(item);
         });
+
+        // Return stored promise
+        return _mDeferred.promise;
     }
 
     return {

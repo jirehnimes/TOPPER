@@ -52,7 +52,6 @@ angular.module('topper.indexCtrl', [])
 			if (window.cordova && $cordovaNetwork.isOnline() === true) {
 				Http.post('api/user/store', $scope.registerData).then(
 					function success(mReturn) {
-						console.log(mReturn);
 						alert(mReturn.msg);
 						if (mReturn.status === true) {
 							$scope.registerData = {};

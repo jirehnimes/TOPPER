@@ -4,7 +4,7 @@
         "Read more about it at https://getcomposer.org/doc/01-basic-usage.md#composer-lock-the-lock-file",
         "This file is @generated automatically"
     ],
-    "hash": "be6545c4be9cf390aa009e826a4ccc43",
+    "hash": "47a1260570ada895f61e5e1fe36fd145",
     "content-hash": "615dae825387840ef8228c50be074cad",
     "packages": [
         {
@@ -369,20 +369,20 @@
         },
         {
             "name": "jeroennoten/laravel-adminlte",
-            "version": "v1.17.0",
+            "version": "v1.18.0",
             "source": {
                 "type": "git",
                 "url": "https://github.com/jeroennoten/Laravel-AdminLTE.git",
-                "reference": "632b4ba36b6d7a3c9162ced4143ba6d8fb0b13d5"
+                "reference": "73be408d2700cd78499b1301e8e70fc54a8dbcb3"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/632b4ba36b6d7a3c9162ced4143ba6d8fb0b13d5",
-                "reference": "632b4ba36b6d7a3c9162ced4143ba6d8fb0b13d5",
+                "url": "https://api.github.com/repos/jeroennoten/Laravel-AdminLTE/zipball/73be408d2700cd78499b1301e8e70fc54a8dbcb3",
+                "reference": "73be408d2700cd78499b1301e8e70fc54a8dbcb3",
                 "shasum": ""
             },
             "require": {
-                "laravel/framework": "~5.1.12|~5.2.0|~5.3.0",
+                "laravel/framework": "~5.1.12|~5.2.0|~5.3.0|~5.4.0",
                 "php": ">=5.5.9"
             },
             "require-dev": {
@@ -411,7 +411,7 @@
                 "administrator",
                 "laravel"
             ],
-            "time": "2016-11-12 18:56:48"
+            "time": "2017-01-25 12:46:45"
         },
         {
             "name": "laravel/framework",
@@ -3039,16 +3039,16 @@
         },
         {
             "name": "phpunit/phpunit",
-            "version": "4.8.32",
+            "version": "4.8.33",
             "source": {
                 "type": "git",
                 "url": "https://github.com/sebastianbergmann/phpunit.git",
-                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1"
+                "reference": "6381a99bd2a398d2994b454ad6d57c73f5a7de3d"
             },
             "dist": {
                 "type": "zip",
-                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
-                "reference": "f5e1941a8dacf0d904753ff2895c6f68e54bcee1",
+                "url": "https://api.github.com/repos/sebastianbergmann/phpunit/zipball/6381a99bd2a398d2994b454ad6d57c73f5a7de3d",
+                "reference": "6381a99bd2a398d2994b454ad6d57c73f5a7de3d",
                 "shasum": ""
             },
             "require": {
@@ -3107,7 +3107,7 @@
                 "testing",
                 "xunit"
             ],
-            "time": "2017-01-22 08:37:05"
+            "time": "2017-01-25 19:17:47"
         },
         {
             "name": "phpunit/phpunit-mock-objects",

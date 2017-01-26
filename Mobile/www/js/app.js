@@ -27,6 +27,7 @@ angular.module('topper', [
   'topper.homeCtrl',
   'topper.profileCtrl',
   'topper.moduleCtrl',
+  'topper.historyCtrl',
   'topper.examIndexCtrl',
   'topper.examCtrl',
   'topper.examResultCtrl',

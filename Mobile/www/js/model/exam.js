@@ -1,6 +1,6 @@
 angular.module('topper.examModel',[])
 
-.factory('ExamModel', function() {
+.factory('ExamModel', function($q, $sessionStorage) {
 
     function createTable(oDB) {
         if (oDB) {
@@ -20,6 +20,27 @@ angular.module('topper.examModel',[])
             });
 
             return true;
+        }
+
+        console.error('No database object.');
+        return false;
+    }
+
+    function all(oDB) {
+        // Initialize promise
+        var _mDeferred = $q.defer();
+
+        if (oDB) {
+            oDB.transaction(function (tx) {
+                var _sQuery = 'SELECT * FROM t_exams WHERE user_id='+$sessionStorage.auth.id;
+
+                tx.executeSql(_sQuery, [], function(_tx, _result) {
+                    _mDeferred.resolve(_result);
+                });
+            });
+
+            // Return stored promise
+            return _mDeferred.promise;
         }
 
         console.error('No database object.');
@@ -49,7 +70,8 @@ angular.module('topper.examModel',[])
     }
 
     return {
-        createTable: createTable,
-        store: store,
+        createTable : createTable,
+        all : all,
+        store : store
     }
 })

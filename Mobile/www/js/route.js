@@ -70,6 +70,18 @@ angular.module('topper.routes', ['ui.router'])
 
 
 
+    .state('menu.history', {
+      url: 'history',
+      views: {
+        'menuContent': {
+          templateUrl: 'view/history.html',
+          controller: 'HistoryCtrl'
+        }
+      }
+    })
+
+
+
     .state('menu.exam_index', {
       url: 'exam_index/:type',
       views: {

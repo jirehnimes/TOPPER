@@ -3,14 +3,16 @@
 }
 
 #exam_option ion-header-bar {
-	display: flex;
+	/*display: flex;
   	flex-direction: column;
-  	justify-content: center;
+  	justify-content: center;*/
 	height: 60px;
 	background-color: #c2c2c2;
 }
 
 #exam_option ion-header-bar h1.title {
+	left: 0;
+	line-height: 60px;
 }
 
 #exam_option ion-content {

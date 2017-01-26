@@ -26,10 +26,8 @@ angular.module('topper.examCtrl', [])
 
 		$scope.questions = $localStorage.exam;
 
-		console.log($scope.questions);
-
 		$scope.$broadcast('timer-start');
-		
+
 		if (!$scope.questions) {
 			$state.go('menu.home');
 		} else {
