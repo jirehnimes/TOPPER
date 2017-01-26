@@ -8,7 +8,7 @@
           rgba(0, 0, 0, 0.3),
           rgba(0, 0, 0, 0.3)
         ),
-        url('/img/bg2.jpg');
+        url('../img/bg2.jpg');
 	background-repeat: no-repeat;
 	background-position: center;
 	background-attachment: fixed;

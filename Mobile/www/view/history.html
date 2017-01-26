@@ -1,7 +1,11 @@
 <ion-view id="history">
-    <ion-content overflow-scroll="true" padding="true" scroll="true">
+    <ion-content overflow-scroll="true" padding="false" scroll="true">
 
-        <div class="list no-padding">
+        <div class="page_title">
+            <h3><i class="icon ion-clock"></i>&nbsp;EXAM HISTORY</h3>
+        </div>
+
+        <div class="list">
             <div class="row item no-padding" ng-repeat="exam in exams">
                 <span class="col col-33 no-padding" style="font-size:3em;">{{exam.percentage}} %</span>
 
